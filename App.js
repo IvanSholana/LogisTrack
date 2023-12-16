@@ -1,16 +1,25 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Button from "./components/button/ButtonComponent";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import LoginScreen from "./screens/LoginsScreen";
+import "react-native-gesture-handler";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Button
-        buttontext={"hello world"}
-        buttonstyle={{ backgroundColor: "green" }}
-      />
-    </View>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 

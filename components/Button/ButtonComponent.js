@@ -1,13 +1,25 @@
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import React, { useState } from "react";
 
-const Button = ({ buttontext, buttonstyle }) => {
+const ButtonComponent = ({ buttontext, buttonstyle, textstyle }) => {
   return (
     <>
-      <TouchableOpacity style={buttonstyle}>
-        <Text>{buttontext}</Text>
+      <TouchableOpacity style={[styles.button, buttonstyle]}>
+        <Text style={[styles.text, textstyle]}>{buttontext}</Text>
       </TouchableOpacity>
     </>
   );
 };
 
-export default Button;
+const styles = StyleSheet.create({
+  text: {
+    textAlign: "center",
+  },
+  button: {
+    marginVertical: 5,
+    padding: 15,
+    borderRadius: 10,
+  },
+});
+
+export default ButtonComponent;
