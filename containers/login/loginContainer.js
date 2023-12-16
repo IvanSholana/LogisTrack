@@ -24,8 +24,8 @@ const LoginContainer = () => {
   return (
     <>
       <InputText
-        textinputname={"NIDN/NIM"}
-        placeholder={"Masukkan NIDN/NIM..."}
+        textinputname={"NIM/NIDN"}
+        placeholder={"Masukkan NIM/NIDN..."}
         value={username}
         onChangeText={setUsername}
       />
