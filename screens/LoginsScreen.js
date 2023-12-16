@@ -9,7 +9,7 @@ const LoginScreen = () => {
         <Image
           source={require("../assets/images/LogisTrack.png")}
           style={styles.logo}
-          resizeMode="contain" // Sesuaikan dengan kebutuhan tata letak gambar
+          resizeMode="contain"
         />
       </View>
       <Image source={require("../assets/images/cuate.png")} />
