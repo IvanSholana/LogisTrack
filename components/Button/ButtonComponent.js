@@ -15,11 +15,6 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
   },
-  button: {
-    marginVertical: 5,
-    padding: 15,
-    borderRadius: 10,
-  },
 });
 
 export default ButtonComponent;
