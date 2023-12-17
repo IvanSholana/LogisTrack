@@ -1,6 +1,11 @@
 export const colors = {
-  EventTolak: "#BC4749",
-  EventDinjam: "#F4ACB7",
-  EventDiproses: "#FFC300",
-  EventSelesai: "#A7C957",
+  eventRejected: "#BC4749",
+  eventInProgress: "#F4ACB7",
+  eventProcessing: "#FFC300",
+  eventCompleted: "#A7C957",
+  tabActive: "#6A994E",
+  buttonLogin: "#A7C957",
+  buttonRegister: "#D9D9D9",
+  loginText: "white",
+  registerText: "#737373",
 };

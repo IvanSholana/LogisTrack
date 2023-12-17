@@ -8,7 +8,7 @@ const HistoryContainers = () => {
       <EventStatusCardComponents
         eventName="Pemira Informatika"
         eventDate="12/12/2012"
-        eventStatusColor={colors.EventDinjam}
+        eventStatusColor={colors.eventInProgress}
       />
     </>
   );

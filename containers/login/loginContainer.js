@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet } from "react-native";
+import { colors } from "../../constants/colors";
 
 const LoginContainer = () => {
   const [username, setUsername] = useState("");
@@ -52,16 +53,16 @@ const LoginContainer = () => {
 
 const styles = StyleSheet.create({
   login: {
-    backgroundColor: "#A7C957",
+    backgroundColor: colors.ButtonLogin,
   },
   register: {
-    backgroundColor: "#D9D9D9",
+    backgroundColor: colors.ButtonRegister,
   },
   logintext: {
-    color: "white",
+    color: colors.LoginText,
   },
   registertext: {
-    color: "#737373",
+    color: colors.RegisterText,
   },
 });
 

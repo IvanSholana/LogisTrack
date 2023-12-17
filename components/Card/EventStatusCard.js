@@ -6,7 +6,12 @@ const EventStatusCardComponents = (eventdata) => {
   return (
     <>
       <TouchableOpacity>
-        <View style={styles.container}>
+        <View
+          style={[
+            styles.container,
+            { borderColor: eventdata.eventStatusColor },
+          ]}
+        >
           <View style={styles.textcontainer}>
             <Text style={styles.title}>{eventdata.eventName}</Text>
             <Text>{eventdata.eventDate}</Text>
@@ -32,7 +37,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 20,
     paddingVertical: 15,
-    margin: 15,
     borderRadius: 10,
     shadowColor: "black",
   },
