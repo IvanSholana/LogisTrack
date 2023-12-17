@@ -1,5 +1,5 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 
 const ButtonComponent = ({ buttontext, buttonstyle, textstyle }) => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import RegisterContainer from "../containers/Register/RegisterContainer";
 
 const RegisterScreen = () => {
