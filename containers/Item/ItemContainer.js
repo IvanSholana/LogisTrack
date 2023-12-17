@@ -5,22 +5,34 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import FloatingButton from "../../components/FloatingButton/FloatingButtonComponent";
 import DatePickers from "../../components/DatePicker/DatePickerComponents";
+import AddPeraltanCardComponents from "../../components/Card/AddPeralatanCard";
 
 const DateContainer = () => {
-  const [dialogVisible, setVisible] = useState(false);
+  const [dialogVisible, setDialogVisible] = useState(false);
+
   return (
     <>
-      <FloatingButton icon={"calendar"} onpress={setVisible} />
-      <DatePickers isVisible={dialogVisible} setVisible={setVisible} />
+      <FloatingButton icon="calendar" onpress={() => setDialogVisible(true)} />
+      <DatePickers isVisible={dialogVisible} setVisible={setDialogVisible} />
     </>
   );
 };
 
-const RuanganContainer = () => {
-  return <></>;
+const FormAlatContainer = () => {
+  return (
+    <>
+      <AddPeraltanCardComponents />
+    </>
+  );
 };
 
 const AppBarContainer = () => {
+  const [activeTab, setActiveTab] = useState("Peralatan");
+
+  const handleTabPress = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.appBar}>
@@ -36,13 +48,31 @@ const AppBarContainer = () => {
       <View style={styles.navigationTab}>
         <ButtonComponent
           buttontext={"Peralatan"}
-          buttonstyle={styles.tabButton}
-          textstyle={styles.tabButtonText}
+          buttonstyle={
+            activeTab === "Peralatan"
+              ? styles.tabActiveButton
+              : styles.tabDeactiveButton
+          }
+          textstyle={
+            activeTab === "Peralatan"
+              ? styles.tabActiveButtonText
+              : styles.tabDeactiveButtonText
+          }
+          onPress={() => handleTabPress("Peralatan")}
         />
         <ButtonComponent
           buttontext={"Ruangan"}
-          buttonstyle={styles.tabButton}
-          textstyle={styles.tabButtonText}
+          buttonstyle={
+            activeTab === "Ruangan"
+              ? styles.tabActiveButton
+              : styles.tabDeactiveButton
+          }
+          textstyle={
+            activeTab === "Ruangan"
+              ? styles.tabActiveButtonText
+              : styles.tabDeactiveButtonText
+          }
+          onPress={() => handleTabPress("Ruangan")}
         />
       </View>
     </View>
@@ -79,16 +109,24 @@ const styles = StyleSheet.create({
     width: 150,
     height: 40,
   },
-  checkout: {},
-  tabButton: {
+  tabDeactiveButton: {
+    flex: 1,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.buttonRegister,
+  },
+  tabActiveButton: {
     flex: 1,
     paddingBottom: 5,
     borderBottomWidth: 1,
     borderBottomColor: colors.tabActive,
   },
-  tabButtonText: {
+  tabActiveButtonText: {
     color: colors.tabActive,
+  },
+  tabDeactiveButtonText: {
+    color: colors.registerText,
   },
 });
 
-export { DateContainer, AppBarContainer };
+export { DateContainer, AppBarContainer, FormAlatContainer };

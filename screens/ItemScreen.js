@@ -2,6 +2,7 @@ import React from "react";
 import {
   DateContainer,
   AppBarContainer,
+  FormAlatContainer,
 } from "../containers/Item/ItemContainer";
 import { View, StyleSheet } from "react-native";
 
@@ -9,7 +10,9 @@ const ItemScreen = () => {
   return (
     <View style={styles.container}>
       <AppBarContainer />
-      <View style={styles.mainContent}></View>
+      <View style={styles.mainContent}>
+        <FormAlatContainer />
+      </View>
       <View style={styles.dateContainer}>
         <DateContainer />
       </View>
