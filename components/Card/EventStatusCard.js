@@ -1,5 +1,7 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import StatusComponent from "../Status/StatusComponent";
+import { colors } from "../../constants/colors";
 
 const EventStatusCardComponents = (eventdata) => {
   return (
@@ -13,7 +15,13 @@ const EventStatusCardComponents = (eventdata) => {
         >
           <View style={styles.textcontainer}>
             <Text style={styles.title}>{eventdata.eventName}</Text>
-            <Text>{eventdata.eventDate}</Text>
+            <StatusComponent
+              status={eventdata.status}
+              color={[
+                styles.status,
+                { backgroundColor: eventdata.eventStatusColor },
+              ]}
+            />
           </View>
           <Text
             style={[
