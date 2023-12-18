@@ -2,12 +2,12 @@ import { Dialog } from "react-native-simple-dialogs";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-const DialogComponent = ({ isVisible, setVisible, content }) => {
+const DialogComponent = ({ isVisible, setVisible, content, title }) => {
   return (
     <>
       <Dialog
         visible={isVisible}
-        title="Pilih Jadwal Peminjaman"
+        title={title}
         onTouchOutside={() => setVisible(false)}
       >
         <View>
