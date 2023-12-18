@@ -2,17 +2,14 @@ import React from "react";
 import {
   DateContainer,
   AppBarContainer,
-  FormAlatContainer,
+  FormPeminjaman,
 } from "../containers/Item/ItemContainer";
 import { View, StyleSheet } from "react-native";
 
 const ItemScreen = () => {
   return (
     <View style={styles.container}>
-      <AppBarContainer />
-      <View style={styles.mainContent}>
-        <FormAlatContainer />
-      </View>
+      <FormPeminjaman />
       <View style={styles.dateContainer}>
         <DateContainer />
       </View>
@@ -25,9 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
   },
-  mainContent: {
-    flex: 1,
-  },
+
   dateContainer: {
     alignItems: "flex-end",
     paddingVertical: 20,

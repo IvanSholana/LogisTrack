@@ -5,7 +5,8 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import FloatingButton from "../../components/FloatingButton/FloatingButtonComponent";
 import DatePickers from "../../components/DatePicker/DatePickerComponents";
-import AddPeraltanCardComponents from "../../components/Card/AddPeralatanCard";
+import FormRuanganContainer from "./FormRuangan";
+import FormAlatContainer from "./FormPeralatan";
 
 const DateContainer = () => {
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -18,64 +19,76 @@ const DateContainer = () => {
   );
 };
 
-const FormAlatContainer = () => {
-  return (
-    <>
-      <AddPeraltanCardComponents />
-    </>
-  );
-};
-
-const AppBarContainer = () => {
+const FormPeminjaman = () => {
   const [activeTab, setActiveTab] = useState("Peralatan");
 
   const handleTabPress = (tab) => {
     setActiveTab(tab);
   };
-
   return (
-    <View style={styles.container}>
-      <View style={styles.appBar}>
-        <Image
-          source={require("../../assets/images/LogisTrack.png")}
-          style={styles.logo}
-          resizeMode="contain"
+    <>
+      <View>
+        <AppBarContainer
+          activeTab={activeTab}
+          handleTabPress={handleTabPress}
         />
-        <TouchableOpacity style={styles.checkout}>
-          <Icon name="shopping-cart" size={30} color="#333" />
-        </TouchableOpacity>
+        {activeTab === "Peralatan" ? (
+          <FormAlatContainer />
+        ) : (
+          <FormRuanganContainer />
+        )}
       </View>
-      <View style={styles.navigationTab}>
-        <ButtonComponent
-          buttontext={"Peralatan"}
-          buttonstyle={
-            activeTab === "Peralatan"
-              ? styles.tabActiveButton
-              : styles.tabDeactiveButton
-          }
-          textstyle={
-            activeTab === "Peralatan"
-              ? styles.tabActiveButtonText
-              : styles.tabDeactiveButtonText
-          }
-          onPress={() => handleTabPress("Peralatan")}
-        />
-        <ButtonComponent
-          buttontext={"Ruangan"}
-          buttonstyle={
-            activeTab === "Ruangan"
-              ? styles.tabActiveButton
-              : styles.tabDeactiveButton
-          }
-          textstyle={
-            activeTab === "Ruangan"
-              ? styles.tabActiveButtonText
-              : styles.tabDeactiveButtonText
-          }
-          onPress={() => handleTabPress("Ruangan")}
-        />
+    </>
+  );
+};
+
+const AppBarContainer = ({ activeTab, handleTabPress }) => {
+  console.log(activeTab);
+  return (
+    <>
+      <View style={styles.container}>
+        <View style={styles.appBar}>
+          <Image
+            source={require("../../assets/images/LogisTrack.png")}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+          <TouchableOpacity style={styles.checkout}>
+            <Icon name="shopping-cart" size={30} color="#333" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.navigationTab}>
+          <ButtonComponent
+            buttontext={"Peralatan"}
+            buttonstyle={
+              activeTab === "Peralatan"
+                ? styles.tabActiveButton
+                : styles.tabDeactiveButton
+            }
+            textstyle={
+              activeTab === "Peralatan"
+                ? styles.tabActiveButtonText
+                : styles.tabDeactiveButtonText
+            }
+            onPress={() => handleTabPress("Peralatan")}
+          />
+          <ButtonComponent
+            buttontext={"Ruangan"}
+            buttonstyle={
+              activeTab === "Ruangan"
+                ? styles.tabActiveButton
+                : styles.tabDeactiveButton
+            }
+            textstyle={
+              activeTab === "Ruangan"
+                ? styles.tabActiveButtonText
+                : styles.tabDeactiveButtonText
+            }
+            onPress={() => handleTabPress("Ruangan")}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
@@ -129,4 +142,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { DateContainer, AppBarContainer, FormAlatContainer };
+export { DateContainer, FormPeminjaman };

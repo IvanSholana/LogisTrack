@@ -1,24 +1,29 @@
 import { Pressable, View, StyleSheet, Text } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { colors } from "../../constants/colors";
+import { useState } from "react";
 
-const AddPeraltanCardComponents = () => {
+const AddPeralatanCardComponents = () => {
+  const [count, setCount] = useState(0);
+
   const handleDecrement = () => {
-    // Logika pengurangan
+    setCount((e) => e - 1);
   };
 
   const handleIncrement = () => {
-    // Logika penambahan
+    setCount((e) => e + 1);
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.itemName}>Nama Barang</Text>
       <View style={styles.countItem}>
-        <Pressable onPress={handleDecrement} style={styles.countButton}>
-          <Icon name="minus" size={15} color="black" />
-        </Pressable>
-        <Text style={styles.itemCount}>2</Text>
+        {count == 0 ? null : (
+          <Pressable onPress={handleDecrement} style={styles.countButton}>
+            <Icon name="minus" size={15} color="black" />
+          </Pressable>
+        )}
+        <Text style={styles.itemCount}>{count == 0 ? "" : count}</Text>
         <Pressable onPress={handleIncrement} style={styles.countButton}>
           <Icon name="plus" size={15} color="black" />
         </Pressable>
@@ -57,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddPeraltanCardComponents;
+export default AddPeralatanCardComponents;
