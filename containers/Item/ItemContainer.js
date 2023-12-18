@@ -7,6 +7,7 @@ import FloatingButton from "../../components/FloatingButton/FloatingButtonCompon
 import DatePickers from "../../components/DatePicker/DatePickerComponents";
 import FormRuanganContainer from "./FormRuangan";
 import FormAlatContainer from "./FormPeralatan";
+import DialogComponent from "../../components/Dialog/DialogComponent";
 
 const DateContainer = () => {
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -14,7 +15,11 @@ const DateContainer = () => {
   return (
     <>
       <FloatingButton icon="calendar" onpress={() => setDialogVisible(true)} />
-      <DatePickers isVisible={dialogVisible} setVisible={setDialogVisible} />
+      <DialogComponent
+        isVisible={dialogVisible}
+        setVisible={setDialogVisible}
+        content={<DatePickers />}
+      />
     </>
   );
 };
