@@ -15,22 +15,13 @@ const EventStatusCardComponents = (eventdata) => {
         >
           <View style={styles.textcontainer}>
             <Text style={styles.title}>{eventdata.eventName}</Text>
-            <StatusComponent
-              status={eventdata.status}
-              color={[
-                styles.status,
-                { backgroundColor: eventdata.eventStatusColor },
-              ]}
-            />
+            <Text>{eventdata.eventDate}</Text>
           </View>
-          <Text
-            style={[
-              styles.status,
-              { backgroundColor: eventdata.eventStatusColor },
-            ]}
-          >
-            {eventdata.status}
-          </Text>
+
+          <StatusComponent
+            status={eventdata.status}
+            color={eventdata.eventStatusColor}
+          />
         </View>
       </TouchableOpacity>
     </>
@@ -48,14 +39,6 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     marginHorizontal: 10,
     marginBottom: 10,
-  },
-  status: {
-    alignSelf: "center",
-    textAlign: "center",
-    width: 80,
-    paddingVertical: 2,
-    borderRadius: 20,
-    color: "white",
   },
   title: {
     fontWeight: "bold",
