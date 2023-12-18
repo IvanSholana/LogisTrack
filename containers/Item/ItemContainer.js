@@ -19,6 +19,7 @@ const DateContainer = () => {
         isVisible={dialogVisible}
         setVisible={setDialogVisible}
         content={<DatePickers />}
+        title={"Pilih Jadwal Peminjaman"}
       />
     </>
   );
