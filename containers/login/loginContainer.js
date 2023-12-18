@@ -54,9 +54,15 @@ const LoginContainer = () => {
 const styles = StyleSheet.create({
   login: {
     backgroundColor: colors.ButtonLogin,
+    padding: 15,
+    marginVertical: 5,
+    borderRadius: 10,
   },
   register: {
     backgroundColor: colors.ButtonRegister,
+    padding: 15,
+    marginVertical: 5,
+    borderRadius: 10,
   },
   logintext: {
     color: colors.LoginText,

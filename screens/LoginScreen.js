@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   },
   loginsection: {
     paddingHorizontal: 20,
-
     flex: 1,
     width: "100%",
     height: "100%",

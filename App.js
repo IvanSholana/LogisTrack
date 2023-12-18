@@ -17,9 +17,9 @@ const Tab = createBottomTabNavigator();
 const MainTabsMenu = () => {
   return (
     <Tab.Navigator
-      initialRouteName="items"
+      initialRouteName="history"
       tabBarOptions={{
-        activeTintColor: colors.tabActive, // Ganti dengan warna yang diinginkan saat aktif
+        activeTintColor: colors.tabActive,
       }}
     >
       <Tab.Screen
@@ -29,7 +29,7 @@ const MainTabsMenu = () => {
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Image
-              source={require("./assets/images/box.png")} // Ganti dengan path yang benar
+              source={require("./assets/images/box.png")}
               style={{ tintColor: color, width: size, height: size }}
             />
           ),
@@ -42,7 +42,7 @@ const MainTabsMenu = () => {
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Image
-              source={require("./assets/images/history.png")} // Ganti dengan path yang benar
+              source={require("./assets/images/history.png")}
               style={{ tintColor: color, width: size, height: size }}
             />
           ),
@@ -55,7 +55,7 @@ const MainTabsMenu = () => {
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Image
-              source={require("./assets/images/user-alt.png")} // Ganti dengan path yang benar
+              source={require("./assets/images/user-alt.png")}
               style={{ tintColor: color, width: size, height: size }}
             />
           ),

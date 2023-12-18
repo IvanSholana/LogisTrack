@@ -1,10 +1,10 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import React from "react";
 
-const ButtonComponent = ({ buttontext, buttonstyle, textstyle }) => {
+const ButtonComponent = ({ buttontext, buttonstyle, textstyle, onPress }) => {
   return (
     <>
-      <TouchableOpacity style={[styles.button, buttonstyle]}>
+      <TouchableOpacity style={[styles.button, buttonstyle]} onPress={onPress}>
         <Text style={[styles.text, textstyle]}>{buttontext}</Text>
       </TouchableOpacity>
     </>
@@ -14,11 +14,6 @@ const ButtonComponent = ({ buttontext, buttonstyle, textstyle }) => {
 const styles = StyleSheet.create({
   text: {
     textAlign: "center",
-  },
-  button: {
-    marginVertical: 5,
-    padding: 15,
-    borderRadius: 10,
   },
 });
 

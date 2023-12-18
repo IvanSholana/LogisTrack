@@ -1,6 +1,5 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import { colors } from "../../constants/colors";
 
 const EventStatusCardComponents = (eventdata) => {
   return (
@@ -22,7 +21,7 @@ const EventStatusCardComponents = (eventdata) => {
               { backgroundColor: eventdata.eventStatusColor },
             ]}
           >
-            Ditolak
+            {eventdata.status}
           </Text>
         </View>
       </TouchableOpacity>
@@ -39,10 +38,13 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 10,
     shadowColor: "black",
+    marginHorizontal: 10,
+    marginBottom: 10,
   },
   status: {
     alignSelf: "center",
-    paddingHorizontal: 15,
+    textAlign: "center",
+    width: 80,
     paddingVertical: 2,
     borderRadius: 20,
     color: "white",
