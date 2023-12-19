@@ -57,11 +57,23 @@ const ContactDialog = ({ dialogVisible, setDialogVisible }) => {
         setVisible={setDialogVisible}
         content={
           <View>
-            <Image
-              source={require("../../assets/images/Hubungi-Logistik.png")}
-              style={styles.logo}
-            />
-            <View></View>
+            <Text style={styles.headerText}>
+              Hubungi Logistik
+            </Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Icon name="phone" size={30} color={colors.registerText} />
+              <View style={{marginLeft: 10}}>
+                <Text>Whatsapp</Text>
+                <Text>081234567890</Text>
+              </View>
+            </View>
+            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 8}}>
+              <Icon name="at" size={30} color={colors.registerText} />
+              <View style={{marginLeft: 10}}>
+                <Text>Email</Text>
+                <Text>logistik.kampusmu.ac.id</Text>
+              </View>
+            </View>
           </View>
         }
       />
