@@ -30,8 +30,11 @@ const RegisterContainer = () => {
           borderWidth: 1,
           borderRadius: 8,
           marginTop: 10,
+          marginBottom:10
         }}
       />
+      <InputText textinputname={"Pertanyaan Keamanan"} />
+      <InputText textinputname={"Jawaban Pertanyaan Keamanan"} />
       <View style={styles.buttonsection}>
         <ButtonComponent
           buttontext={"Register"}
@@ -50,6 +53,8 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#A7C957",
+    paddingBottom:10,
+    paddingTop:10,
   },
 });
 

@@ -3,16 +3,24 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { colors } from "../../constants/colors";
 import DialogComponent from "../../components/Dialog/DialogComponent";
 import { useState } from "react";
+import { useFonts } from "expo-font";
+import { Poppins_700Bold_Italic } from "@expo-google-fonts/poppins";
 
 const ProfileContainer = () => {
+  const [fontsLoaded] = useFonts({
+    Poppins_700Bold_Italic,
+  });
   const [dialogVisible, setDialogVisible] = useState(false);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <>
       <View style={styles.container}>
-        <Image
-          source={require("../../assets/images/Profilku.png")}
-          style={styles.logo}
-        />
+        <Text style={styles.headerText}>
+          Profilku
+        </Text>
         <View style={styles.buttoncontainer}>
           <TouchableOpacity onPress={() => setDialogVisible(true)}>
             <Icon name="info-circle" size={30} color={colors.registerText} />
@@ -48,21 +56,25 @@ const ContactDialog = ({ dialogVisible, setDialogVisible }) => {
         isVisible={dialogVisible}
         setVisible={setDialogVisible}
         content={
-          <>
-            <View style={styles.hubungiLogo}>
-              <Image
-                source={require("../../assets/images/Hubungi-Logistik.png")}
-              />
+          <View>
+            <Text style={styles.headerText}>
+              Hubungi Logistik
+            </Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Icon name="phone" size={30} color={colors.registerText} />
+              <View style={{marginLeft: 10}}>
+                <Text>Whatsapp</Text>
+                <Text>081234567890</Text>
+              </View>
             </View>
-            <View style={styles.contact}>
-              <Text>
-                <Icon name="phone" size={20} color="black" /> +1234567890
-              </Text>
-              <Text>
-                <Icon name="at" size={20} color="black" /> example@example.com
-              </Text>
+            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 8}}>
+              <Icon name="at" size={30} color={colors.registerText} />
+              <View style={{marginLeft: 10}}>
+                <Text>Email</Text>
+                <Text>logistik.kampusmu.ac.id</Text>
+              </View>
             </View>
-          </>
+          </View>
         }
       />
     </>
@@ -88,7 +100,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginHorizontal: 10,
   },
-  container: { flexDirection: "row", justifyContent: "space-between" },
+  headerText:{
+    fontSize: 24,
+    fontFamily: "Poppins_700Bold_Italic", 
+    color: "#6A994E",
+    textAlignVertical: "center",
+    marginLeft: 20,
+  },
+  container: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", },
   buttoncontainer: {
     flexDirection: "row",
     width: 100,

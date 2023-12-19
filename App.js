@@ -18,7 +18,7 @@ const MainTabsMenu = () => {
   return (
     <Tab.Navigator
       initialRouteName="history"
-      tabBarOptions={{
+      screenOptions={{
         activeTintColor: colors.tabActive,
       }}
     >

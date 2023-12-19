@@ -1,16 +1,29 @@
 import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
+import { Dialog } from "react-native-simple-dialogs";
 import { useState } from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
-useState;
-const DatePickers = () => {
+const DatePickers = ({ isVisible, setVisible }) => {
   const [value, setValue] = useState(dayjs());
   return (
-    <View>
-      <DateTimePicker value={value} onValueChange={(date) => setValue(date)} />
-    </View>
+    <Dialog
+      visible={isVisible}
+      title="Pilih Jadwal Peminjaman"
+      onTouchOutside={() => setVisible(false)}
+    >
+      <View>
+        <View>
+          <DateTimePicker
+            value={value}
+            onValueChange={(date) => setValue(date)}
+          />
+        </View>
+      </View>
+    </Dialog>
   );
 };
+
+const styles = StyleSheet.create({});
 
 export default DatePickers;

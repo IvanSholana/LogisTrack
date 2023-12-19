@@ -1,7 +1,5 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import StatusComponent from "../Status/StatusComponent";
-import { colors } from "../../constants/colors";
 
 const EventStatusCardComponents = (eventdata) => {
   return (
@@ -17,11 +15,14 @@ const EventStatusCardComponents = (eventdata) => {
             <Text style={styles.title}>{eventdata.eventName}</Text>
             <Text>{eventdata.eventDate}</Text>
           </View>
-
-          <StatusComponent
-            status={eventdata.status}
-            color={eventdata.eventStatusColor}
-          />
+          <Text
+            style={[
+              styles.status,
+              { backgroundColor: eventdata.eventStatusColor },
+            ]}
+          >
+            {eventdata.status}
+          </Text>
         </View>
       </TouchableOpacity>
     </>
@@ -39,6 +40,14 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     marginHorizontal: 10,
     marginBottom: 10,
+  },
+  status: {
+    alignSelf: "center",
+    textAlign: "center",
+    width: 80,
+    paddingVertical: 2,
+    borderRadius: 20,
+    color: "white",
   },
   title: {
     fontWeight: "bold",
