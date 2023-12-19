@@ -48,13 +48,21 @@ const ContactDialog = ({ dialogVisible, setDialogVisible }) => {
         isVisible={dialogVisible}
         setVisible={setDialogVisible}
         content={
-          <View>
-            <Image
-              source={require("../../assets/images/Hubungi-Logistik.png")}
-              style={styles.logo}
-            />
-            <View></View>
-          </View>
+          <>
+            <View style={styles.hubungiLogo}>
+              <Image
+                source={require("../../assets/images/Hubungi-Logistik.png")}
+              />
+            </View>
+            <View style={styles.contact}>
+              <Text>
+                <Icon name="phone" size={20} color="black" /> +1234567890
+              </Text>
+              <Text>
+                <Icon name="at" size={20} color="black" /> example@example.com
+              </Text>
+            </View>
+          </>
         }
       />
     </>
@@ -62,6 +70,11 @@ const ContactDialog = ({ dialogVisible, setDialogVisible }) => {
 };
 
 const styles = StyleSheet.create({
+  hubungiLogo: {
+    flex: 1,
+    justifyContent: "center", // Pusatkan secara vertikal
+    alignItems: "center", // Pusatkan secara horizontal
+  },
   profileTitle: {
     fontSize: 20,
     fontWeight: "500",
@@ -81,6 +94,9 @@ const styles = StyleSheet.create({
     width: 100,
     alignItems: "center",
     justifyContent: "space-around",
+  },
+  contact: {
+    borderWidth: 1,
   },
 });
 export { ProfileContainer, ProfileContent };
