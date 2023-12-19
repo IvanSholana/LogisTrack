@@ -1,16 +1,19 @@
 import { Image, StyleSheet, View } from "react-native";
 import HistoryContainers from "../containers/History/HistoryContainers";
+import AppBarComponent from "../components/AppBar/AppBarComponents";
 
 const HistoryScreen = () => {
   return (
     <>
-      <View style={styles.container}>
-        <View style={styles.appBar}>
+      <AppBarComponent
+        content={
           <Image
             source={require("../assets/images/historypeminjaman.png")}
             style={styles.logo}
           />
-        </View>
+        }
+      />
+      <View style={styles.container}>
         <View style={styles.historySection}>
           <HistoryContainers />
         </View>
@@ -21,8 +24,9 @@ const HistoryScreen = () => {
 
 const styles = StyleSheet.create({
   logo: {
-    marginTop: 30,
+    marginTop: 20,
     marginBottom: 10,
+    marginHorizontal: 10,
   },
   container: {
     flex: 1,
