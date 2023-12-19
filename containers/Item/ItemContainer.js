@@ -7,6 +7,8 @@ import FloatingButton from "../../components/FloatingButton/FloatingButtonCompon
 import DatePickers from "../../components/DatePicker/DatePickerComponents";
 import FormRuanganContainer from "./FormRuangan";
 import FormAlatContainer from "./FormPeralatan";
+import DialogComponent from "../../components/Dialog/DialogComponent";
+import AppBarComponent from "../../components/AppBar/AppBarComponents";
 
 const DateContainer = () => {
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -14,7 +16,12 @@ const DateContainer = () => {
   return (
     <>
       <FloatingButton icon="calendar" onpress={() => setDialogVisible(true)} />
-      <DatePickers isVisible={dialogVisible} setVisible={setDialogVisible} />
+      <DialogComponent
+        isVisible={dialogVisible}
+        setVisible={setDialogVisible}
+        content={<DatePickers />}
+        title={"Pilih Jadwal Peminjaman"}
+      />
     </>
   );
 };
@@ -28,9 +35,13 @@ const FormPeminjaman = () => {
   return (
     <>
       <View>
-        <AppBarContainer
-          activeTab={activeTab}
-          handleTabPress={handleTabPress}
+        <AppBarComponent
+          content={
+            <AppBarContainer
+              activeTab={activeTab}
+              handleTabPress={handleTabPress}
+            />
+          }
         />
         {activeTab === "Peralatan" ? (
           <FormAlatContainer />
@@ -43,69 +54,53 @@ const FormPeminjaman = () => {
 };
 
 const AppBarContainer = ({ activeTab, handleTabPress }) => {
-  console.log(activeTab);
   return (
     <>
-      <View style={styles.container}>
-        <View style={styles.appBar}>
-          <Image
-            source={require("../../assets/images/LogisTrack.png")}
-            style={styles.logo}
-            resizeMode="contain"
-          />
-          <TouchableOpacity style={styles.checkout}>
-            <Icon name="shopping-cart" size={30} color="#333" />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.navigationTab}>
-          <ButtonComponent
-            buttontext={"Peralatan"}
-            buttonstyle={
-              activeTab === "Peralatan"
-                ? styles.tabActiveButton
-                : styles.tabDeactiveButton
-            }
-            textstyle={
-              activeTab === "Peralatan"
-                ? styles.tabActiveButtonText
-                : styles.tabDeactiveButtonText
-            }
-            onPress={() => handleTabPress("Peralatan")}
-          />
-          <ButtonComponent
-            buttontext={"Ruangan"}
-            buttonstyle={
-              activeTab === "Ruangan"
-                ? styles.tabActiveButton
-                : styles.tabDeactiveButton
-            }
-            textstyle={
-              activeTab === "Ruangan"
-                ? styles.tabActiveButtonText
-                : styles.tabDeactiveButtonText
-            }
-            onPress={() => handleTabPress("Ruangan")}
-          />
-        </View>
+      <View style={styles.appBar}>
+        <Image
+          source={require("../../assets/images/LogisTrack.png")}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+        <TouchableOpacity style={styles.checkout}>
+          <Icon name="shopping-cart" size={30} color="#333" />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.navigationTab}>
+        <ButtonComponent
+          buttontext={"Peralatan"}
+          buttonstyle={
+            activeTab === "Peralatan"
+              ? styles.tabActiveButton
+              : styles.tabDeactiveButton
+          }
+          textstyle={
+            activeTab === "Peralatan"
+              ? styles.tabActiveButtonText
+              : styles.tabDeactiveButtonText
+          }
+          onPress={() => handleTabPress("Peralatan")}
+        />
+        <ButtonComponent
+          buttontext={"Ruangan"}
+          buttonstyle={
+            activeTab === "Ruangan"
+              ? styles.tabActiveButton
+              : styles.tabDeactiveButton
+          }
+          textstyle={
+            activeTab === "Ruangan"
+              ? styles.tabActiveButtonText
+              : styles.tabDeactiveButtonText
+          }
+          onPress={() => handleTabPress("Ruangan")}
+        />
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 40,
-    backgroundColor: "#fff",
-    overflow: "hidden",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
   navigationTab: {
     flexDirection: "row",
     justifyContent: "center",
