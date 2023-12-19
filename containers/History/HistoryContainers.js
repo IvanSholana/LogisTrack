@@ -2,8 +2,6 @@ import React from "react";
 import EventStatusCardComponents from "../../components/Card/EventStatusCard";
 import { colors } from "../../constants/colors";
 import { FlatList } from "react-native-gesture-handler";
-import { useFonts } from "expo-font";
-import { Poppins_700Bold_Italic } from "@expo-google-fonts/poppins";
 
 const renderItem = ({ item }) => (
   <EventStatusCardComponents
