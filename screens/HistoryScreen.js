@@ -1,16 +1,23 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import HistoryContainers from "../containers/History/HistoryContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponents";
+import { useFonts } from "expo-font";
+import { Poppins_700Bold_Italic } from "@expo-google-fonts/poppins";
 
 const HistoryScreen = () => {
+  const [fontsLoaded] = useFonts({
+    Poppins_700Bold_Italic,
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <>
       <AppBarComponent
         content={
-          <Image
-            source={require("../assets/images/historypeminjaman.png")}
-            style={styles.logo}
-          />
+          <Text style={styles.headerText}>
+          Riwayat Peminjaman
+        </Text>
         }
       />
       <View style={styles.container}>
@@ -31,6 +38,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+  },
+  headerText:{
+    fontSize: 24,
+    fontFamily: "Poppins_700Bold_Italic", 
+    color: "#6A994E",
+    textAlignVertical: "center",
+    marginLeft: 20,
   },
   historySection: {
     flex: 1,

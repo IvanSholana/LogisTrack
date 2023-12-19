@@ -3,16 +3,24 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { colors } from "../../constants/colors";
 import DialogComponent from "../../components/Dialog/DialogComponent";
 import { useState } from "react";
+import { useFonts } from "expo-font";
+import { Poppins_700Bold_Italic } from "@expo-google-fonts/poppins";
 
 const ProfileContainer = () => {
+  const [fontsLoaded] = useFonts({
+    Poppins_700Bold_Italic,
+  });
   const [dialogVisible, setDialogVisible] = useState(false);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <>
       <View style={styles.container}>
-        <Image
-          source={require("../../assets/images/Profilku.png")}
-          style={styles.logo}
-        />
+        <Text style={styles.headerText}>
+          Profilku
+        </Text>
         <View style={styles.buttoncontainer}>
           <TouchableOpacity onPress={() => setDialogVisible(true)}>
             <Icon name="info-circle" size={30} color={colors.registerText} />
@@ -75,7 +83,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginHorizontal: 10,
   },
-  container: { flexDirection: "row", justifyContent: "space-between" },
+  headerText:{
+    fontSize: 24,
+    fontFamily: "Poppins_700Bold_Italic", 
+    color: "#6A994E",
+    textAlignVertical: "center",
+    marginLeft: 20,
+  },
+  container: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", },
   buttoncontainer: {
     flexDirection: "row",
     width: 100,
