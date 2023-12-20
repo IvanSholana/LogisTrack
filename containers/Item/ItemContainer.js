@@ -43,7 +43,6 @@ const FormPeminjaman = () => {
 };
 
 const AppBarContainer = ({ activeTab, handleTabPress }) => {
-  console.log(activeTab);
   return (
     <>
       <View style={styles.container}>
