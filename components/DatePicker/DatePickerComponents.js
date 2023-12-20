@@ -4,12 +4,12 @@ import { Dialog } from "react-native-simple-dialogs";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-const DatePickers = ({ isVisible, setVisible }) => {
+const DatePickers = ({ isVisible, setVisible, title, item }) => {
   const [value, setValue] = useState(dayjs());
   return (
     <Dialog
       visible={isVisible}
-      title="Pilih Jadwal Peminjaman"
+      title={title}
       onTouchOutside={() => setVisible(false)}
     >
       <View>
@@ -20,6 +20,7 @@ const DatePickers = ({ isVisible, setVisible }) => {
           />
         </View>
       </View>
+      {item}
     </Dialog>
   );
 };

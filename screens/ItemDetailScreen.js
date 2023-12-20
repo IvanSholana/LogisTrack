@@ -1,19 +1,16 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View, Text } from "react-native";
 import ItemDetailContainers from "../containers/Item/ItemDetailContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
 
-const ItemDetailScreen= () => {
+const ItemDetailScreen = ({ navigation }) => {
   return (
     <>
       <View style={styles.container}>
-       <AppBarComponent content={
-          <Image
-            source={require("../assets/images/DetailItem.png")}
-            style={styles.logo}
-          />
-        }/>
+        <AppBarComponent
+          content={<Text style={styles.headerText}>Detail Item</Text>}
+        />
         <View style={styles.itemSection}>
-          <ItemDetailContainers />
+          <ItemDetailContainers navigation={navigation} />
         </View>
       </View>
     </>
@@ -32,7 +29,13 @@ const styles = StyleSheet.create({
   itemSection: {
     flex: 1,
   },
-
+  headerText: {
+    fontSize: 24,
+    fontFamily: "Poppins_700Bold_Italic",
+    color: "#6A994E",
+    textAlignVertical: "center",
+    marginLeft: 20,
+  },
 });
 
 export default ItemDetailScreen;

@@ -1,15 +1,14 @@
 import React from "react";
 import {
   DateContainer,
-  AppBarContainer,
   FormPeminjaman,
 } from "../containers/Item/ItemContainer";
 import { View, StyleSheet } from "react-native";
 
-const ItemScreen = () => {
+const ItemScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <FormPeminjaman />
+      <FormPeminjaman navigation={navigation} />
       <View style={styles.dateContainer}>
         <DateContainer />
       </View>

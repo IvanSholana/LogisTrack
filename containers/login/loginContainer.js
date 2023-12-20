@@ -4,7 +4,7 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet } from "react-native";
 import { colors } from "../../constants/colors";
 
-const LoginContainer = () => {
+const LoginContainer = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,17 +35,19 @@ const LoginContainer = () => {
         placeholder={"Masukkan Password..."}
         value={password}
         onChangeText={setPassword}
-        secureTextEntry
+        security={true}
       />
       <ButtonComponent
         buttontext={"Login"}
         buttonstyle={styles.login}
         textstyle={styles.logintext}
+        onPress={() => navigation.navigate("MainTabsMenu")}
       />
       <ButtonComponent
         buttontext={"Register"}
         buttonstyle={styles.register}
         textstyle={styles.registertext}
+        onPress={() => navigation.navigate("Register")}
       />
     </>
   );
