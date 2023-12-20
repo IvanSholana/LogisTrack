@@ -19,7 +19,7 @@ const MainTabsMenu = () => {
     <Tab.Navigator
       initialRouteName="history"
       screenOptions={{
-        tabBarActiveTintColor: "#6A994E",
+        tabBarActiveTintColor: colors.tabActive,
       }}
     >
       <Tab.Screen
