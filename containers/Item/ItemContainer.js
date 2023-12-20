@@ -10,16 +10,53 @@ import FormAlatContainer from "./FormPeralatan";
 
 const DateContainer = () => {
   const [dialogVisible, setDialogVisible] = useState(false);
+  const [calender, setcalender] = useState(0);
 
   return (
     <>
       <FloatingButton icon="calendar" onpress={() => setDialogVisible(true)} />
-      <DatePickers isVisible={dialogVisible} setVisible={setDialogVisible} />
+      {calender == 0 ? (
+        <DatePickers
+          isVisible={dialogVisible}
+          setVisible={setDialogVisible}
+          title={"Tanggal Awal Peminjaman"}
+          item={
+            <ButtonComponent
+              buttontext={"Tanggal Selesai"}
+              buttonstyle={{
+                padding: 10,
+                backgroundColor: colors.buttonLogin,
+                marginTop: 5,
+                borderRadius: 10,
+              }}
+              onPress={() => setcalender(1)}
+            />
+          }
+        />
+      ) : (
+        <DatePickers
+          isVisible={dialogVisible}
+          setVisible={setDialogVisible}
+          title={"Tanggal Akhir Peminjaman"}
+          item={
+            <ButtonComponent
+              buttontext={"Tanggal Awal"}
+              buttonstyle={{
+                padding: 10,
+                backgroundColor: colors.buttonLogin,
+                marginTop: 5,
+                borderRadius: 10,
+              }}
+              onPress={() => setcalender(0)}
+            />
+          }
+        />
+      )}
     </>
   );
 };
 
-const FormPeminjaman = () => {
+const FormPeminjaman = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
 
   const handleTabPress = (tab) => {
@@ -31,9 +68,10 @@ const FormPeminjaman = () => {
         <AppBarContainer
           activeTab={activeTab}
           handleTabPress={handleTabPress}
+          navigation={navigation}
         />
         {activeTab === "Peralatan" ? (
-          <FormAlatContainer />
+          <FormAlatContainer navigation={navigation} />
         ) : (
           <FormRuanganContainer />
         )}
@@ -42,7 +80,7 @@ const FormPeminjaman = () => {
   );
 };
 
-const AppBarContainer = ({ activeTab, handleTabPress }) => {
+const AppBarContainer = ({ activeTab, handleTabPress, navigation }) => {
   return (
     <>
       <View style={styles.container}>
@@ -52,7 +90,10 @@ const AppBarContainer = ({ activeTab, handleTabPress }) => {
             style={styles.logo}
             resizeMode="contain"
           />
-          <TouchableOpacity style={styles.checkout}>
+          <TouchableOpacity
+            style={styles.checkout}
+            onPress={() => navigation.navigate("peminjaman")}
+          >
             <Icon name="shopping-cart" size={30} color="#333" />
           </TouchableOpacity>
         </View>

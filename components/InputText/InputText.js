@@ -1,14 +1,16 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
+import { colors } from "../../constants/colors";
 
-const InputText = ({ textinputname, placeholder }) => {
+const InputText = ({ textinputname, placeholder, security }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{textinputname}</Text>
       <TextInput
         style={styles.input}
         placeholder={placeholder}
-        placeholderTextColor="#888" // Ganti warna placeholder sesuai kebutuhan
+        placeholderTextColor={colors.registerText}
+        secureTextEntry={security}
       />
     </View>
   );

@@ -10,6 +10,8 @@ import HistoryScreen from "./screens/HistoryScreen";
 import ItemScreen from "./screens/ItemScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { colors } from "./constants/colors";
+import ItemDetailScreen from "./screens/ItemDetailScreen";
+import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -66,7 +68,7 @@ const MainTabsMenu = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainTabsMenu">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -77,9 +79,20 @@ export default function App() {
           component={RegisterScreen}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="MainTabsMenu"
           component={MainTabsMenu}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="detail"
+          component={ItemDetailScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="peminjaman"
+          component={PinjamDetailScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
