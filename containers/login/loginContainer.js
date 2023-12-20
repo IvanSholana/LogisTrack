@@ -53,13 +53,13 @@ const LoginContainer = () => {
 
 const styles = StyleSheet.create({
   login: {
-    backgroundColor: colors.ButtonLogin,
+    backgroundColor: colors.buttonLogin,
     padding: 15,
     marginVertical: 5,
     borderRadius: 10,
   },
   register: {
-    backgroundColor: colors.ButtonRegister,
+    backgroundColor: colors.buttonRegister,
     padding: 15,
     marginVertical: 5,
     borderRadius: 10,
