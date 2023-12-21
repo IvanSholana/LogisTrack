@@ -1,20 +1,37 @@
 // Middleware.mjs
-import APIRequest from "./data/api/authAPI";
+import APIRequest from "../api/authAPI.js";
 
 class Middleware {
-    constructor() {
-        this.req = new APIRequest();
+
+    req = new APIRequest();
+
+    async generateToken() {
+        try {
+            let valueCheck = await this.req.getToken();
+            return valueCheck;
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    generateToken() {
-        let valueCheck = this.req.getToken();
-        if (valueCheck) {
-            return 'error';
-        } else {
-            return 'berhasil';
+    async getUserInfo(token) {
+        try {
+            let valueCheck = await this.req.getUserData(token);
+            return valueCheck;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async registerUser(token, Name, Password, nomorInduk, Status, Prodi) {
+        try {
+            let valueCheck = await this.req.inputUserData(token, Name, Password, nomorInduk, Status, Prodi);
+            return valueCheck;
+        } catch (error) {
+            console.error(error);
         }
     }
 }
 
-const testing = new Middleware();
-console.log(testing.generateToken());
+export default Middleware;
+
