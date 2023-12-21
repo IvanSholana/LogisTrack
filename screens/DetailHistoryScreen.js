@@ -1,18 +1,17 @@
-import { Image, StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import DetailHistoryContainers from "../containers/History/DetailHistoryContainers";
+import AppBarComponent from "../components/AppBar/AppBarComponents";
 
-const DetailHistoryScreen = () => {
+const DetailHistoryScreen = ({ navigation }) => {
   return (
     <>
+      <AppBarComponent
+        content={<Text style={styles.headerText}>Detail Peminjaman</Text>}
+      />
       <View style={styles.container}>
-        <View style={styles.appBar}>
-          <Image
-            source={require("../assets/images/DetailEvent.png")}
-            style={styles.logo}
-          />
-        </View>
+        <View style={styles.appBar}></View>
         <View style={styles.historySection}>
-          <DetailHistoryContainers />
+          <DetailHistoryContainers navigation={navigation} />
         </View>
       </View>
     </>
@@ -30,6 +29,13 @@ const styles = StyleSheet.create({
   },
   historySection: {
     flex: 1,
+  },
+  headerText: {
+    fontSize: 24,
+    fontFamily: "Poppins_700Bold_Italic",
+    color: "#6A994E",
+    textAlignVertical: "center",
+    marginLeft: 20,
   },
 });
 

@@ -3,16 +3,18 @@ import EventStatusCardComponents from "../../components/Card/EventStatusCard";
 import { colors } from "../../constants/colors";
 import { FlatList } from "react-native-gesture-handler";
 
-const renderItem = ({ item }) => (
+
+const RenderItem = ({ item }, { navigation }) => (
   <EventStatusCardComponents
     eventName={item.eventName}
     eventDate={item.eventDate}
     eventStatusColor={item.eventStatusColor}
     status={item.status}
+    navigation={() => navigation.navigate("detailpinjam")}
   />
 );
 
-const HistoryContainers = () => {
+const HistoryContainers = ({ navigation }) => {
   const eventsData = [
     {
       eventName: "Pemira Informatika",
@@ -68,7 +70,7 @@ const HistoryContainers = () => {
     <>
       <FlatList
         data={eventsData}
-        renderItem={renderItem}
+        renderItem={({ item }) => RenderItem({ item }, { navigation })}
         keyExtractor={(item) => item.eventName}
       />
     </>

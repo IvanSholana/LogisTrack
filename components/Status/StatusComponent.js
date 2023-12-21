@@ -8,7 +8,6 @@ const StatusComponent = ({ status, color }) => {
 
 const styles = StyleSheet.create({
   status: {
-    alignSelf: "center",
     textAlign: "center",
     width: 80,
     paddingVertical: 8,

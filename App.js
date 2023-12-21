@@ -12,6 +12,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import { colors } from "./constants/colors";
 import ItemDetailScreen from "./screens/ItemDetailScreen";
 import PinjamDetailScreen from "./screens/PinjamDetailScreen";
+import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -95,16 +96,12 @@ export default function App() {
           component={PinjamDetailScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="detailpinjam"
+          component={DetailHistoryScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

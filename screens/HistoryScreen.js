@@ -3,7 +3,7 @@ import HistoryContainers from "../containers/History/HistoryContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponents";
 import { useFonts } from "expo-font";
 
-const HistoryScreen = () => {
+const HistoryScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
   });
@@ -18,7 +18,7 @@ const HistoryScreen = () => {
       />
       <View style={styles.container}>
         <View style={styles.historySection}>
-          <HistoryContainers />
+          <HistoryContainers navigation={navigation} />
         </View>
       </View>
     </>
