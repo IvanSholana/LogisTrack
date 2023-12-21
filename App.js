@@ -13,6 +13,7 @@ import { colors } from "./constants/colors";
 import ItemDetailScreen from "./screens/ItemDetailScreen";
 import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
+import RoomDetailScreen from "./screens/RoomDetailScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -99,6 +100,11 @@ export default function App() {
         <Stack.Screen
           name="detailpinjam"
           component={DetailHistoryScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="detailruangan"
+          component={RoomDetailScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

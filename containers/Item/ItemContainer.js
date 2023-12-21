@@ -73,7 +73,7 @@ const FormPeminjaman = ({ navigation }) => {
         {activeTab === "Peralatan" ? (
           <FormAlatContainer navigation={navigation} />
         ) : (
-          <FormRuanganContainer />
+          <FormRuanganContainer navigation={navigation} />
         )}
       </View>
     </>
