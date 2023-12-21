@@ -1,4 +1,16 @@
+import { useState } from "react";
+import CheckBoxForm from "../../components/CheckBoxForm/CheckBoxForm";
+
 const FormRuanganContainer = () => {
-  return <></>;
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleCheckbox = () => {
+    setIsChecked(!isChecked);
+  };
+  return (
+    <>
+      <CheckBoxForm />
+    </>
+  );
 };
 export default FormRuanganContainer;

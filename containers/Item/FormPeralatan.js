@@ -1,9 +1,9 @@
 import AddPeralatanCardComponents from "../../components/Card/AddPeralatanCard";
 
-const FormAlatContainer = () => {
+const FormAlatContainer = ({ navigation }) => {
   return (
     <>
-      <AddPeralatanCardComponents />
+      <AddPeralatanCardComponents navigation={navigation} />
     </>
   );
 };

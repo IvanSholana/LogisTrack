@@ -14,11 +14,7 @@ const HistoryScreen = () => {
   return (
     <>
       <AppBarComponent
-        content={
-          <Text style={styles.headerText}>
-          Riwayat Peminjaman
-        </Text>
-        }
+        content={<Text style={styles.headerText}>Riwayat Peminjaman</Text>}
       />
       <View style={styles.container}>
         <View style={styles.historySection}>
@@ -39,9 +35,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
-  headerText:{
+  headerText: {
     fontSize: 24,
+<<<<<<< HEAD
     fontFamily: "Poppins-BoldItalic", 
+=======
+    fontFamily: "Poppins_700Bold_Italic",
+>>>>>>> ebcdeb9f496f0953d19da21d39cab57109bfe476
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,

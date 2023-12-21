@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import RegisterContainer from "../containers/Register/RegisterContainer";
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
@@ -10,7 +10,7 @@ const RegisterScreen = () => {
         style={styles.logo}
       />
       <View style={styles.registerSection}>
-        <RegisterContainer />
+        <RegisterContainer navigation={navigation} />
       </View>
     </View>
   );

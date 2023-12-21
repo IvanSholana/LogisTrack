@@ -1,20 +1,20 @@
 import React from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
-import { StyleSheet, View,Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import TableComponent from "../../components/Table/TableComponent";
 import DialogComponent from "../../components/Dialog/DialogComponent";
 import { useState } from "react";
-import { TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { colors } from "../../constants/colors";
 
-const PinjamDetailContainer = () => {
-
+const PinjamDetailContainer = ({ navigation }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
 
   const peminjamanData = [
-    { namaPeminjaman: 'Buku', qty: 5 },
-    { namaPeminjaman: 'Pensil', qty: 10 },
-    { namaPeminjaman: 'Kertas', qty: 8 },
+    { namaPeminjaman: "Buku", qty: 5 },
+    { namaPeminjaman: "Pensil", qty: 10 },
+    { namaPeminjaman: "Kertas", qty: 8 },
   ];
 
   const showAlertDialog = () => {
@@ -43,12 +43,27 @@ const PinjamDetailContainer = () => {
             textstyle={{ color: "white" }}
           />
         </TouchableOpacity>
+        <ButtonComponent
+          buttontext={"Kembali"}
+          buttonstyle={{
+            backgroundColor: colors.buttonRegister,
+            padding: 10,
+            borderRadius: 10,
+            marginTop: 10,
+          }}
+          onPress={() => navigation.navigate("items")}
+        />
       </View>
-      <DialogComponent style={styles.DialogStyle}
+      <DialogComponent
+        style={styles.DialogStyle}
         isVisible={dialogVisible}
         setVisible={hideAlertDialog}
         title="Judul Dialog"
-        content={<Text>Pantau terus laman history untuk melihat status peminjaman kamu</Text>}
+        content={
+          <Text>
+            Pantau terus laman history untuk melihat status peminjaman kamu
+          </Text>
+        }
       />
     </>
   );
@@ -56,7 +71,7 @@ const PinjamDetailContainer = () => {
 
 const styles = StyleSheet.create({
   buttonsection: {
-    flex:1,
+    flex: 1,
     justifyContent: "flex-end",
     paddingLeft: 50,
     paddingRight: 50,
@@ -64,7 +79,7 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   button: {
-    backgroundColor: "#A7C957",
+    backgroundColor: colors.buttonLogin,
     paddingBottom: 10,
     paddingTop: 10,
     borderRadius: 10,
@@ -74,12 +89,12 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     paddingTop: 30,
   },
-  DialogStyle:{
-    textAlign:'center',
-    alignContent:'center',
-    alignSelf:'center',
-    backgroundColor:'black'
-  }
+  DialogStyle: {
+    textAlign: "center",
+    alignContent: "center",
+    alignSelf: "center",
+    backgroundColor: "black",
+  },
 });
 
 export default PinjamDetailContainer;
