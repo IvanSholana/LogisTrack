@@ -19,15 +19,8 @@ const Tab = createBottomTabNavigator();
 const MainTabsMenu = () => {
   return (
     <Tab.Navigator
-<<<<<<< HEAD
-      initialRouteName="history"
-      screenOptions={{
-        tabBarActiveTintColor: colors.tabActive,
-      }}
-=======
       initialRouteName="items"
       screenOptions={{ tabBarActiveTintColor: colors.tabActive }}
->>>>>>> ebcdeb9f496f0953d19da21d39cab57109bfe476
     >
       <Tab.Screen
         name="items"
