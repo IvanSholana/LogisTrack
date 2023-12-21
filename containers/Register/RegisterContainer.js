@@ -54,7 +54,6 @@ const RegisterContainer = ({ navigation }) => {
         <ButtonComponent
           buttontext={"Register"}
           buttonstyle={styles.button}
-          textstyle={{ color: "white" }}
           onPress={() => navigation.navigate("Login")}
         />
         <ButtonComponent
@@ -64,7 +63,6 @@ const RegisterContainer = ({ navigation }) => {
             padding: 10,
             borderRadius: 5,
           }}
-          textstyle={{ color: "white" }}
           onPress={() => navigation.navigate("Login")}
         />
       </View>

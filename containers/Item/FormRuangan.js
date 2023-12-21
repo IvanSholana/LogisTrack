@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CheckBoxForm from "../../components/CheckBoxForm/CheckBoxForm";
 
-const FormRuanganContainer = () => {
+const FormRuanganContainer = ({ navigation }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleCheckbox = () => {
@@ -9,7 +9,7 @@ const FormRuanganContainer = () => {
   };
   return (
     <>
-      <CheckBoxForm />
+      <CheckBoxForm press={() => navigation.navigate("detailruangan")} />
     </>
   );
 };

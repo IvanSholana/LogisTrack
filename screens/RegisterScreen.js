@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontFamily: "Poppins_700Bold_Italic",
+
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,

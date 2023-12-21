@@ -2,11 +2,11 @@ import { Pressable, View, Text, StyleSheet } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { colors } from "../../constants/colors";
 
-const CheckBoxForm = ({ toggleCheckbox, item }) => {
+const CheckBoxForm = ({ toggleCheckbox, item, press }) => {
   return (
     <>
       <View style={styles.contaier}>
-        <Pressable>
+        <Pressable onPress={press}>
           <Text style={styles.title}>Nama Ruangan</Text>
         </Pressable>
         <BouncyCheckbox
