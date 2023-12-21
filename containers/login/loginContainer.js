@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { colors } from "../../constants/colors";
 
 const LoginContainer = ({ navigation }) => {
@@ -37,28 +37,33 @@ const LoginContainer = ({ navigation }) => {
         onChangeText={setPassword}
         security={true}
       />
-      <ButtonComponent
-        buttontext={"Login"}
-        buttonstyle={styles.login}
-        textstyle={styles.logintext}
-        onPress={() => navigation.navigate("MainTabsMenu")}
-      />
-      <ButtonComponent
-        buttontext={"Register"}
-        buttonstyle={styles.register}
-        textstyle={styles.registertext}
-        onPress={() => navigation.navigate("Register")}
-      />
+      <View style={styles.buttonsection}>
+        <ButtonComponent
+          buttontext={"Login"}
+          buttonstyle={styles.button}
+          textstyle={styles.logintext}
+          onPress={() => navigation.navigate("MainTabsMenu")}
+        />
+        <ButtonComponent
+          buttontext={"Register"}
+          buttonstyle={[styles.button, {backgroundColor: colors.buttonRegister}]}
+          textstyle={styles.registertext}
+          onPress={() => navigation.navigate("Register")}
+        />
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  login: {
+  buttonsection: {
+    flex: 1,
+  },
+  button: {
     backgroundColor: colors.buttonLogin,
-    padding: 15,
-    marginVertical: 5,
-    borderRadius: 10,
+    paddingVertical: 15,
+    borderRadius: 5,
+    marginBottom: 10,
   },
   register: {
     backgroundColor: colors.buttonRegister,
@@ -67,10 +72,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   logintext: {
-    color: colors.LoginText,
+    color: colors.loginText,
   },
   registertext: {
-    color: colors.RegisterText,
+    color: colors.registerText,
   },
 });
 

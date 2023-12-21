@@ -54,15 +54,13 @@ const RegisterContainer = ({ navigation }) => {
         <ButtonComponent
           buttontext={"Register"}
           buttonstyle={styles.button}
+          textstyle={styles.logintext}
           onPress={() => navigation.navigate("Login")}
         />
         <ButtonComponent
           buttontext={"Back"}
-          buttonstyle={{
-            backgroundColor: colors.buttonRegister,
-            padding: 10,
-            borderRadius: 5,
-          }}
+          buttonstyle={[styles.button, {backgroundColor: colors.buttonRegister}]}
+          textstyle={styles.registertext}
           onPress={() => navigation.navigate("Login")}
         />
       </View>
@@ -76,11 +74,16 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   button: {
-    backgroundColor: "#A7C957",
-    paddingBottom: 10,
-    paddingTop: 10,
+    backgroundColor: colors.buttonLogin,
+    paddingVertical: 15,
     borderRadius: 5,
     marginBottom: 10,
+  },
+  logintext: {
+    color: colors.loginText,
+  },
+  registertext: {
+    color: colors.registerText,
   },
 });
 
