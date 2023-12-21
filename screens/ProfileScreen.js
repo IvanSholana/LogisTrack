@@ -5,10 +5,10 @@ import {
   ProfileContent,
 } from "../containers/Profile/ProfileContainer";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <>
-      <AppBarComponent content={<ProfileContainer />} />
+      <AppBarComponent content={<ProfileContainer navigation={navigation} />} />
       <View style={styles.content}>
         <ProfileContent />
       </View>
@@ -17,11 +17,6 @@ const ProfileScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  logo: {
-    marginTop: 20,
-    marginBottom: 10,
-    marginHorizontal: 10,
-  },
   container: { flexDirection: "row", justifyContent: "space-between" },
   buttoncontainer: {
     flexDirection: "row",

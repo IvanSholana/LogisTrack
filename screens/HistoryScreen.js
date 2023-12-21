@@ -4,7 +4,7 @@ import AppBarComponent from "../components/AppBar/AppBarComponents";
 import { useFonts } from "expo-font";
 import { Poppins_700Bold_Italic } from "@expo-google-fonts/poppins";
 
-const HistoryScreen = () => {
+const HistoryScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     Poppins_700Bold_Italic,
   });
@@ -18,7 +18,7 @@ const HistoryScreen = () => {
       />
       <View style={styles.container}>
         <View style={styles.historySection}>
-          <HistoryContainers />
+          <HistoryContainers navigation={navigation} />
         </View>
       </View>
     </>

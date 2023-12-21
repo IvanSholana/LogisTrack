@@ -2,12 +2,12 @@ import { Pressable, View, Text, StyleSheet } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { colors } from "../../constants/colors";
 
-const CheckBoxForm = ({ toggleCheckbox }) => {
+const CheckBoxForm = ({ toggleCheckbox, item }) => {
   return (
     <>
       <View style={styles.contaier}>
         <Pressable>
-          <Text>Nama Ruangan</Text>
+          <Text style={styles.title}>Nama Ruangan</Text>
         </Pressable>
         <BouncyCheckbox
           size={25}
@@ -29,6 +29,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     margin: 10,
     justifyContent: "space-between",
+  },
+  title: {
+    fontSize: 16,
+    marginBottom: 5,
+    fontWeight: "500",
   },
 });
 
