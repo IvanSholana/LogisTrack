@@ -2,12 +2,12 @@ import { Text, StyleSheet, View } from "react-native";
 import HistoryContainers from "../containers/History/HistoryContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponents";
 import { useFonts } from "expo-font";
-import { Poppins_700Bold_Italic } from "@expo-google-fonts/poppins";
 
 const HistoryScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
-    Poppins_700Bold_Italic,
+    "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
   });
+
   if (!fontsLoaded) {
     return null;
   }
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontFamily: "Poppins_700Bold_Italic",
+    fontFamily: "Poppins-BoldItalic", 
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,

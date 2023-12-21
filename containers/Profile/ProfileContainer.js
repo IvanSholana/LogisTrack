@@ -4,12 +4,12 @@ import { colors } from "../../constants/colors";
 import DialogComponent from "../../components/Dialog/DialogComponent";
 import { useState } from "react";
 import { useFonts } from "expo-font";
-import { Poppins_700Bold_Italic } from "@expo-google-fonts/poppins";
 
 const ProfileContainer = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
-    Poppins_700Bold_Italic,
+    "Poppins-BoldItalic": require("../../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
   });
+
   const [dialogVisible, setDialogVisible] = useState(false);
 
   if (!fontsLoaded) {
@@ -104,7 +104,9 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontFamily: "Poppins_700Bold_Italic",
+
+    fontFamily: "Poppins-BoldItalic", 
+
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,
