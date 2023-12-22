@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   loginsection: {
+    justifyContent: "flex-end",
     paddingHorizontal: 20,
     flex: 1,
     width: "100%",

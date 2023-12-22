@@ -2,13 +2,21 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import RegisterContainer from "../containers/Register/RegisterContainer";
 import AppBarComponent from "../components/AppBar/AppBarComponents";
+import { useFonts } from "expo-font";
+import { colors } from "../constants/colors";
 
 const RegisterScreen = ({ navigation }) => {
+  const [fontsLoaded] = useFonts({
+    "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <>
-      <AppBarComponent
-        content={<Text style={styles.headerText}>Registrasi</Text>}
-      />
+      <Text style={styles.headerText}>Registrasi</Text>
       <View style={styles.container}>
         <View style={styles.registerSection}>
           <RegisterContainer navigation={navigation} />
@@ -19,23 +27,26 @@ const RegisterScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  headerText: {
+    fontSize: 24,
+    fontFamily: "Poppins-BoldItalic", 
+    color: "#6A994E",
+    textAlignVertical: "center",
+    paddingLeft: 20,
+    paddingTop: 34,
+    backgroundColor: colors.loginText
+  },
   container: {
     flex: 1,
     justifyContent: "center",
     paddingHorizontal: 20,
     paddingBottom: 20,
     paddingTop: 10,
+    backgroundColor: colors.loginText
   },
 
   registerSection: {
     flex: 1,
-  },
-  headerText: {
-    fontSize: 24,
-
-    color: "#6A994E",
-    textAlignVertical: "center",
-    marginLeft: 20,
   },
 });
 
