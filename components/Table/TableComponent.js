@@ -2,9 +2,28 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Table, Row } from 'react-native-table-component';
 
-const TableComponent = ({ data }) => {
-  const tableHead = ['No', 'List', 'Qty'];
-  const tableData = data.map((item, index) => [index + 1, item.namaPeminjaman, item.qty]);
+const TableComponent = ({ data, tableHead }) => {
+  const determineFlexArr = (headLength) => {
+    switch (headLength) {
+      case 3:
+        return [1, 2, 1];
+      case 2:
+        return [2, 0.7];
+      default:
+        return [];
+    }
+  };
+
+  const tableData = data.map((item, index) => {
+    if (tableHead.length === 3) {
+      return [index + 1, item.namaPeminjaman, item.qty];
+    } else if (tableHead.length === 2) {
+      return [item.namaPeminjaman, item.qty];
+    }
+    return [];
+  });
+
+  const flexArr = determineFlexArr(tableHead.length);
 
   return (
     <View style={styles.container}>
@@ -13,7 +32,7 @@ const TableComponent = ({ data }) => {
           data={tableHead}
           style={styles.head}
           textStyle={styles.headText}
-          flexArr={[1, 2, 1]} 
+          flexArr={flexArr}
         />
         {tableData.map((rowData, index) => (
           <Row
@@ -21,7 +40,7 @@ const TableComponent = ({ data }) => {
             data={rowData}
             style={styles.row}
             textStyle={styles.text}
-            flexArr={[1, 2, 1]}
+            flexArr={flexArr}
           />
         ))}
       </Table>
@@ -31,10 +50,10 @@ const TableComponent = ({ data }) => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, paddingBottom: 120 },
-  head: { height: 40, backgroundColor: '#A7C957', borderLeftWidth:1},
+  head: { height: 40, backgroundColor: '#A7C957', borderLeftWidth: 1 },
   headText: { textAlign: 'center', fontWeight: 'bold' },
   text: { textAlign: 'center' },
-  row: { height: 30, borderBottomWidth: 1, borderColor: '#000', borderLeftWidth:1 }, 
+  row: { height: 30, borderBottomWidth: 1, borderColor: '#000', borderLeftWidth: 1 }, 
 });
 
 export default TableComponent;

@@ -3,12 +3,12 @@ import { View, StyleSheet } from "react-native";
 import HistoryEventCard from "../../components/Card/HistoryEventCard";
 import { colors } from "../../constants/colors";
 import TableComponent from "../../components/Table/TableComponent";
-import { FlatList } from "react-native-gesture-handler";
 import StatusComponent from "../../components/Status/StatusComponent";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 
 const DetailHistoryContainers = ({ navigation }) => {
   // Data contoh peminjaman
+  const myTableHead = ['No', 'List', 'Qty'];
   const peminjamanData = [
     { namaPeminjaman: "Buku", qty: 5 },
     { namaPeminjaman: "Pensil", qty: 10 },
@@ -29,7 +29,7 @@ const DetailHistoryContainers = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TableComponent data={peminjamanData} />
+      <TableComponent data={peminjamanData} tableHead={myTableHead} />
       <HistoryEventCard
         status={
           <StatusComponent

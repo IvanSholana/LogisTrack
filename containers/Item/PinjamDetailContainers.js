@@ -10,7 +10,7 @@ import { colors } from "../../constants/colors";
 
 const PinjamDetailContainer = ({ navigation }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
-
+  const myTableHead = ['No', 'List', 'Qty'];
   const peminjamanData = [
     { namaPeminjaman: "Buku", qty: 5 },
     { namaPeminjaman: "Pensil", qty: 10 },
@@ -28,7 +28,7 @@ const PinjamDetailContainer = ({ navigation }) => {
   return (
     <>
       <View style={styles.TableComponent}>
-        <TableComponent data={peminjamanData} />
+        <TableComponent data={peminjamanData} tableHead={myTableHead}  />
       </View>
       <View style={styles.InputText}>
         <InputText textinputname={"Nama Event"} />
