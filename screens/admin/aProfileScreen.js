@@ -1,9 +1,9 @@
 import { StyleSheet, View } from "react-native";
-import AppBarComponent from "../components/AppBar/AppBarComponents";
+import AppBarComponent from "../../components/AppBar/AppBarComponents";
 import {
   ProfileContainer,
   ProfileContent,
-} from "../containers/Profile/ProfileContainer";
+} from "../../containers/Profile/admProfileContainers";
 
 const ProfileScreen = ({ navigation }) => {
   return (
