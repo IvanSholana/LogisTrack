@@ -15,11 +15,11 @@ import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import AdminProfileScreen from "./screens/admin/aProfileScreen";
-import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen"
+import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen";
+import AdminEditDetailItemScreen from "./screens/admin/aEditDetailItemScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
 const MainTabsMenu = () => {
   return (
     <Tab.Navigator
@@ -72,7 +72,7 @@ const MainTabsMenu = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="aDetailpinjam">
+      <Stack.Navigator initialRouteName="aEditDetailItem">
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -119,6 +119,12 @@ export default function App() {
           component={AdminDetailHistoryScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="aEditDetailItem"
+          component={AdminEditDetailItemScreen}
+          options={{ headerShown: false }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
