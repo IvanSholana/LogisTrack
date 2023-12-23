@@ -13,6 +13,8 @@ const RegisterContainer = ({ navigation }) => {
     { key: "3", value: "Staff" },
   ];
 
+  
+
   return (
     <>
       <InputText
@@ -32,7 +34,7 @@ const RegisterContainer = ({ navigation }) => {
       <SelectList
         setSelected={(val) => setSelected(val)}
         data={data}
-        save="value"
+        save={selected}
         placeholder="Status/Jabatan"
         boxStyles={{
           borderColor: "#ccc",
