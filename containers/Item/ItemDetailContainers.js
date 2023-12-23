@@ -1,10 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import DetailCard from "../../components/Card/DetailCard";
-import ButtonComponent from "../../components/Button/ButtonComponent";
-import { colors } from "../../constants/colors";
 
-const ItemDetailContainers = ({ navigation }) => {
+const ItemDetailContainers = () => {
   const productInfo = {
     deskripsi: "Deskripsi",
     imageSource:

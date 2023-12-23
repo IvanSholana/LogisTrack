@@ -23,13 +23,13 @@ const ItemDetailScreen = ({ navigation }) => {
           <ItemDetailContainers navigation={navigation} />
         </View>
         <View style={styles.buttonsection}>
-      <ButtonComponent
-        buttontext={"Kembali"}
-        buttonstyle={styles.button}
-        textstyle={styles.logintext}
-        onPress={() => navigation.navigate("items")}
-      />
-      </View>
+          <ButtonComponent
+            buttontext={"Kembali"}
+            buttonstyle={styles.button}
+            textstyle={styles.logintext}
+            onPress={() => navigation.navigate("items")}
+          />
+        </View>
       </View>
     </>
   );
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   buttonsection: {
-    flex: 1,
     justifyContent: "flex-end",
     backgroundColor: "white", 
     padding: 20
