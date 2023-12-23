@@ -1,8 +1,18 @@
 import { Image, StyleSheet, View, Text } from "react-native";
 import ItemDetailContainers from "../containers/Item/ItemDetailContainers";
-import AppBarComponent from "../components/AppBar/AppBarComponent";
+import AppBarComponent from "../components/AppBar/AppBarComponents";
+import ButtonComponent from "../components/Button/ButtonComponent";
+import { colors } from "../constants/colors";
+import { useFonts } from "expo-font";
 
 const ItemDetailScreen = ({ navigation }) => {
+  const [fontsLoaded] = useFonts({
+    "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <>
       <View style={styles.container}>
@@ -12,29 +22,48 @@ const ItemDetailScreen = ({ navigation }) => {
         <View style={styles.itemSection}>
           <ItemDetailContainers navigation={navigation} />
         </View>
+        <View style={styles.buttonsection}>
+      <ButtonComponent
+        buttontext={"Kembali"}
+        buttonstyle={styles.button}
+        textstyle={styles.logintext}
+        onPress={() => navigation.navigate("items")}
+      />
+      </View>
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  logo: {
-    marginTop: 30,
-    marginBottom: 10,
-  },
   container: {
     flex: 1,
-    justifyContent: "center",
+    backgroundColor: "white",
   },
   itemSection: {
     flex: 1,
   },
   headerText: {
     fontSize: 24,
-    fontFamily: "Poppins_700Bold_Italic",
+    fontFamily: "Poppins-BoldItalic", 
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,
+  },
+  buttonsection: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "white", 
+    padding: 20
+  },
+  button: {
+    backgroundColor: colors.buttonLogin,
+    paddingVertical: 15,
+    borderRadius: 5,
+    justifyContent: "flex-end",
+  },
+  logintext: {
+    color: colors.loginText,
   },
 });
 

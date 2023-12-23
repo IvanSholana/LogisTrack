@@ -7,7 +7,7 @@ const ButtonComponent = ({ buttontext, buttonstyle, textstyle, onPress }) => {
       <TouchableOpacity style={[styles.button, buttonstyle]} onPress={onPress}>
         <Text style={[styles.text, textstyle]}>{buttontext}</Text>
       </TouchableOpacity>
-    </>
+    </> 
   );
 };
 

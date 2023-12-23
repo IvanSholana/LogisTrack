@@ -24,16 +24,6 @@ const ItemDetailContainers = ({ navigation }) => {
         max={productInfo.max}
         availability={productInfo.availability}
       />
-      <ButtonComponent
-        buttontext={"Kembali"}
-        buttonstyle={{
-          padding: 10,
-          backgroundColor: colors.buttonLogin,
-          marginHorizontal: 20,
-          borderRadius: 10,
-        }}
-        onPress={() => navigation.navigate("items")}
-      />
     </View>
   );
 };

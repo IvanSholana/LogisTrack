@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 import RoomDetailContainers from "../containers/Item/RoomDetailContainers";
-import AppBarComponent from "../components/AppBar/AppBarComponent";
+import AppBarComponent from "../components/AppBar/AppBarComponents";
 
 const RoomDetailScreen = ({ navigation }) => {
   return (
