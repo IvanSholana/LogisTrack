@@ -1,7 +1,6 @@
 import React from "react";
 import { Dialog } from "react-native-simple-dialogs";
 import { Text, View } from "react-native";
-import { useFonts } from "expo-font";
 
 const CustomDialogComponent = ({ isVisible, setVisible, content, title, titleStyle }) => {
   
