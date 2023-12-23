@@ -55,7 +55,7 @@ const PinjamDetailScreen = ({ navigation }) => {
         style={styles.DialogStyle}
         isVisible={dialogVisible}
         setVisible={hideAlertDialog}
-        title="Judul Dialog"
+        title="Sedang Diajukan"
         content={
           <Text>
             Pantau terus laman history untuk melihat status peminjaman kamu

@@ -1,21 +1,32 @@
+import React from "react";
 import { Dialog } from "react-native-simple-dialogs";
-import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Text, View } from "react-native";
+import { useFonts } from "expo-font";
 
-const DialogComponent = ({ isVisible, setVisible, content, title }) => {
+const CustomDialogComponent = ({ isVisible, setVisible, content, title, titleStyle }) => {
+  
   return (
-    <>
-      <Dialog
-        visible={isVisible}
-        title={title}
-        onTouchOutside={() => setVisible(false)}
-      >
+    <Dialog
+      visible={isVisible}
+      onTouchOutside={() => setVisible(false)}
+    >
+      <View>
         <View>
-          <View>{content}</View>
+          <Text style={[styles.title, titleStyle]}>{title}</Text>
         </View>
-      </Dialog>
-    </>
+        <View>{content}</View>
+      </View>
+    </Dialog>
   );
 };
 
-export default DialogComponent;
+const styles = {
+  title: {
+    fontSize: 24,
+    fontFamily: "Poppins-BoldItalic", 
+    color: "#6A994E",
+    textAlign: "center",
+  },
+};
+
+export default CustomDialogComponent;
