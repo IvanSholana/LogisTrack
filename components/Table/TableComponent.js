@@ -49,11 +49,21 @@ const TableComponent = ({ data, tableHead }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, paddingBottom: 120 },
-  head: { height: 40, backgroundColor: '#A7C957', borderLeftWidth: 1 },
-  headText: { textAlign: 'center', fontWeight: 'bold' },
+  container: { flex: 1, 
+    paddingBottom: 120 
+  },
+  head: { height: 40, 
+    backgroundColor: '#A7C957', 
+    borderLeftWidth: 1 
+  },
+  headText: { textAlign: 'center', 
+  fontWeight: 'bold' 
+},
   text: { textAlign: 'center' },
-  row: { height: 30, borderBottomWidth: 1, borderColor: '#000', borderLeftWidth: 1 }, 
+  row: { height: 30, 
+    borderWidth: 1, 
+    borderColor: '#A6A6A6', 
+    borderLeftWidth: 1 }, 
 });
 
 export default TableComponent;
