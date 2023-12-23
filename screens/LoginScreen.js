@@ -1,22 +1,35 @@
-import { Image, StyleSheet, View } from "react-native";
+import {
+  Image,
+  KeyboardAvoidingView,
+  StyleSheet,
+  View,
+  ScrollView,
+} from "react-native";
 import React from "react";
-import LoginContainer from "../containers/Login/LoginContainer";
+import LoginContainer from "../containers/login/loginContainer";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.logocontainer}>
-        <Image
-          source={require("../assets/images/LogisTrack.png")}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-      </View>
-      <Image source={require("../assets/images/cuate.png")} />
-      <View style={styles.loginsection}>
-        <LoginContainer />
-      </View>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.logocontainer}>
+            <Image
+              source={require("../assets/images/LogisTrack.png")}
+              style={styles.logo}
+              resizeMode="contain"
+            />
+          </View>
+          <Image source={require("../assets/images/cuate.png")} />
+          <View style={styles.loginsection}>
+            <LoginContainer navigation={navigation} />
+          </View>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -32,8 +45,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   loginsection: {
+    justifyContent: "flex-end",
     paddingHorizontal: 20,
-
     flex: 1,
     width: "100%",
     height: "100%",
