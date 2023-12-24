@@ -2,10 +2,11 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PinjamDetailContainer from "../containers/Item/PinjamDetailContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
+import { ScrollView } from "react-native-gesture-handler";
 
 const PinjamDetailScreen = ({ navigation }) => {
   return (
-    <View>
+    <>
       <AppBarComponent
         content={<Text style={styles.headerText}>Pinjam Aset</Text>}
       />
@@ -13,7 +14,7 @@ const PinjamDetailScreen = ({ navigation }) => {
         <PinjamDetailContainer navigation={navigation} />
         <View style={styles.buttonsection}></View>
       </View>
-    </View>
+    </>
   );
 };
 
