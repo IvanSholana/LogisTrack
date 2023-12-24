@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import AppBarComponent from "../../components/AppBar/AppBarComponents";
+import AppBarComponent from "../../components/AppBar/AppBarComponent";
 import {
   ProfileContainer,
   ProfileContent,
