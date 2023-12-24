@@ -13,8 +13,6 @@ const RegisterContainer = ({ navigation }) => {
     { key: "3", value: "Staff" },
   ];
 
-  
-
   return (
     <>
       <InputText
@@ -34,7 +32,7 @@ const RegisterContainer = ({ navigation }) => {
       <SelectList
         setSelected={(val) => setSelected(val)}
         data={data}
-        save={selected}
+        save="value"
         placeholder="Status/Jabatan"
         boxStyles={{
           borderColor: "#ccc",
@@ -61,7 +59,10 @@ const RegisterContainer = ({ navigation }) => {
         />
         <ButtonComponent
           buttontext={"Back"}
-          buttonstyle={[styles.button, {backgroundColor: colors.buttonRegister}]}
+          buttonstyle={[
+            styles.button,
+            { backgroundColor: colors.buttonRegister },
+          ]}
           textstyle={styles.registertext}
           onPress={() => navigation.navigate("Login")}
         />

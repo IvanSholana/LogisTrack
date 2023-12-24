@@ -13,7 +13,6 @@
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.20",
-    "dotenv": "^16.3.1",
     "expo": "~49.0.15",
     "expo-font": "~11.4.0",
     "expo-status-bar": "~1.6.0",
@@ -32,6 +31,5 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true,
-  "type": "module"
+  "private": true
 }

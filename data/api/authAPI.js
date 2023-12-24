@@ -1,22 +1,39 @@
-class APIRequest{
-    async getToken(){
+async function getToken(){
+    try {
         const response = await fetch("http://localhost:3000/token");
         const json = await response.json();
-        return json
+        console.log(json)
+    } catch (error) {
+        console.error(error);
     }
-    
-    async getUserData(authToken){
+}
+
+async function getUserData(authToken){
+    try {
         const response = await fetch("http://localhost:3000/posts", {
             headers: {
-                Authorization: `Bearer ${authToken}`,
-                // Add any other headers as needed
+              Authorization: `Bearer ${authToken}`,
+              // Add any other headers as needed
             },
         });
         const json = await response.json();
-        return json
+        console.log(json)
+    } catch (error) {
+        console.error(error);
     }
-    
-    async inputUserData(authToken, Name, Password, nomorInduk, Status, Prodi){
+}
+
+async function inputUserData(authToken, Name, Password, nomorInduk, Status, Prodi){
+    try {
+
+        // const postData = {
+        //     name: Name,
+        //     password: Password,
+        //     nomor_induk: nomorInduk,
+        //     status: Status,
+        //     prodi: Prodi,
+        // };
+
         const response = await fetch("http://localhost:3000/createUser", {
             method: 'GET',
             headers: {
@@ -32,10 +49,13 @@ class APIRequest{
             // body: JSON.stringify(postData),
         });
         const json = await response.json();
-        return json
+        console.log(json)
+    } catch (error) {
+        console.error(error);
     }
 }
 
-
-
-export default APIRequest;
+// getToken()
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzAyOTkzNTEzfQ.u_yS9aX9qbOc2VqletdfAMRSPKKOOQ31qVg3ENV9rlU'
+inputUserData(token, 'Jupyter', 'jup123', 1203210018, 'Dosen', 'INFORMATIKA')
+getUserData(token)

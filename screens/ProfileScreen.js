@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import AppBarComponent from "../components/AppBar/AppBarComponents";
+import AppBarComponent from "../components/AppBar/AppBarComponent";
 import {
   ProfileContainer,
   ProfileContent,
@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingVertical: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "white",
   },
 });
 

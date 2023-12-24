@@ -1,15 +1,33 @@
-import { StyleSheet, View, Text } from "react-native";
+import React from "react";
+import { View, StyleSheet, Text } from "react-native";
 import DetailHistoryContainers from "../containers/History/DetailHistoryContainers";
-import AppBarComponent from "../components/AppBar/AppBarComponents";
+import AdminDetailHistoryContainers from "../containers/History/admDetailHistoryContainers";
+import AppBarComponent from "../components/AppBar/AppBarComponent";
+import { useFonts } from "expo-font";
+import { colors } from "../constants/colors";
 
-const DetailHistoryScreen = ({ navigation }) => {
+const AdminDetailHistoryScreen = ({ navigation }) => {
   return (
     <>
       <AppBarComponent
         content={<Text style={styles.headerText}>Detail Peminjaman</Text>}
       />
       <View style={styles.container}>
-        <View style={styles.appBar}></View>
+        <View style={styles.historySection}>
+          <AdminDetailHistoryContainers navigation={navigation} />
+        </View>
+      </View>
+    </>
+  );
+};
+
+const UserDetailHistoryScreen = ({ navigation }) => {
+  return (
+    <>
+      <AppBarComponent
+        content={<Text style={styles.headerText}>Detail Peminjaman</Text>}
+      />
+      <View style={styles.container}>
         <View style={styles.historySection}>
           <DetailHistoryContainers navigation={navigation} />
         </View>
@@ -18,21 +36,34 @@ const DetailHistoryScreen = ({ navigation }) => {
   );
 };
 
+const DetailHistoryScreen = ({ navigation, accountType }) => {
+  const renderDetailContainer = () => {
+    if (accountType === "admin") {
+      return <AdminDetailHistoryScreen navigation={navigation} />;
+    } else {
+      return <UserDetailHistoryScreen navigation={navigation} />;
+    }
+  };
+
+  return (
+    <>
+      {renderDetailContainer()}
+    </>
+  );
+};
+
 const styles = StyleSheet.create({
-  logo: {
-    marginTop: 30,
-    marginBottom: 10,
-  },
   container: {
+    backgroundColor: "white",
+    padding: 20,
     flex: 1,
-    justifyContent: "center",
   },
   historySection: {
     flex: 1,
   },
   headerText: {
     fontSize: 24,
-    fontFamily: "Poppins_700Bold_Italic",
+    fontFamily: "Poppins-BoldItalic",
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,
