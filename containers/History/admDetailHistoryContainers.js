@@ -22,7 +22,7 @@ const AdminDetailHistoryContainers = ({ navigation }) => {
   const eventsData = [
     {
       eventDate: "20/12/2023",
-      status: "",
+      status: "Dipinjam",
       eventStatusColor: colors.eventRejected,
       startDateTime: "2023-12-20T09:00:00",
       endDateTime: "2023-12-20T17:00:00",
@@ -118,7 +118,7 @@ const AdminDetailHistoryContainers = ({ navigation }) => {
           marginTop: 20,
           padding: 10,
           borderRadius: 10,
-          margin: 20,
+          margin:50        
         }}
         onPress={() => navigation.navigate("history")}
       />
