@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import EditDetailRuanganCard from "../../components/Card/AdminEditRuanganCard";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
@@ -31,35 +31,46 @@ const AdminEditDetailRuanganContainers = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <EditDetailRuanganCard
-        imageSource={productInfo.imageSource}
-        description={productInfo.description}
-        availability={productInfo.availability}
-        onChangeTextDeskripsi={handleDeskripsiChange}
-        onChangeTextMax={handleMaxChange}
-      />
-      <ButtonComponent
-        buttontext={"Update"}
-        buttonstyle={{
-          padding: 10,
-          backgroundColor: colors.buttonLogin,
-          margin: 20,
-          borderRadius: 10,
-        }}
-        onPress={handleUpdate}
-      />
-      <ButtonComponent
-        buttontext={"Kembali"}
-        buttonstyle={{
-          padding: 10,
-          backgroundColor: colors.buttonLogin,
-          marginHorizontal: 20,
-          borderRadius: 10,
-        }}
-        onPress={() => navigation.navigate("items")}
-      />
+      <View style={styles.editsection}>
+        <EditDetailRuanganCard
+          imageSource={productInfo.imageSource}
+          description={productInfo.description}
+          availability={productInfo.availability}
+          onChangeTextDeskripsi={handleDeskripsiChange}
+          onChangeTextMax={handleMaxChange}
+        />
+      </View>
+      <View style={styles.buttoncontainer}>
+        <ButtonComponent
+          buttontext={"Update"}
+          buttonstyle={{
+            padding: 10,
+            backgroundColor: colors.buttonLogin,
+            marginHorizontal: 20,
+            marginBottom: 10,
+            borderRadius: 10,
+          }}
+          onPress={handleUpdate}
+        />
+        <ButtonComponent
+          buttontext={"Kembali"}
+          buttonstyle={{
+            padding: 10,
+            backgroundColor: colors.buttonLogin,
+            marginHorizontal: 20,
+            borderRadius: 10,
+          }}
+          onPress={() => navigation.navigate("items")}
+        />
+      </View>
     </View>
   );
 };
 
 export default AdminEditDetailRuanganContainers;
+
+const styles = StyleSheet.create({
+  editsection: {
+    flex: 1,
+  },
+});

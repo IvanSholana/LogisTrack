@@ -34,8 +34,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: "100%",
+    aspectRatio: 16 / 9,
+    resizeMode: "cover",
     marginBottom: 20,
     resizeMode: "contain",
     alignSelf: "center",

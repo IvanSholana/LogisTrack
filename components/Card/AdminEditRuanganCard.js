@@ -24,7 +24,11 @@ const EditDetailRuanganCard = ({
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: imageSource }} style={styles.image} />
+      <Image
+        source={{ uri: imageSource }}
+        style={{ width: "100%", aspectRatio: 16 / 9 }}
+        resizeMode="cover"
+      />
       <View style={styles.infoContainer}>
         <View style={styles.textContainer}>
           <Text style={[styles.title, styles.leftAlign]}>Deskripsi</Text>
@@ -60,8 +64,6 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   image: {
-    width: 200,
-    height: 200,
     marginBottom: 20,
     resizeMode: "contain",
     alignSelf: "center",
@@ -72,8 +74,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: 10,
     color: "#333",
+    marginTop: 10,
   },
   descriptionText: {
     fontSize: 16,

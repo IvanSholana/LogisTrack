@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text } from "react-native";
 import AdminEditDetailRuanganContainers from "../../containers/Item/AdminEditDetailRuanganContainer.js";
 import AppBarComponent from "../../components/AppBar/AppBarComponents";
+import { ScrollView } from "react-native-gesture-handler";
 
 const AdminEditDetailRuanganScreen = ({ navigation }) => {
   return (
@@ -8,27 +9,20 @@ const AdminEditDetailRuanganScreen = ({ navigation }) => {
       <AppBarComponent
         content={<Text style={styles.headerText}>Edit Detail Ruangan</Text>}
       />
-      <View style={styles.container}>
-        <View style={styles.appBar}></View>
-        <View style={styles.historySection}>
+      <ScrollView>
+        <View style={styles.container}>
           <AdminEditDetailRuanganContainers navigation={navigation} />
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  logo: {
-    marginTop: 30,
-    marginBottom: 10,
-  },
   container: {
+    margin: 10,
     flex: 1,
     justifyContent: "center",
-  },
-  historySection: {
-    flex: 1,
   },
   headerText: {
     fontSize: 24,
