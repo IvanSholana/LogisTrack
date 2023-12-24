@@ -12,7 +12,7 @@ const AdminDetailHistoryContainers = ({ navigation }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
 
   // Data contoh peminjaman
-  const myTableHead = ['No', 'List', 'Qty'];
+  const myTableHead = ["No", "List", "Qty"];
   const peminjamanData = [
     { namaPeminjaman: "Buku", qty: 5 },
     { namaPeminjaman: "Pensil", qty: 10 },
@@ -50,27 +50,29 @@ const AdminDetailHistoryContainers = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TableComponent data={peminjamanData} tableHead={myTableHead} />
-    <View style={styles.card}>
+      <View style={styles.tablesection}>
+        <TableComponent data={peminjamanData} tableHead={myTableHead} />
+      </View>
+      <View style={styles.card}>
         <AdminHistoryEventCard
-        status={
-          <StatusComponent
-            status={eventsData[0].status}
-            color={eventsData[0].eventStatusColor}
-          />
-        }
-        startDateTime={eventsData[0].startDateTime}
-        endDateTime={eventsData[0].endDateTime}
-        reason={eventsData[0].eventName}
-        alasan={eventsData[0].alasan}
+          status={
+            <StatusComponent
+              status={eventsData[0].status}
+              color={eventsData[0].eventStatusColor}
+            />
+          }
+          startDateTime={eventsData[0].startDateTime}
+          endDateTime={eventsData[0].endDateTime}
+          reason={eventsData[0].eventName}
+          alasan={eventsData[0].alasan}
         />
-        </View>
+      </View>
       {eventsData[0].status === "" && (
         <View style={styles.buttonContainer}>
           <ButtonComponent
             buttontext={"ACC"}
             buttonstyle={{
-              marginTop:80,
+              marginTop: 80,
               backgroundColor: "#A7C957",
               margin: 5,
               padding: 10,
@@ -82,7 +84,7 @@ const AdminDetailHistoryContainers = ({ navigation }) => {
           <ButtonComponent
             buttontext={"Tolak"}
             buttonstyle={{
-              marginTop:80,
+              marginTop: 80,
               backgroundColor: "#BC4749",
               margin: 5,
               padding: 10,
@@ -125,7 +127,7 @@ const AdminDetailHistoryContainers = ({ navigation }) => {
         setVisible={setDialogVisible}
         content={
           <View>
-            <InputText/>
+            <InputText />
             <ButtonComponent
               buttontext={"Simpan"}
               buttonstyle={{
@@ -149,17 +151,21 @@ const AdminDetailHistoryContainers = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  tablesection: {
+    marginTop: 20,
+    flex: 0.5,
+  },
   container: {
-    justifyContent: "center",
-    backgroundColor: "#f0f0f0",
+    flex: 1,
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "center",
+    alignItems: "baseline",
   },
   card: {
-    paddingBottom:250
-  }
+    flex: 1,
+  },
 });
 
 export default AdminDetailHistoryContainers;

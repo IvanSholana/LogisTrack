@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 import AdminDetailHistoryContainers from "../../containers/History/admDetailHistoryContainers";
-import AppBarComponent from "../../components/AppBar/AppBarComponents";
+import AppBarComponent from "../../components/AppBar/AppBarComponent";
 
 const AdminDetailHistoryScreen = ({ navigation }) => {
   return (
@@ -9,7 +9,6 @@ const AdminDetailHistoryScreen = ({ navigation }) => {
         content={<Text style={styles.headerText}>Detail Peminjaman</Text>}
       />
       <View style={styles.container}>
-        <View style={styles.appBar}></View>
         <View style={styles.historySection}>
           <AdminDetailHistoryContainers navigation={navigation} />
         </View>

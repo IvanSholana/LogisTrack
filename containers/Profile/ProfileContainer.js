@@ -53,9 +53,9 @@ const ContactDialog = ({ dialogVisible, setDialogVisible }) => {
       <DialogComponent
         isVisible={dialogVisible}
         setVisible={setDialogVisible}
+        title="Hubungi Logistik"
         content={
           <View>
-            <Text style={styles.headerText}>Hubungi Logistik</Text>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Icon name="phone" size={30} color={colors.registerText} />
               <View style={{ marginLeft: 10 }}>
@@ -63,11 +63,7 @@ const ContactDialog = ({ dialogVisible, setDialogVisible }) => {
                 <Text>081234567890</Text>
               </View>
             </View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginTop: 8,
+            <View style={{ flexDirection: "row", alignItems: "center", marginTop: 8,
               }}
             >
               <Icon name="at" size={30} color={colors.registerText} />
@@ -84,11 +80,6 @@ const ContactDialog = ({ dialogVisible, setDialogVisible }) => {
 };
 
 const styles = StyleSheet.create({
-  hubungiLogo: {
-    flex: 1,
-    justifyContent: "center", // Pusatkan secara vertikal
-    alignItems: "center", // Pusatkan secara horizontal
-  },
   profileTitle: {
     fontSize: 20,
     fontWeight: "500",
@@ -97,16 +88,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 15,
   },
-  logo: {
-    marginTop: 20,
-    marginBottom: 10,
-    marginHorizontal: 10,
-  },
   headerText: {
     fontSize: 24,
-
     fontFamily: "Poppins-BoldItalic", 
-
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,

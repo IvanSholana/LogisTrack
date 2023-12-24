@@ -2,7 +2,13 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import StatusComponent from "../Status/StatusComponent";
 
-const AdminHistoryEventCard = ({ status, startDateTime, endDateTime, reason, alasan }) => {
+const AdminHistoryEventCard = ({
+  status,
+  startDateTime,
+  endDateTime,
+  reason,
+  alasan,
+}) => {
   const formattedStatus = status.props.status.toLowerCase();
 
   return (
@@ -10,7 +16,10 @@ const AdminHistoryEventCard = ({ status, startDateTime, endDateTime, reason, ala
       {formattedStatus !== "" && (
         <View>
           <Text style={styles.text}>Status:</Text>
-          <StatusComponent status={status.props.status} color={status.props.color} />
+          <StatusComponent
+            status={status.props.status}
+            color={status.props.color}
+          />
         </View>
       )}
       <Text style={styles.text}>Tanggal dan Waktu Mulai: </Text>
@@ -27,7 +36,6 @@ const styles = StyleSheet.create({
   card: {
     margin: 10,
     padding: 5,
-    backgroundColor: "#fff",
   },
   text: {
     marginTop: 10,
