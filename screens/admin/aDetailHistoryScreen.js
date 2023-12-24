@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 import AdminDetailHistoryContainers from "../../containers/History/admDetailHistoryContainers";
-import AppBarComponent from "../../components/AppBar/AppBarComponents";
+import AppBarComponent from "../../components/AppBar/AppBarComponent";
 
 const DetailHistoryScreen = ({ navigation }) => {
   return (

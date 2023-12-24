@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 import RoomDetailContainers from "../containers/Item/RoomDetailContainers";
-import AppBarComponent from "../components/AppBar/AppBarComponents";
+import AppBarComponent from "../components/AppBar/AppBarComponent";
 import ButtonComponent from "../components/Button/ButtonComponent";
 import { colors } from "../constants/colors";
 import { useFonts } from "expo-font";

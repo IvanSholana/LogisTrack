@@ -1,6 +1,6 @@
 import { Image, StyleSheet, View, Text } from "react-native";
 import ItemDetailContainers from "../containers/Item/ItemDetailContainers";
-import AppBarComponent from "../components/AppBar/AppBarComponents";
+import AppBarComponent from "../components/AppBar/AppBarComponent";
 import ButtonComponent from "../components/Button/ButtonComponent";
 import { colors } from "../constants/colors";
 import { useFonts } from "expo-font";
