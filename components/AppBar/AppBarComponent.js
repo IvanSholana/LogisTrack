@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     backgroundColor: "#fff",
     overflow: "hidden",
-    borderBottomColor: '#D9D9D9',
+    borderBottomColor: "#D9D9D9",
     borderBottomWidth: 1,
   },
 });

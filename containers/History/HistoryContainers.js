@@ -3,7 +3,6 @@ import EventStatusCardComponents from "../../components/Card/EventStatusCard";
 import { colors } from "../../constants/colors";
 import { FlatList } from "react-native-gesture-handler";
 
-
 const RenderItem = ({ item }, { navigation }) => (
   <EventStatusCardComponents
     eventName={item.eventName}

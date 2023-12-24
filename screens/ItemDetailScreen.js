@@ -1,13 +1,13 @@
 import { Image, StyleSheet, View, Text } from "react-native";
 import ItemDetailContainers from "../containers/Item/ItemDetailContainers";
-import AppBarComponent from "../components/AppBar/AppBarComponents";
+import AppBarComponent from "../components/AppBar/AppBarComponent";
 import ButtonComponent from "../components/Button/ButtonComponent";
 import { colors } from "../constants/colors";
 import { useFonts } from "expo-font";
 
 const ItemDetailScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
-    "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
+    "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -45,15 +45,15 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontFamily: "Poppins-BoldItalic", 
+    fontFamily: "Poppins-BoldItalic",
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,
   },
   buttonsection: {
     justifyContent: "flex-end",
-    backgroundColor: "white", 
-    padding: 20
+    backgroundColor: "white",
+    padding: 20,
   },
   button: {
     backgroundColor: colors.buttonLogin,

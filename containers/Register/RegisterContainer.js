@@ -5,6 +5,7 @@ import { StyleSheet, View } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
 
+
 const RegisterContainer = ({ navigation }) => {
   const [selected, setSelected] = useState("");
   const data = [
