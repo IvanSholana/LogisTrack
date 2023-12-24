@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import PinjamDetailContainer from "../containers/Item/PinjamDetailContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
 import { ScrollView } from "react-native-gesture-handler";
-
+import { colors } from "../constants/colors";
 
 const PinjamDetailScreen = ({ navigation }) => {
   const [dialogVisible, setDialogVisible] = useState(false);

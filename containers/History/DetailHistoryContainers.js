@@ -7,7 +7,7 @@ import StatusComponent from "../../components/Status/StatusComponent";
 
 const DetailHistoryContainers = ({ navigation }) => {
   // Data contoh peminjaman
-  const myTableHead = ["No", "List", "Qty"];
+  const myTableHead = ['No', 'List', 'Qty'];
   const peminjamanData = [
     { namaPeminjaman: "Buku", qty: 5 },
     { namaPeminjaman: "Pensil", qty: 10 },
@@ -28,42 +28,26 @@ const DetailHistoryContainers = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-
-      <View>
-        <TableComponent data={peminjamanData} tableHead={myTableHead} />
-      </View>
-      <View style={{ marginTop: 120 }}>
-        <HistoryEventCard
-          status={
-            <StatusComponent
-              status={eventsData[0].status}
-              color={eventsData[0].eventStatusColor}
-            />
-          }
-          startDateTime={eventsData[0].startDateTime}
-          endDateTime={eventsData[0].endDateTime}
-          reason={eventsData[0].eventName}
-          alasan={eventsData[0].alasan}
-        />
-        <ButtonComponent
-          buttontext={"Kembali"}
-          buttonstyle={{
-            backgroundColor: colors.buttonLogin,
-            margin: 10,
-            padding: 10,
-            borderRadius: 10,
-          }}
-          onPress={() => navigation.navigate("history")}
-        />
-      </View>
-
+      <TableComponent data={peminjamanData} tableHead={myTableHead} />
+      <HistoryEventCard
+        status={
+          <StatusComponent
+            status={eventsData[0].status}
+            color={eventsData[0].eventStatusColor}
+          />
+        }
+        startDateTime={eventsData[0].startDateTime}
+        endDateTime={eventsData[0].endDateTime}
+        reason={eventsData[0].eventName}
+        alasan={eventsData[0].alasan}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    //flex: 1,
   },
 });
 

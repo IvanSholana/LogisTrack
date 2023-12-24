@@ -19,11 +19,15 @@ const DetailHistoryScreen = ({ navigation }) => {
         content={<Text style={styles.headerText}>Detail Peminjaman</Text>}
       />
       <View style={styles.container}>
-
-        <View style={styles.historySection}>
-          <DetailHistoryContainers navigation={navigation} />
-        </View>
-
+        <DetailHistoryContainers navigation={navigation} />
+      </View>
+      <View style={styles.buttonsection}>
+      <ButtonComponent
+        buttontext={"Kembali"}
+        buttonstyle={styles.button}
+        textstyle={styles.logintext}
+        onPress={() => navigation.navigate("history")}
+      />
       </View>
     </>
   );
@@ -31,6 +35,7 @@ const DetailHistoryScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "white",
     padding: 20,
   },
@@ -42,7 +47,6 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   buttonsection: {
-    flex: 1,
     justifyContent: "flex-end",
     backgroundColor: "white", 
     padding: 20
