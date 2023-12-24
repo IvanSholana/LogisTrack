@@ -9,7 +9,6 @@ const DetailHistoryScreen = ({ navigation }) => {
         content={<Text style={styles.headerText}>Detail Peminjaman</Text>}
       />
       <View style={styles.container}>
-        <View style={styles.appBar}></View>
         <View style={styles.historySection}>
           <AdminDetailHistoryContainers navigation={navigation} />
         </View>

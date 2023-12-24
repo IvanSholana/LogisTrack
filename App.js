@@ -15,7 +15,7 @@ import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import AdminProfileScreen from "./screens/admin/aProfileScreen";
-import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen"
+import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

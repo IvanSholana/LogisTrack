@@ -19,15 +19,11 @@ const DetailHistoryScreen = ({ navigation }) => {
         content={<Text style={styles.headerText}>Detail Peminjaman</Text>}
       />
       <View style={styles.container}>
-        <DetailHistoryContainers navigation={navigation} />
-      </View>
-      <View style={styles.buttonsection}>
-      <ButtonComponent
-        buttontext={"Kembali"}
-        buttonstyle={styles.button}
-        textstyle={styles.logintext}
-        onPress={() => navigation.navigate("history")}
-      />
+
+        <View style={styles.historySection}>
+          <DetailHistoryContainers navigation={navigation} />
+        </View>
+
       </View>
     </>
   );
