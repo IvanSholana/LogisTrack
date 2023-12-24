@@ -1,10 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import DetailCard from "../../components/Card/DetailCard";
-import ButtonComponent from "../../components/Button/ButtonComponent";
-import { colors } from "../../constants/colors";
 
-const ItemDetailContainers = ({ navigation }) => {
+const ItemDetailContainers = () => {
   const productInfo = {
     deskripsi: "Deskripsi",
     imageSource:
@@ -23,16 +21,6 @@ const ItemDetailContainers = ({ navigation }) => {
         description={productInfo.description}
         max={productInfo.max}
         availability={productInfo.availability}
-      />
-      <ButtonComponent
-        buttontext={"Kembali"}
-        buttonstyle={{
-          padding: 10,
-          backgroundColor: colors.buttonLogin,
-          marginHorizontal: 20,
-          borderRadius: 10,
-        }}
-        onPress={() => navigation.navigate("items")}
       />
     </View>
   );

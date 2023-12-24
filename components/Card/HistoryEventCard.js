@@ -18,7 +18,7 @@ const EventCard = ({ status, startDateTime, endDateTime, alasan }) => {
 
 const styles = StyleSheet.create({
   card: {
-    margin: 10,
+    marginBottom: 10,
     padding: 5,
   },
   text: {

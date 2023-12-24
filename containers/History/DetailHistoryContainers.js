@@ -4,7 +4,6 @@ import HistoryEventCard from "../../components/Card/HistoryEventCard";
 import { colors } from "../../constants/colors";
 import TableComponent from "../../components/Table/TableComponent";
 import StatusComponent from "../../components/Status/StatusComponent";
-import ButtonComponent from "../../components/Button/ButtonComponent";
 
 const DetailHistoryContainers = ({ navigation }) => {
   // Data contoh peminjaman
@@ -29,6 +28,7 @@ const DetailHistoryContainers = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+
       <View>
         <TableComponent data={peminjamanData} tableHead={myTableHead} />
       </View>
@@ -56,6 +56,7 @@ const DetailHistoryContainers = ({ navigation }) => {
           onPress={() => navigation.navigate("history")}
         />
       </View>
+
     </View>
   );
 };
@@ -63,7 +64,6 @@ const DetailHistoryContainers = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
-    backgroundColor: "#f0f0f0",
   },
 });
 

@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   image: {
-    width: 200,
+    width: "100%",
     height: 200,
     marginBottom: 20,
-    resizeMode: "contain",
+    resizeMode: "stretch",
     alignSelf: "center",
   },
   textContainer: {

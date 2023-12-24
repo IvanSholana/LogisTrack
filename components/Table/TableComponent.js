@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderLeftWidth: 1,
   },
+
 });
 
 export default TableComponent;

@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import RegisterContainer from "../containers/Register/RegisterContainer";
-import AppBarComponent from "../components/AppBar/AppBarComponents";
 import { useFonts } from "expo-font";
 import { colors } from "../constants/colors";
 
