@@ -17,6 +17,7 @@ import RoomDetailScreen from "./screens/RoomDetailScreen";
 import AdminProfileScreen from "./screens/admin/aProfileScreen";
 import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen";
 import AdminEditDetailRuanganScreen from "./screens/admin/aEditDetailRuanganScreen";
+import ItemPagesScreen from "./screens/admin/aItemPagesScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -73,7 +74,7 @@ const MainTabsMenu = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="aDetailEditRuangan">
+      <Stack.Navigator initialRouteName="ItemPage">
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -123,6 +124,11 @@ export default function App() {
         <Stack.Screen
           name="aDetailEditRuangan"
           component={AdminEditDetailRuanganScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ItemPage"
+          component={ItemPagesScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
