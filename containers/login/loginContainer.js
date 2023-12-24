@@ -58,6 +58,7 @@ const LoginContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   buttonsection: {
     flex: 1,
+    marginTop: 35,
   },
   button: {
     backgroundColor: colors.buttonLogin,

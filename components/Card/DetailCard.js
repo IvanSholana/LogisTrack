@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     aspectRatio: 16 / 9,
     resizeMode: "cover",
     marginBottom: 20,
-    resizeMode: "contain",
+    resizeMode: "stretch",
     alignSelf: "center",
   },
   textContainer: {

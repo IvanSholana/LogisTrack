@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     shadowColor: "black",
     marginHorizontal: 10,
-    marginBottom: 10,
+    marginTop: 15,
   },
   status: {
     alignSelf: "center",
