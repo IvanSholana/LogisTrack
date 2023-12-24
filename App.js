@@ -72,7 +72,7 @@ const MainTabsMenu = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="aDetailpinjam">
+      <Stack.Navigator initialRouteName="Register">
         <Stack.Screen
           name="Login"
           component={LoginScreen}

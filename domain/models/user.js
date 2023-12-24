@@ -1,16 +1,9 @@
+import React from 'react';
 import Middleware from "../../data/repositories/authRepository.js";
-import dotenv from 'dotenv';
-dotenv.config()
+// import dotenv from 'dotenv';
+// dotenv.config()
 
-class CustomError extends Error {
-    constructor(message) {
-      super(message);
-      this.name = 'CustomError'; // Optional: You can set a custom name for your error
-    }
-}
-
-
-class User{
+class User extends React.Component {
     Users;
     Token;
     req = new Middleware();
@@ -112,8 +105,9 @@ class User{
     async generateToken() {
         this.Token = await this.req.generateToken();
         this.Token = this.Token['token']
-        process.env.USER_TOKEN = this.Token;
-        return process.env.USER_TOKEN
+        // process.env.USER_TOKEN = this.Token;
+        // return process.env.USER_TOKEN
+        return this.Token;
     }
 
     async registerUser(Name, email, Password, nomorInduk, Status) {
@@ -129,7 +123,8 @@ class User{
 }
 
 let object = new User();
-await object.generateToken();
+console.log(await object.generateToken());
 // console.log(await object.nameFormat('melon pan'));
 // console.log(await object.findUsersInfo('1203210009', 'fern123'));
 // console.log(await object.registerUser('melon pan', 'melon_123@student.is.ittelkom-sby.ac.id', 'melon@123', '1203210002', 'Dosen'));
+export default User;
