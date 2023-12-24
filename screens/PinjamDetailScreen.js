@@ -1,13 +1,8 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PinjamDetailContainer from "../containers/Item/PinjamDetailContainers";
-import AppBarComponent from "../components/AppBar/AppBarComponents";
-import ButtonComponent from "../components/Button/ButtonComponent";
-import DialogComponent from "../components/Dialog/DialogComponent";
-import { useState } from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { colors } from "../constants/colors";
-import { useFonts } from "expo-font";
+import AppBarComponent from "../components/AppBar/AppBarComponent";
+import { ScrollView } from "react-native-gesture-handler";
 
 
 const PinjamDetailScreen = ({ navigation }) => {
@@ -35,33 +30,6 @@ const PinjamDetailScreen = ({ navigation }) => {
       <View style={styles.container}>
         <PinjamDetailContainer navigation={navigation} />
       </View>
-      <View style={styles.buttonsection}>
-      <TouchableOpacity onPress={showAlertDialog}>
-          <ButtonComponent
-            buttontext={"Ajukan"}
-            buttonstyle={styles.button}
-            textstyle={{ color: colors.loginText}}
-          />
-        </TouchableOpacity>
-        <ButtonComponent
-          buttontext={"Kembali"}
-          buttonstyle={[styles.button, {backgroundColor: colors.buttonRegister}]
-          }
-          textstyle={{color: colors.registerText}}
-          onPress={() => navigation.navigate("items")}
-        />
-      </View>
-      <DialogComponent
-        style={styles.DialogStyle}
-        isVisible={dialogVisible}
-        setVisible={hideAlertDialog}
-        title="Sedang Diajukan"
-        content={
-          <Text>
-            Pantau terus laman history untuk melihat status peminjaman kamu
-          </Text>
-        }
-      />
     </>
   );
 };
