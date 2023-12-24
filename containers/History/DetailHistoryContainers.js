@@ -63,7 +63,7 @@ const DetailHistoryContainers = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
+    flex: 1,
   },
 });
 
