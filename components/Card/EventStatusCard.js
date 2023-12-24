@@ -1,31 +1,21 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const EventStatusCardComponents = (eventdata) => {
+const EventStatusCardComponents = (props) => {
+  const { eventName, eventDate, eventStatusColor, status, navigation } = props;
+
   return (
-    <>
-      <TouchableOpacity>
-        <View
-          style={[
-            styles.container,
-            { borderColor: eventdata.eventStatusColor },
-          ]}
-        >
-          <View style={styles.textcontainer}>
-            <Text style={styles.title}>{eventdata.eventName}</Text>
-            <Text>{eventdata.eventDate}</Text>
-          </View>
-          <Text
-            style={[
-              styles.status,
-              { backgroundColor: eventdata.eventStatusColor },
-            ]}
-          >
-            {eventdata.status}
-          </Text>
+    <TouchableOpacity onPress={navigation}>
+      <View style={[styles.container, { borderColor: eventStatusColor }]}>
+        <View style={styles.textcontainer}>
+          <Text style={styles.title}>{eventName}</Text>
+          <Text>{eventDate}</Text>
         </View>
-      </TouchableOpacity>
-    </>
+        <Text style={[styles.status, { backgroundColor: eventStatusColor }]}>
+          {status}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 

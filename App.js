@@ -10,6 +10,12 @@ import HistoryScreen from "./screens/HistoryScreen";
 import ItemScreen from "./screens/ItemScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { colors } from "./constants/colors";
+import ItemDetailScreen from "./screens/ItemDetailScreen";
+import PinjamDetailScreen from "./screens/PinjamDetailScreen";
+import DetailHistoryScreen from "./screens/DetailHistoryScreen";
+import RoomDetailScreen from "./screens/RoomDetailScreen";
+import AdminProfileScreen from "./screens/admin/aProfileScreen";
+import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen"
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,10 +23,8 @@ const Tab = createBottomTabNavigator();
 const MainTabsMenu = () => {
   return (
     <Tab.Navigator
-      initialRouteName="history"
-      screenOptions={{
-        activeTintColor: colors.tabActive,
-      }}
+      initialRouteName="items"
+      screenOptions={{ tabBarActiveTintColor: colors.tabActive }}
     >
       <Tab.Screen
         name="items"
@@ -68,7 +72,7 @@ const MainTabsMenu = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainTabsMenu">
+      <Stack.Navigator initialRouteName="aDetailpinjam">
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -79,21 +83,43 @@ export default function App() {
           component={RegisterScreen}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="MainTabsMenu"
           component={MainTabsMenu}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="detail"
+          component={ItemDetailScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="peminjaman"
+          component={PinjamDetailScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="detailpinjam"
+          component={DetailHistoryScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="detailruangan"
+          component={RoomDetailScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="aProfile"
+          component={AdminProfileScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="aDetailpinjam"
+          component={AdminDetailHistoryScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

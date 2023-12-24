@@ -2,27 +2,23 @@ import { Text, StyleSheet, View } from "react-native";
 import HistoryContainers from "../containers/History/HistoryContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponents";
 import { useFonts } from "expo-font";
-import { Poppins_700Bold_Italic } from "@expo-google-fonts/poppins";
 
-const HistoryScreen = () => {
+const HistoryScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
-    Poppins_700Bold_Italic,
+    "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
   });
+
   if (!fontsLoaded) {
     return null;
   }
   return (
     <>
       <AppBarComponent
-        content={
-          <Text style={styles.headerText}>
-          Riwayat Peminjaman
-        </Text>
-        }
+        content={<Text style={styles.headerText}>Riwayat Peminjaman</Text>}
       />
       <View style={styles.container}>
         <View style={styles.historySection}>
-          <HistoryContainers />
+          <HistoryContainers navigation={navigation} />
         </View>
       </View>
     </>
@@ -39,9 +35,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
-  headerText:{
+  headerText: {
     fontSize: 24,
-    fontFamily: "Poppins_700Bold_Italic", 
+    fontFamily: "Poppins-BoldItalic", 
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,
