@@ -3,18 +3,21 @@ import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet, View } from "react-native";
 import { colors } from "../../constants/colors";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/userSlice";
 
 const LoginContainer = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [nama, setNama] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleLogin = async () => {
     try {
       setLoading(true);
       const user = await loginUser(username, password);
-
-      console.log("Login successful. User:", user);
+      dispatch(setUser({ nama, status }));
     } catch (error) {
       console.error("Login failed:", error.message);
     } finally {
@@ -46,7 +49,10 @@ const LoginContainer = ({ navigation }) => {
         />
         <ButtonComponent
           buttontext={"Register"}
-          buttonstyle={[styles.button, {backgroundColor: colors.buttonRegister}]}
+          buttonstyle={[
+            styles.button,
+            { backgroundColor: colors.buttonRegister },
+          ]}
           textstyle={styles.registertext}
           onPress={() => navigation.navigate("Register")}
         />

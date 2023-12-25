@@ -30,7 +30,7 @@ const HistoryContainers = ({ navigation, route }) => {
         renderItem={({ item }) =>
           RenderItem({ item }, { navigation }, { route })
         }
-        keyExtractor={(item) => item.eventName}
+        keyExtractor={(item) => item.id}
       />
     </>
   );
