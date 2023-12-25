@@ -26,30 +26,27 @@ const TableComponent = ({ data, tableHead }) => {
   const flexArr = determineFlexArr(tableHead.length);
 
   return (
-    <View style={styles.container}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: "#000" }}>
+    <Table borderStyle={{ borderWidth: 1, borderColor: "#000" }}>
+      <Row
+        data={tableHead}
+        style={styles.head}
+        textStyle={styles.headText}
+        flexArr={flexArr}
+      />
+      {tableData.map((rowData, index) => (
         <Row
-          data={tableHead}
-          style={styles.head}
-          textStyle={styles.headText}
+          key={index}
+          data={rowData}
+          style={styles.row}
+          textStyle={styles.text}
           flexArr={flexArr}
         />
-        {tableData.map((rowData, index) => (
-          <Row
-            key={index}
-            data={rowData}
-            style={styles.row}
-            textStyle={styles.text}
-            flexArr={flexArr}
-          />
-        ))}
-      </Table>
-    </View>
+      ))}
+    </Table>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingHorizontal: 16, paddingTop: 16 },
   head: { height: 40, backgroundColor: "#A7C957", borderLeftWidth: 1 },
   headText: { textAlign: "center", fontWeight: "bold" },
   text: { textAlign: "center" },
@@ -59,7 +56,6 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderLeftWidth: 1,
   },
-
 });
 
 export default TableComponent;

@@ -6,7 +6,9 @@ import TableComponent from "../../components/Table/TableComponent";
 import StatusComponent from "../../components/Status/StatusComponent";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 
-const DetailHistoryContainers = ({ navigation }) => {
+const DetailHistoryContainers = ({ navigation, route }) => {
+  const { data } = route.params;
+  console.log(data);
   // Data contoh peminjaman
   const myTableHead = ["No", "List", "Qty"];
   const peminjamanData = [
@@ -15,49 +17,43 @@ const DetailHistoryContainers = ({ navigation }) => {
     { namaPeminjaman: "Kertas", qty: 8 },
   ];
 
-  const eventsData = [
-    {
-      eventDate: "20/12/2023",
-      status: "Ditolak",
-      eventStatusColor: colors.eventRejected,
-      startDateTime: "2023-12-20T09:00:00",
-      endDateTime: "2023-12-20T17:00:00",
-      alasan:
-        "Ruang kelas pada tanggal yang dipilih masih waktu perkuliahan. Silahkan buat lagi dan pilih jam di atas jam 5 sore.",
-    },
-  ];
-
   return (
     <View style={styles.container}>
-
-      <View>
+      <View style={styles.tablesection}>
         <TableComponent data={peminjamanData} tableHead={myTableHead} />
       </View>
-      <View style={{ marginTop: 120 }}>
+      <View style={styles.contentsection}>
         <HistoryEventCard
           status={
             <StatusComponent
-              status={eventsData[0].status}
-              color={eventsData[0].eventStatusColor}
+              status={data.status}
+              color={
+                data.status == "Ditolak"
+                  ? colors.eventRejected
+                  : data.status == "Diajukan"
+                  ? colors.eventInProgress
+                  : data.status == "Disetujui"
+                  ? colors.eventProcessing
+                  : colors.buttonLogin
+              }
             />
           }
-          startDateTime={eventsData[0].startDateTime}
-          endDateTime={eventsData[0].endDateTime}
-          reason={eventsData[0].eventName}
-          alasan={eventsData[0].alasan}
+          startDateTime={data.tanggalAwal}
+          endDateTime={data.tanggalAkhir}
+          acara={data.namaAcara}
+          alasan={data.alasan}
         />
         <ButtonComponent
           buttontext={"Kembali"}
           buttonstyle={{
             backgroundColor: colors.buttonLogin,
-            margin: 10,
+            marginTop: 40,
             padding: 10,
             borderRadius: 10,
           }}
           onPress={() => navigation.navigate("history")}
         />
       </View>
-
     </View>
   );
 };
@@ -65,6 +61,11 @@ const DetailHistoryContainers = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
+    flex: 1,
+    margin: 20,
+  },
+  contentsection: {
+    flex: 1, // Tambahkan flex: 1 untuk mengisi ruang secara merata
   },
 });
 

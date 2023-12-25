@@ -13,15 +13,15 @@ const DetailCard = ({
       <Image source={{ uri: imageSource }} style={styles.image} />
       <View style={styles.infoContainer}>
         <View style={styles.textContainer}>
-          <Text style={[styles.title, styles.leftAlign]}>{deskripsi}</Text>
+          <Text style={[styles.title, styles.leftAlign]}>Deskripsi</Text>
           <Text style={[styles.descriptionText, styles.leftAlign]}>
             {description}
           </Text>
         </View>
         <View style={styles.textContainer}>
-          <Text style={[styles.title, styles.leftAlign]}>{max}</Text>
+          <Text style={[styles.title, styles.leftAlign]}>Kapasitas</Text>
           <Text style={[styles.availabilityText, styles.leftAlign]}>
-            {availability ? `${availability}` : "Tidak Tersedia"}
+            {availability ? `${availability} pcs` : "Tidak Tersedia"}
           </Text>
         </View>
       </View>

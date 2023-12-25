@@ -5,10 +5,10 @@ import {
 } from "../containers/Item/ItemContainer";
 import { View, StyleSheet } from "react-native";
 
-const ItemScreen = ({ navigation }) => {
+const ItemScreen = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
-      <FormPeminjaman navigation={navigation} />
+      <FormPeminjaman navigation={navigation} route={route} />
       <View style={styles.dateContainer}>
         <DateContainer />
       </View>

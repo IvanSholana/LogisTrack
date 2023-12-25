@@ -7,5 +7,5 @@ export const colors = {
   buttonLogin: "#A7C957",
   buttonRegister: "#D9D9D9",
   loginText: "white",
-  registerText: "#737373",  
+  registerText: "#737373",
 };

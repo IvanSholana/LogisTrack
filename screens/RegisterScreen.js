@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import RegisterContainer from "../containers/Register/RegisterContainer";
 import { useFonts } from "expo-font";
 import { colors } from "../constants/colors";
+import AppBarComponent from "../components/AppBar/AppBarComponent";
 
 const RegisterScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({

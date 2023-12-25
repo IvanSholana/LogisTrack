@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PinjamDetailContainer from "../containers/Item/PinjamDetailContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
-import { ScrollView } from "react-native-gesture-handler";
+import { useFonts } from "expo-font";
 import { colors } from "../constants/colors";
 
 const PinjamDetailScreen = ({ navigation }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
   const [fontsLoaded] = useFonts({
-    "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
+    "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"),
   });
   if (!fontsLoaded) {
     return null;
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontFamily: "Poppins-BoldItalic", 
+    fontFamily: "Poppins-BoldItalic",
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,
@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
   buttonsection: {
     flex: 1,
     justifyContent: "flex-end",
-    backgroundColor: "white", 
-    padding: 20
+    backgroundColor: "white",
+    padding: 20,
   },
   button: {
     backgroundColor: colors.buttonLogin,

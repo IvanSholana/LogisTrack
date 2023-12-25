@@ -40,11 +40,12 @@ const styles = StyleSheet.create({
     borderColor: "black",
   },
   logocontainer: {
-    padding: 48,
+    paddingHorizontal: 48,
+    paddingTop: 40,
   },
   loginsection: {
     justifyContent: "flex-end",
-    paddingTop: 20,
+    paddingTop: 10,
     paddingHorizontal: 20,
     flex: 1,
     width: "100%",

@@ -1,9 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const EventCard = ({ status, startDateTime, endDateTime, alasan }) => {
+const EventCard = ({ status, startDateTime, endDateTime, alasan, acara }) => {
   return (
     <View style={styles.card}>
+      <Text style={styles.text}>Nama Acara</Text>
+      <Text>{acara}</Text>
       <Text style={styles.text}>Status:</Text>
       <View style={styles.statuscontainer}>{status}</View>
       <Text style={styles.text}>Tanggal dan Waktu Mulai: </Text>
