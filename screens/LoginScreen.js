@@ -19,7 +19,6 @@ const LoginScreen = ({ navigation }) => {
           <View style={styles.logocontainer}>
             <Image
               source={require("../assets/images/LogisTrack.png")}
-              style={styles.logo}
               resizeMode="contain"
             />
           </View>
@@ -38,14 +37,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-
     borderColor: "black",
   },
   logocontainer: {
-    padding: 20,
+    padding: 48,
   },
   loginsection: {
     justifyContent: "flex-end",
+    paddingTop: 20,
     paddingHorizontal: 20,
     flex: 1,
     width: "100%",
