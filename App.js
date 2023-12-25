@@ -13,6 +13,8 @@ import ItemDetailScreen from "./screens/ItemDetailScreen";
 import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -67,45 +69,47 @@ const MainTabsMenu = () => {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={RegisterScreen}
-          options={{ headerShown: false }}
-        />
 
-        <Stack.Screen
-          name="MainTabsMenu"
-          component={MainTabsMenu}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="detail"
-          component={ItemDetailScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="peminjaman"
-          component={PinjamDetailScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="detailpinjam"
-          component={DetailHistoryScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="detailruangan"
-          component={RoomDetailScreen}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="aProfile">
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MainTabsMenu"
+            component={MainTabsMenu}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="detail"
+            component={ItemDetailScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="peminjaman"
+            component={PinjamDetailScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="detailpinjam"
+            component={DetailHistoryScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="detailruangan"
+            component={RoomDetailScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>{" "}
+    </Provider>
   );
 }
