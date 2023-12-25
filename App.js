@@ -14,8 +14,6 @@ import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import AdminProfileScreen from "./screens/admin/aProfileScreen";
-import AdminEditDetailItemScreen from "./screens/admin/aEditDetailItemScreen";
-import AdminEditDetailRuanganScreen from "./screens/admin/aEditDetailRuanganScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -113,12 +111,6 @@ export default function App() {
           component={AdminProfileScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
-          name="aEditDetailItem"
-          component={AdminEditDetailItemScreen}
-          options={{ headerShown: false }}
-        />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
