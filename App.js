@@ -69,6 +69,7 @@ const MainTabsMenu = () => {
 
 export default function App() {
   return (
+
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="aProfile">
@@ -82,7 +83,6 @@ export default function App() {
             component={RegisterScreen}
             options={{ headerShown: false }}
           />
-
           <Stack.Screen
             name="MainTabsMenu"
             component={MainTabsMenu}

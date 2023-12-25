@@ -1,6 +1,6 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Table, Row } from "react-native-table-component";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Table, Row } from 'react-native-table-component';
 
 const TableComponent = ({ data, tableHead }) => {
   const determineFlexArr = (headLength) => {
@@ -26,36 +26,44 @@ const TableComponent = ({ data, tableHead }) => {
   const flexArr = determineFlexArr(tableHead.length);
 
   return (
-    <Table borderStyle={{ borderWidth: 1, borderColor: "#000" }}>
-      <Row
-        data={tableHead}
-        style={styles.head}
-        textStyle={styles.headText}
-        flexArr={flexArr}
-      />
-      {tableData.map((rowData, index) => (
+    <View style={styles.container}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: "#000" }}>
         <Row
-          key={index}
-          data={rowData}
-          style={styles.row}
-          textStyle={styles.text}
+          data={tableHead}
+          style={styles.head}
+          textStyle={styles.headText}
           flexArr={flexArr}
         />
-      ))}
-    </Table>
+        {tableData.map((rowData, index) => (
+          <Row
+            key={index}
+            data={rowData}
+            style={styles.row}
+            textStyle={styles.text}
+            flexArr={flexArr}
+          />
+        ))}
+      </Table>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  head: { height: 40, backgroundColor: "#A7C957", borderLeftWidth: 1 },
-  headText: { textAlign: "center", fontWeight: "bold" },
-  text: { textAlign: "center" },
-  row: {
-    height: 30,
-    borderBottomWidth: 1,
-    borderColor: "#000",
-    borderLeftWidth: 1,
+  container: { flex: 1, 
+    paddingBottom: 120 
   },
+  head: { height: 40, 
+    backgroundColor: '#A7C957', 
+    borderLeftWidth: 1 
+  },
+  headText: { textAlign: 'center', 
+  fontWeight: 'bold' 
+},
+  text: { textAlign: 'center' },
+  row: { height: 30, 
+    borderWidth: 1, 
+    borderColor: '#A6A6A6', 
+    borderLeftWidth: 1 }, 
 });
 
 export default TableComponent;
