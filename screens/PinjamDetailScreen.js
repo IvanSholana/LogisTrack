@@ -5,7 +5,7 @@ import AppBarComponent from "../components/AppBar/AppBarComponent";
 import { useFonts } from "expo-font";
 import { colors } from "../constants/colors";
 
-const PinjamDetailScreen = ({ navigation }) => {
+const PinjamDetailScreen = ({ navigation, route }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
   const [fontsLoaded] = useFonts({
     "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"),
@@ -14,21 +14,13 @@ const PinjamDetailScreen = ({ navigation }) => {
     return null;
   }
 
-  const showAlertDialog = () => {
-    setDialogVisible(true);
-  };
-
-  const hideAlertDialog = () => {
-    setDialogVisible(false);
-  };
-
   return (
     <>
       <AppBarComponent
         content={<Text style={styles.headerText}>Pinjam Aset</Text>}
       />
       <View style={styles.container}>
-        <PinjamDetailContainer navigation={navigation} />
+        <PinjamDetailContainer navigation={navigation} route={route} />
       </View>
     </>
   );
@@ -36,6 +28,7 @@ const PinjamDetailScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "white",
     padding: 20,
   },
