@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
-import AdminEditDetailRuanganContainers from "../../containers/Item/AdminEditDetailRuanganContainer.js";
-import AppBarComponent from "../../components/AppBar/AppBarComponent.js";
+import AdminEditDetailRuanganContainers from "../../containers/Item/AdminEditDetailRuanganContainer";
+import AppBarComponent from "../../components/AppBar/AppBarComponent";
 import { ScrollView } from "react-native-gesture-handler";
 
 const AdminEditDetailRuanganScreen = ({ navigation }) => {
