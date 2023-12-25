@@ -14,7 +14,6 @@ import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 
-
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const MainTabsMenu = () => {

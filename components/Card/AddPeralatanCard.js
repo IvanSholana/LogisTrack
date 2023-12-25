@@ -3,7 +3,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { colors } from "../../constants/colors";
 import { useState } from "react";
 
-const AddPeralatanCardComponents = ({ navigation }) => {
+const AddPeralatanCardComponents = ({ navigation, data }) => {
   const [count, setCount] = useState(0);
 
   const handleDecrement = () => {
@@ -16,8 +16,10 @@ const AddPeralatanCardComponents = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.navigate("detail")}>
-        <Text style={styles.itemName}>Nama Barang</Text>
+      <Pressable
+        onPress={() => navigation.navigate("detail", { detail: data })}
+      >
+        <Text style={styles.itemName}>{data.nama}</Text>
       </Pressable>
 
       <View style={styles.countItem}>

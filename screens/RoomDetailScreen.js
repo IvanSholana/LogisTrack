@@ -5,7 +5,7 @@ import ButtonComponent from "../components/Button/ButtonComponent";
 import { colors } from "../constants/colors";
 import { useFonts } from "expo-font";
 
-const RoomDetailScreen = ({ navigation }) => {
+const RoomDetailScreen = ({ navigation, route }) => {
   const [fontsLoaded] = useFonts({
     "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"),
   });
@@ -20,7 +20,7 @@ const RoomDetailScreen = ({ navigation }) => {
           content={<Text style={styles.headerText}>Detail Ruangan</Text>}
         />
         <View style={styles.roomSection}>
-          <RoomDetailContainers navigation={navigation} />
+          <RoomDetailContainers navigation={navigation} route={route} />
         </View>
         <View style={styles.buttonsection}>
           <ButtonComponent

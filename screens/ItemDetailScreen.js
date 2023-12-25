@@ -5,7 +5,7 @@ import ButtonComponent from "../components/Button/ButtonComponent";
 import { colors } from "../constants/colors";
 import { useFonts } from "expo-font";
 
-const ItemDetailScreen = ({ navigation }) => {
+const ItemDetailScreen = ({ navigation, route }) => {
   const [fontsLoaded] = useFonts({
     "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"),
   });
@@ -20,7 +20,7 @@ const ItemDetailScreen = ({ navigation }) => {
           content={<Text style={styles.headerText}>Detail Item</Text>}
         />
         <View style={styles.itemSection}>
-          <ItemDetailContainers navigation={navigation} />
+          <ItemDetailContainers navigation={navigation} route={route} />
         </View>
         <View style={styles.buttonsection}>
           <ButtonComponent
