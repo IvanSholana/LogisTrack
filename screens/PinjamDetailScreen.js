@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PinjamDetailContainer from "../containers/Item/PinjamDetailContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
-import { colors } from "../constants/colors";
 import { useFonts } from "expo-font";
+import { colors } from "../constants/colors";
 
 const PinjamDetailScreen = ({ navigation }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -13,6 +13,14 @@ const PinjamDetailScreen = ({ navigation }) => {
   if (!fontsLoaded) {
     return null;
   }
+
+  const showAlertDialog = () => {
+    setDialogVisible(true);
+  };
+
+  const hideAlertDialog = () => {
+    setDialogVisible(false);
+  };
 
   return (
     <>

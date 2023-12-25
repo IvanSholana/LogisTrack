@@ -118,7 +118,7 @@ const AdminDetailHistoryContainers = ({ navigation }) => {
           marginTop: 20,
           padding: 10,
           borderRadius: 10,
-          margin:50        
+          margin: 20,
         }}
         onPress={() => navigation.navigate("history")}
       />
