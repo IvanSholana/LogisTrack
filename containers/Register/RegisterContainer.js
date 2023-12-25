@@ -6,6 +6,7 @@ import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
 // import User from "../../domain/models/user";
 
+
 const RegisterContainer = ({ navigation }) => {
   const [selected, setSelected] = useState("");
   const data = [

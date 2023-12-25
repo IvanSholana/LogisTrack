@@ -4,7 +4,6 @@ import RegisterContainer from "../containers/Register/RegisterContainer";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
 import { useFonts } from "expo-font";
 import { colors } from "../constants/colors";
-import { ScrollView } from "react-native-gesture-handler";
 
 const RegisterScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({

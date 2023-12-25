@@ -56,7 +56,7 @@ const DateContainer = () => {
   );
 };
 
-const FormPeminjaman = ({ navigation }) => {
+const FormPeminjaman = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
 
   const handleTabPress = (tab) => {
@@ -64,18 +64,16 @@ const FormPeminjaman = ({ navigation }) => {
   };
   return (
     <>
-      <View>
-        <AppBarContainer
-          activeTab={activeTab}
-          handleTabPress={handleTabPress}
-          navigation={navigation}
-        />
-        {activeTab === "Peralatan" ? (
-          <FormAlatContainer navigation={navigation} />
-        ) : (
-          <FormRuanganContainer navigation={navigation} />
-        )}
-      </View>
+      <AppBarContainer
+        activeTab={activeTab}
+        handleTabPress={handleTabPress}
+        navigation={navigation}
+      />
+      {activeTab === "Peralatan" ? (
+        <FormAlatContainer navigation={navigation} />
+      ) : (
+        <FormRuanganContainer navigation={navigation} route={route} />
+      )}
     </>
   );
 };

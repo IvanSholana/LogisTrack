@@ -27,7 +27,7 @@ const TableComponent = ({ data, tableHead }) => {
 
   return (
     <View style={styles.container}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#000' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: "#000" }}>
         <Row
           data={tableHead}
           style={styles.head}

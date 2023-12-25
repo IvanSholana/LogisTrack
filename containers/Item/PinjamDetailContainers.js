@@ -2,14 +2,23 @@ import React from "react";
 import InputText from "../../components/InputText/InputText";
 import { StyleSheet, View, Text } from "react-native";
 import TableComponent from "../../components/Table/TableComponent";
-
 import DialogComponent from "../../components/Dialog/DialogComponent";
 import { useState } from "react";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { colors } from "../../constants/colors";
+import ButtonComponent from "../../components/Button/ButtonComponent";
 
 const PinjamDetailContainer = ({ navigation }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
+
+  const showAlertDialog = () => {
+    setDialogVisible(true);
+  };
+
+  const hideAlertDialog = () => {
+    setDialogVisible(false);
+  };
+
   const myTableHead = ["No", "List", "Qty"];
 
   const peminjamanData = [
@@ -19,7 +28,6 @@ const PinjamDetailContainer = ({ navigation }) => {
   ];
 
   return (
-
     <>
       <ScrollView>
         <View>
@@ -62,7 +70,6 @@ const PinjamDetailContainer = ({ navigation }) => {
         }
       />
     </>
-
   );
 };
 

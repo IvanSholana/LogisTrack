@@ -5,13 +5,36 @@ import {
   ProfileContent,
 } from "../containers/Profile/ProfileContainer";
 
-const ProfileScreen = ({ navigation }) => {
+const UserProfileScreen = ({ navigation }, { userstatus }) => {
   return (
     <>
       <AppBarComponent content={<ProfileContainer navigation={navigation} />} />
       <View style={styles.content}>
         <ProfileContent />
       </View>
+    </>
+  );
+};
+
+const AdminProfileScreen = ({ navigation }) => {
+  return (
+    <>
+      <AppBarComponent content={<ProfileContainer navigation={navigation} />} />
+      <View style={styles.content}>
+        <ProfileContent />
+      </View>
+    </>
+  );
+};
+
+const ProfileScreen = ({ navigation }, userstatus) => {
+  return (
+    <>
+      {userstatus == "mahasiswa" || userstatus == "dosen" ? (
+        <UserProfileScreen />
+      ) : (
+        <AdminProfileScreen />
+      )}
     </>
   );
 };
