@@ -7,16 +7,32 @@ import FloatingButton from "../../components/FloatingButton/FloatingButtonCompon
 import DatePickers from "../../components/DatePicker/DatePickerComponents";
 import FormRuanganContainer from "./FormRuangan";
 import FormAlatContainer from "./FormPeralatan";
+import dayjs from "dayjs";
 
 const DateContainer = () => {
   const [dialogVisible, setDialogVisible] = useState(false);
   const [calender, setcalender] = useState(0);
+
+  const [startDate, setStartDate] = useState(dayjs());
+  const [endDate, setEndDate] = useState(dayjs());
+
+  const handleStartDateChange = (newDate) => {
+    setStartDate(newDate);
+    console.log(`start : ${startDate}`);
+  };
+
+  const handleEndDateChange = (newDate) => {
+    setEndDate(newDate);
+    console.log(`end : ${endDate}`);
+  };
 
   return (
     <>
       <FloatingButton icon="calendar" onpress={() => setDialogVisible(true)} />
       {calender == 0 ? (
         <DatePickers
+          setValue={handleStartDateChange}
+          value={startDate}
           isVisible={dialogVisible}
           setVisible={setDialogVisible}
           title={"Tanggal Awal Peminjaman"}
@@ -35,6 +51,8 @@ const DateContainer = () => {
         />
       ) : (
         <DatePickers
+          setValue={handleEndDateChange}
+          value={endDate}
           isVisible={dialogVisible}
           setVisible={setDialogVisible}
           title={"Tanggal Akhir Peminjaman"}
@@ -58,27 +76,40 @@ const DateContainer = () => {
 
 const FormPeminjaman = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
+  const [checkout, setCheckout] = useState([]);
 
   const handleTabPress = (tab) => {
     setActiveTab(tab);
   };
+
   return (
     <>
       <AppBarContainer
         activeTab={activeTab}
         handleTabPress={handleTabPress}
         navigation={navigation}
+        keranjang={checkout}
       />
       {activeTab === "Peralatan" ? (
-        <FormAlatContainer navigation={navigation} />
+        <FormAlatContainer
+          navigation={navigation}
+          checkout={checkout}
+          setcheckout={setCheckout}
+        />
       ) : (
-        <FormRuanganContainer navigation={navigation} route={route} />
+        <FormRuanganContainer navigation={navigation} />
       )}
     </>
   );
 };
 
-const AppBarContainer = ({ activeTab, handleTabPress, navigation }) => {
+const AppBarContainer = ({
+  activeTab,
+  handleTabPress,
+  navigation,
+  keranjang,
+}) => {
+  console.log(keranjang);
   return (
     <>
       <View style={styles.container}>
@@ -90,7 +121,9 @@ const AppBarContainer = ({ activeTab, handleTabPress, navigation }) => {
           />
           <TouchableOpacity
             style={styles.checkout}
-            onPress={() => navigation.navigate("peminjaman")}
+            onPress={() =>
+              navigation.navigate("peminjaman", { data: keranjang })
+            }
           >
             <Icon name="shopping-cart" size={30} color="#333" />
           </TouchableOpacity>
