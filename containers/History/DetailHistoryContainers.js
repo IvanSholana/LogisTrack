@@ -4,6 +4,7 @@ import HistoryEventCard from "../../components/Card/HistoryEventCard";
 import { colors } from "../../constants/colors";
 import TableComponent from "../../components/Table/TableComponent";
 import StatusComponent from "../../components/Status/StatusComponent";
+import ButtonComponent from "../../components/Button/ButtonComponent";
 
 const DetailHistoryContainers = ({ navigation }) => {
   // Data contoh peminjaman

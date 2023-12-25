@@ -1,16 +1,17 @@
 import { StyleSheet, View, Text } from "react-native";
-import AdminDetailHistoryContainers from "../../containers/History/admDetailHistoryContainers";
-import AppBarComponent from "../../components/AppBar/AppBarComponent";
+import AdminEditDetailItemContainers from "../../containers/Item/admEditDetailItemContainers";
+import AppBarComponent from "../../components/AppBar/AppBarComponents";
 
-const DetailHistoryScreen = ({ navigation }) => {
+const AdminEditDetailItemScreen = ({ navigation }) => {
   return (
     <>
       <AppBarComponent
-        content={<Text style={styles.headerText}>Detail Peminjaman</Text>}
+        content={<Text style={styles.headerText}>Edit Detail Item</Text>}
       />
       <View style={styles.container}>
+        <View style={styles.appBar}></View>
         <View style={styles.historySection}>
-          <AdminDetailHistoryContainers navigation={navigation} />
+          <AdminEditDetailItemContainers navigation={navigation} />
         </View>
       </View>
     </>
@@ -38,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailHistoryScreen;
+export default AdminEditDetailItemScreen;
