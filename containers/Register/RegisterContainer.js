@@ -4,6 +4,7 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet, View} from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
+// import User from "../../domain/models/user";
 
 const RegisterContainer = ({ navigation }) => {
   const [selected, setSelected] = useState("");
@@ -12,6 +13,10 @@ const RegisterContainer = ({ navigation }) => {
     { key: "2", value: "Dosen" },
     { key: "3", value: "Staff" },
   ];
+
+  // const testings = new User();
+
+  // console.log(testings.generateToken())  
 
   return (
     <>
@@ -32,7 +37,7 @@ const RegisterContainer = ({ navigation }) => {
       <SelectList
         setSelected={(val) => setSelected(val)}
         data={data}
-        save="value"
+        save={selected}
         placeholder="Status/Jabatan"
         boxStyles={{
           borderColor: "#ccc",
