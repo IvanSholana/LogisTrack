@@ -15,7 +15,6 @@ import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen";
 import AdminEditDetailItemScreen from "./screens/admin/aEditDetailItemScreen";
-import AdminProfileScreen from "./screens/admin/aProfileScreen";
 import AdminEditDetailRuanganScreen from "./screens/admin/aEditDetailRuanganScreen";
 import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen";
 
@@ -120,7 +119,6 @@ export default function App() {
           component={AdminEditDetailItemScreen}
           options={{ headerShown: false }}
         />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
