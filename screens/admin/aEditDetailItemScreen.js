@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 import AdminEditDetailItemContainers from "../../containers/Item/admEditDetailItemContainers";
-import AppBarComponent from "../../components/AppBar/AppBarComponents";
+import AppBarComponent from "../../components/AppBar/AppBarComponent";
 
 const AdminEditDetailItemScreen = ({ navigation }) => {
   return (

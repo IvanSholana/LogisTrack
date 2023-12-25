@@ -4,7 +4,6 @@ import DetailHistoryContainers from "../containers/History/DetailHistoryContaine
 import AdminDetailHistoryContainers from "../containers/History/admDetailHistoryContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
 import { useFonts } from "expo-font";
-import { colors } from "../constants/colors";
 
 const AdminDetailHistoryScreen = ({ navigation, route }) => {
   return (
@@ -58,6 +57,7 @@ const DetailHistoryScreen = ({ navigation, accountType, route }) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "white",
 
     flex: 1,

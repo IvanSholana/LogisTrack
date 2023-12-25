@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import AddPeralatanCardComponents from "../../components/Card/AddPeralatanCard";
-import peralatanList from "../../data/local/PeralatanData";
+import peralatanList from "../../data/local/PeralatanData"; // GET API
 import BarangDipinjam from "../../domain/models/BarangDipinjam";
 
 const FormAlatContainer = ({ navigation, checkout, setcheckout }) => {
