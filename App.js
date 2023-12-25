@@ -15,7 +15,6 @@ import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import AdminProfileScreen from "./screens/admin/aProfileScreen";
 
-
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const MainTabsMenu = () => {
