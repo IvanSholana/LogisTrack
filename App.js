@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -15,13 +14,9 @@ import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import AdminProfileScreen from "./screens/admin/aProfileScreen";
-import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen";
-import AdminEditDetailRuanganScreen from "./screens/admin/aEditDetailRuanganScreen";
-import ItemPagesScreen from "./screens/admin/aItemPagesScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
 const MainTabsMenu = () => {
   return (
     <Tab.Navigator
@@ -74,7 +69,7 @@ const MainTabsMenu = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ItemPage">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -114,21 +109,6 @@ export default function App() {
         <Stack.Screen
           name="aProfile"
           component={AdminProfileScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="aDetailpinjam"
-          component={AdminDetailHistoryScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="aDetailEditRuangan"
-          component={AdminEditDetailRuanganScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ItemPage"
-          component={ItemPagesScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

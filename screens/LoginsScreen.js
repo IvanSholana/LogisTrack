@@ -1,6 +1,6 @@
 import { Image, StyleSheet, View } from "react-native";
 import React from "react";
-import LoginContainer from "../containers/login/loginContainer";
+import LoginContainer from "../containers/Login/LoginContainer";
 
 const LoginScreen = () => {
   return (

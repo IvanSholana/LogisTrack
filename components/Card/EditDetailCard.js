@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Image, StyleSheet, TextInput } from "react-native";
 
-const EditDetailRuanganCard = ({
+const EditDetailCard = ({
   imageSource,
   availability,
   description,
@@ -14,7 +14,7 @@ const EditDetailRuanganCard = ({
 
   const handleDeskripsiChange = (text) => {
     setInputDeskripsi(text);
-    onChangeTextDeskripsi(text);
+    onChangeTextDeskripsi(text); 
   };
 
   const handleMaxChange = (text) => {
@@ -24,11 +24,7 @@ const EditDetailRuanganCard = ({
 
   return (
     <View style={styles.container}>
-      <Image
-        source={{ uri: imageSource }}
-        style={{ width: "100%", aspectRatio: 16 / 9 }}
-        resizeMode="cover"
-      />
+      <Image source={{ uri: imageSource }} style={styles.image} />
       <View style={styles.infoContainer}>
         <View style={styles.textContainer}>
           <Text style={[styles.title, styles.leftAlign]}>Deskripsi</Text>
@@ -42,16 +38,12 @@ const EditDetailRuanganCard = ({
           />
         </View>
         <View style={styles.textContainer}>
-          <Text style={[styles.title, styles.leftAlign]}>Kapasitas</Text>
+          <Text style={[styles.title, styles.leftAlign]}>Kuantitas</Text>
           <TextInput
-            style={[
-              styles.availabilityText,
-              styles.leftAlign,
-              styles.inputText,
-            ]}
+            style={[styles.availabilityText, styles.leftAlign, styles.inputText]}
             value={inputMax}
             onChangeText={handleMaxChange}
-            placeholder="Kapasitas"
+            placeholder="Kuantitas"
           />
         </View>
       </View>
@@ -64,6 +56,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   image: {
+    width: 200,
+    height: 200,
     marginBottom: 20,
     resizeMode: "contain",
     alignSelf: "center",
@@ -74,9 +68,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 5,
     color: "#333",
-    marginTop: 10,
   },
   descriptionText: {
     fontSize: 16,
@@ -95,4 +88,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EditDetailRuanganCard;
+export default EditDetailCard;
