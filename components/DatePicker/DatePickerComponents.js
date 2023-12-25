@@ -1,11 +1,16 @@
 import DateTimePicker from "react-native-ui-datepicker";
-import dayjs from "dayjs";
 import { Dialog } from "react-native-simple-dialogs";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-const DatePickers = ({ isVisible, setVisible, title, item }) => {
-  const [value, setValue] = useState(dayjs());
+const DatePickers = ({
+  isVisible,
+  setVisible,
+  title,
+  item,
+  value,
+  setValue,
+}) => {
   return (
     <Dialog
       visible={isVisible}
