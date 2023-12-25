@@ -10,10 +10,11 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import peralatanList from "../../data/local/PeralatanData";
 
 const PinjamDetailContainer = ({ navigation, route }) => {
-  const { data } = route.params;
+  const { data, timeline } = route.params;
+  const [dateAwal, dateAkhir] = timeline;
 
-  console.log(data);
-  console.log();
+  const [tanggalAwal, jamAwal] = dateAwal.split(" ");
+  const [tanggalAkhir, jamAkhir] = dateAkhir.split(" ");
 
   const [dialogVisible, setDialogVisible] = useState(false);
 
@@ -47,10 +48,26 @@ const PinjamDetailContainer = ({ navigation, route }) => {
           </View>
           <View style={styles.InputText}>
             <InputText textinputname={"Nama Event"} />
-            <InputText textinputname={"Tanggal Mulai"} />
-            <InputText textinputname={"Waktu Mulai"} />
-            <InputText textinputname={"Tanggal Selesai"} />
-            <InputText textinputname={"Waktu Selesai"} />
+            <InputText
+              textinputname={"Tanggal Mulai"}
+              isEdit={false}
+              fillValue={tanggalAwal}
+            />
+            <InputText
+              textinputname={"Waktu Mulai"}
+              isEdit={false}
+              fillValue={jamAwal}
+            />
+            <InputText
+              textinputname={"Tanggal Selesai"}
+              isEdit={false}
+              fillValue={tanggalAkhir}
+            />
+            <InputText
+              textinputname={"Waktu Selesai"}
+              isEdit={false}
+              fillValue={jamAkhir}
+            />
             <ButtonComponent
               onPress={showAlertDialog}
               buttontext={"Ajukan"}

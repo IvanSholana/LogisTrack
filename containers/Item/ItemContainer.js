@@ -9,12 +9,9 @@ import FormRuanganContainer from "./FormRuangan";
 import FormAlatContainer from "./FormPeralatan";
 import dayjs from "dayjs";
 
-const DateContainer = () => {
+const DateContainer = ({ startDate, endDate, setStartDate, setEndDate }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
   const [calender, setcalender] = useState(0);
-
-  const [startDate, setStartDate] = useState(dayjs());
-  const [endDate, setEndDate] = useState(dayjs());
 
   const handleStartDateChange = (newDate) => {
     setStartDate(newDate);
@@ -78,6 +75,9 @@ const FormPeminjaman = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
   const [checkout, setCheckout] = useState([]);
 
+  const [startDate, setStartDate] = useState(dayjs());
+  const [endDate, setEndDate] = useState(dayjs());
+
   const handleTabPress = (tab) => {
     setActiveTab(tab);
   };
@@ -89,6 +89,8 @@ const FormPeminjaman = ({ navigation, route }) => {
         handleTabPress={handleTabPress}
         navigation={navigation}
         keranjang={checkout}
+        dateAwal={startDate}
+        dateAkhir={endDate}
       />
       {activeTab === "Peralatan" ? (
         <FormAlatContainer
@@ -99,6 +101,20 @@ const FormPeminjaman = ({ navigation, route }) => {
       ) : (
         <FormRuanganContainer navigation={navigation} />
       )}
+      <View
+        style={{
+          alignItems: "flex-end",
+          paddingVertical: 20,
+          backgroundColor: "white",
+        }}
+      >
+        <DateContainer
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+        />
+      </View>
     </>
   );
 };
@@ -108,6 +124,8 @@ const AppBarContainer = ({
   handleTabPress,
   navigation,
   keranjang,
+  dateAwal,
+  dateAkhir,
 }) => {
   console.log(keranjang);
   return (
@@ -122,7 +140,10 @@ const AppBarContainer = ({
           <TouchableOpacity
             style={styles.checkout}
             onPress={() =>
-              navigation.navigate("peminjaman", { data: keranjang })
+              navigation.navigate("peminjaman", {
+                data: keranjang,
+                timeline: [dateAwal, dateAkhir],
+              })
             }
           >
             <Icon name="shopping-cart" size={30} color="#333" />
