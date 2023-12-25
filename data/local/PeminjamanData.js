@@ -1,5 +1,5 @@
-import BarangDipinjam from "../../domain/models/BarangDipinjam";
-import Peminjaman from "../../domain/models/Peminjaman";
+import BarangDipinjam from "../../domain/models/BarangDipinjam.js";
+import Peminjaman from "../../domain/models/Peminjaman.js";
 
 const peminjamanList = [
   new Peminjaman(
@@ -113,5 +113,7 @@ const peminjamanList = [
     "Peminjaman untuk pertunjukan teater"
   ),
 ];
+
+console.log(JSON.stringify(peminjamanList, undefined, 1));
 
 export default peminjamanList;

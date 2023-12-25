@@ -17,3 +17,5 @@ class User {
     this.jawabanRahasia = jawabanRahasia;
   }
 }
+
+export default User

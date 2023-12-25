@@ -1,3 +1,6 @@
+import User from "../../domain/models/user.js";
+
+
 const users = [
   new User(
     "John Doe",
@@ -36,3 +39,6 @@ const users = [
     "Blue"
   ),
 ];
+
+
+console.log(JSON.stringify(users, undefined, 2));
