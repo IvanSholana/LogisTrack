@@ -19,7 +19,7 @@
     "expo-image": "~1.3.5",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
-    "react-native": "0.72.5",
+    "react-native": "0.72.6",
     "react-native-bouncy-checkbox": "^3.0.7",
     "react-native-dropdown-select-list": "^2.0.5",
     "react-native-gesture-handler": "~2.12.0",
@@ -33,6 +33,5 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true,
-  "type": "module"
+  "private": true
 }
