@@ -4,7 +4,6 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet, View, Alert} from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
-
 import User from "../../domain/models/user";
 
 
