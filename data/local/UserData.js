@@ -1,8 +1,10 @@
-const users = [
+import User from "../../domain/models/User";
+
+const usersdata = [
   new User(
     "John Doe",
-    "123456",
-    "password123",
+    "123",
+    "123",
     "john.doe@example.com",
     "Dosen",
     "Siapa nama ibu kandung Anda?",
@@ -36,3 +38,5 @@ const users = [
     "Blue"
   ),
 ];
+
+export default usersdata;

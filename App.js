@@ -14,7 +14,7 @@ import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./redux/store";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,10 +69,9 @@ const MainTabsMenu = () => {
 
 export default function App() {
   return (
-
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="aProfile">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
             name="Login"
             component={LoginScreen}
@@ -109,7 +108,7 @@ export default function App() {
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
-      </NavigationContainer>{" "}
+      </NavigationContainer>
     </Provider>
   );
 }
