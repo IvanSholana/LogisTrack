@@ -1,6 +1,6 @@
 import { Text, StyleSheet, View } from "react-native";
 import HistoryContainers from "../containers/History/HistoryContainers";
-import AppBarComponent from "../components/AppBar/AppBarComponents";
+import AppBarComponent from "../components/AppBar/AppBarComponent";
 import { useFonts } from "expo-font";
 
 const HistoryScreen = ({ navigation }) => {
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: "center",
+    backgroundColor: "white",
   },
   headerText: {
     fontSize: 24,

@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -15,8 +14,8 @@ import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import AdminProfileScreen from "./screens/admin/aProfileScreen";
+import AdminEditDetailRuanganScreen from "./screens/admin/aEditDetailRuanganScreen";
 import AdminDetailHistoryScreen from "./screens/admin/aDetailHistoryScreen";
-import AdminEditDetailItemScreen from "./screens/admin/aEditDetailItemScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -72,7 +71,7 @@ const MainTabsMenu = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="aEditDetailItem">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -120,11 +119,10 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="aEditDetailItem"
-          component={AdminEditDetailItemScreen}
+          name="aDetailEditRuangan"
+          component={AdminEditDetailRuanganScreen}
           options={{ headerShown: false }}
         />
-
       </Stack.Navigator>
     </NavigationContainer>
   );

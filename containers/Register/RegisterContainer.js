@@ -59,7 +59,10 @@ const RegisterContainer = ({ navigation }) => {
         />
         <ButtonComponent
           buttontext={"Back"}
-          buttonstyle={[styles.button, {backgroundColor: colors.buttonRegister}]}
+          buttonstyle={[
+            styles.button,
+            { backgroundColor: colors.buttonRegister },
+          ]}
           textstyle={styles.registertext}
           onPress={() => navigation.navigate("Login")}
         />
