@@ -77,7 +77,6 @@ const FormPeminjaman = ({ navigation, route }) => {
 
   var currentDate = new Date();
 
-  // Mendapatkan tahun, bulan, dan tanggal
   var year = currentDate.getFullYear();
   var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
   var day = ("0" + currentDate.getDate()).slice(-2);

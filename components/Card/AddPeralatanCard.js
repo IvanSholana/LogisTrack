@@ -21,16 +21,16 @@ const AddPeralatanCardComponents = ({
 
   const handleDecrement = () => {
     if (count > 0) {
-      setCount((e) => e - 1);
-      setKeranjang(updatedKeranjang);
+      setCount((prevCount) => prevCount - 1);
     }
+    setKeranjang(updatedKeranjang);
   };
 
   const handleIncrement = () => {
-    if (count <= data.jumlah) {
-      setCount((e) => e + 1);
-      setKeranjang(updatedKeranjang);
+    if (count < data.jumlah) {
+      setCount((prevCount) => prevCount + 1);
     }
+    setKeranjang(updatedKeranjang);
   };
 
   return (

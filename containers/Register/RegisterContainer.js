@@ -51,6 +51,7 @@ const RegisterContainer = ({ navigation }) => {
       <InputText
         textinputname={"Pertanyaan Keamanan"}
         placeholder={"Masukkan Pertanyaan..."}
+        
       />
       <InputText
         textinputname={"Jawaban Pertanyaan Keamanan"}

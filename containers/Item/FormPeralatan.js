@@ -10,8 +10,8 @@ const FormAlatContainer = ({ navigation, checkout, setcheckout }) => {
   );
 
   useEffect(() => {
-    setcheckout(keranjang.filter((e) => e.jumlah > 1));
-  }, [keranjang]);
+    setcheckout(keranjang.filter((e) => e.jumlah != 0));
+  }, [keranjang, setKeranjang]);
 
   return (
     <View style={styles.container}>
