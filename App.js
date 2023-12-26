@@ -16,6 +16,7 @@ import RoomDetailScreen from "./screens/RoomDetailScreen";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const MainTabsMenu = () => {
