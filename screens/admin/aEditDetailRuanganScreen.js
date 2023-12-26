@@ -3,7 +3,7 @@ import AdminEditDetailRuanganContainers from "../../containers/Item/AdminEditDet
 import AppBarComponent from "../../components/AppBar/AppBarComponent";
 import { ScrollView } from "react-native-gesture-handler";
 
-const AdminEditDetailRuanganScreen = ({ navigation }) => {
+const AdminEditDetailRuanganScreen = ({ navigation, route }) => {
   return (
     <>
       <AppBarComponent
@@ -11,7 +11,10 @@ const AdminEditDetailRuanganScreen = ({ navigation }) => {
       />
       <ScrollView>
         <View style={styles.container}>
-          <AdminEditDetailRuanganContainers navigation={navigation} />
+          <AdminEditDetailRuanganContainers
+            navigation={navigation}
+            route={route}
+          />
         </View>
       </ScrollView>
     </>

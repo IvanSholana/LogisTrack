@@ -4,10 +4,11 @@ import { colors } from "../../constants/colors";
 import DialogComponent from "../../components/Dialog/DialogComponent";
 import { useState } from "react";
 import { useFonts } from "expo-font";
+import { useSelector } from "react-redux";
 
 const ProfileContainer = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
-    "Poppins-BoldItalic": require("../../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
+    "Poppins-BoldItalic": require("../../assets/fonts/Poppins/Poppins-BoldItalic.ttf"),
   });
 
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -15,6 +16,7 @@ const ProfileContainer = ({ navigation }) => {
   if (!fontsLoaded) {
     return null;
   }
+
   return (
     <>
       <View style={styles.container}>
@@ -37,12 +39,13 @@ const ProfileContainer = ({ navigation }) => {
 };
 
 const ProfileContent = () => {
+  const { nama, status, nimNidn } = useSelector((state) => state.user);
   return (
     <>
       <Text style={styles.profileTitle}>Nama</Text>
-      <Text style={styles.profiledata}>Contoh Nama</Text>
+      <Text style={styles.profiledata}>{nama}</Text>
       <Text style={styles.profileTitle}>NIM/NIDM</Text>
-      <Text style={styles.profiledata}>Contoh NIM/NIDN</Text>
+      <Text style={styles.profiledata}>{nimNidn}</Text>
     </>
   );
 };
@@ -63,7 +66,11 @@ const ContactDialog = ({ dialogVisible, setDialogVisible }) => {
                 <Text>081234567890</Text>
               </View>
             </View>
-            <View style={{ flexDirection: "row", alignItems: "center", marginTop: 8,
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: 8,
               }}
             >
               <Icon name="at" size={30} color={colors.registerText} />
@@ -90,7 +97,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontFamily: "Poppins-BoldItalic", 
+    fontFamily: "Poppins-BoldItalic",
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,
