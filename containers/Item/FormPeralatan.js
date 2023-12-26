@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import AddPeralatanCardComponents from "../../components/Card/AddPeralatanCard";
 import peralatanList from "../../data/local/PeralatanData";
-import { useEffect, useState } from "react";
 
 const FormAlatContainer = ({ navigation }) => {
   const [itemData, setItemData] = useState([]);
@@ -25,7 +24,12 @@ const FormAlatContainer = ({ navigation }) => {
       <FlatList
         data={itemData}
         renderItem={({ item }) => (
-          <AddPeralatanCardComponents navigation={navigation} data={item} />
+          <AddPeralatanCardComponents
+            navigation={navigation}
+            data={item}
+            keranjang={keranjang}
+            setKeranjang={setKeranjang}
+          />
         )}
         keyExtractor={(item) => item.id}
       />

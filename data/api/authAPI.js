@@ -17,8 +17,7 @@ class APIRequest extends React.Component {
     async getUserData(authToken){
         const response = await fetch("http://192.168.1.2:3000/user", {
             headers: {
-                Authorization: `Bearer ${authToken}`,
-                // Add any other headers as needed
+                Authorization: `Bearer ${authToken}`
             },
         });
         const json = await response.json();
@@ -26,7 +25,7 @@ class APIRequest extends React.Component {
     }
     
     async inputUserData(authToken, Name, Email, Password, nomorInduk, Status, Verif){
-        const response = await fetch("http://192.168.1.2:3000/createUser", {
+        const response = await fetch("http://192.168.1.2:3000/user/createUser", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

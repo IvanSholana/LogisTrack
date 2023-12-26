@@ -10,7 +10,7 @@ const DetailHistoryContainers = ({ navigation, route }) => {
   const { data } = route.params;
   console.log(data);
   // Data contoh peminjaman
-  const myTableHead = ["No", "List", "Qty"];
+  const myTableHead = ['No', 'List', 'Qty'];
   const peminjamanData = [
     { namaPeminjaman: "Buku", qty: 5 },
     { namaPeminjaman: "Pensil", qty: 10 },

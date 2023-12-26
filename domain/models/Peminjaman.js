@@ -7,8 +7,7 @@ class Peminjaman {
     ruanganDipinjam,
     tanggalAwal,
     tanggalAkhir,
-    status,
-    alasan
+    status
   ) {
     this.id = id;
     this.namaPeminjam = namaPeminjam;
@@ -18,7 +17,6 @@ class Peminjaman {
     this.tanggalAwal = tanggalAwal;
     this.tanggalAkhir = tanggalAkhir;
     this.status = status;
-    this.alasan = alasan;
   }
 }
 
