@@ -8,13 +8,13 @@ import User from "../../domain/models/User";
 
 
 const RegisterContainer = ({ navigation }) => {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [selected, setSelected] = useState("");
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
+  const [selected, setSelected] = useState('');
   const data = [
     { key: "1", value: "Mahasiswa" },
     { key: "2", value: "Dosen" },
@@ -48,28 +48,28 @@ const RegisterContainer = ({ navigation }) => {
         textinputname={"Nama"}
         placeholder={"Masukkan Nama..."}
         value={name}
-        onChangeText={setName}
+        setValue={setName}
         
       />
       <InputText
         textinputname={"NIM/NIDN"}
         placeholder={"Masukkan NIM/NIDN..."}
         value={username}
-        onChangeText={setUsername}
+        setValue={setUsername}
       />
       <InputText
         textinputname={"Password"}
         security={true}
         placeholder={"Masukkan Password..."}
         value={password}
-        onChangeText={setPassword}
+        setValue={setPassword}
       />
       <InputText
         textinputname={"E-Mail Institut"}
         keyboardType="email-address"
         placeholder={"Masukkan Email..."}
         value={email}
-        onChangeText={setEmail}
+        setValue={setEmail}
       />
       <SelectList
         setSelected={(val) => setSelected(val)}
@@ -88,13 +88,13 @@ const RegisterContainer = ({ navigation }) => {
         textinputname={"Pertanyaan Keamanan"}
         placeholder={"Masukkan Pertanyaan..."}
         value={question}
-        onChangeText={setQuestion}
+        setValue={setQuestion}
       />
       <InputText
         textinputname={"Jawaban Pertanyaan Keamanan"}
         placeholder={"Masukkan Jawaban..."}
         value={answer}
-        onChangeText={setAnswer}
+        setValue={setAnswer}
       />
       <View style={styles.buttonsection}>
         <ButtonComponent
