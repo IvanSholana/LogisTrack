@@ -74,6 +74,7 @@ const DateContainer = ({ startDate, endDate, setStartDate, setEndDate }) => {
 const FormPeminjaman = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
   const [checkout, setCheckout] = useState([]);
+  const [keranjangRuangan, setKeranjangRuangan] = useState([]);
 
   var currentDate = new Date();
 
@@ -104,6 +105,7 @@ const FormPeminjaman = ({ navigation, route }) => {
         keranjang={checkout}
         dateAwal={startDate}
         dateAkhir={endDate}
+        keranjangRuangan={keranjangRuangan}
       />
       {activeTab === "Peralatan" ? (
         <FormAlatContainer
@@ -112,7 +114,11 @@ const FormPeminjaman = ({ navigation, route }) => {
           setcheckout={setCheckout}
         />
       ) : (
-        <FormRuanganContainer navigation={navigation} />
+        <FormRuanganContainer
+          navigation={navigation}
+          ruangandipinjam={keranjangRuangan}
+          setRuanganDipinjam={setKeranjangRuangan}
+        />
       )}
       <View
         style={{
@@ -139,6 +145,7 @@ const AppBarContainer = ({
   keranjang,
   dateAwal,
   dateAkhir,
+  keranjangRuangan,
 }) => {
   console.log(keranjang);
   return (
@@ -156,6 +163,7 @@ const AppBarContainer = ({
               navigation.navigate("peminjaman", {
                 data: keranjang,
                 timeline: [dateAwal, dateAkhir],
+                dataRuangan: keranjangRuangan,
               })
             }
           >

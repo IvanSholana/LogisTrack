@@ -4,7 +4,7 @@ import AddPeralatanCardComponents from "../../components/Card/AddPeralatanCard";
 import peralatanList from "../../data/local/PeralatanData"; // GET API
 import BarangDipinjam from "../../domain/models/BarangDipinjam";
 
-const FormAlatContainer = ({ navigation, checkout, setcheckout }) => {
+const FormAlatContainer = ({ navigation, setcheckout }) => {
   const [keranjang, setKeranjang] = useState(() =>
     peralatanList.map((e) => new BarangDipinjam(e.id, 0))
   );
