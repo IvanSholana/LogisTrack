@@ -7,7 +7,8 @@ import { useState } from "react";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { colors } from "../../constants/colors";
 import ButtonComponent from "../../components/Button/ButtonComponent";
-import peralatanList from "../../data/local/PeralatanData";
+import Peminjaman from "../../domain/models/Peminjaman";
+import { useSelector } from "react-redux";
 
 const PinjamDetailContainer = ({ navigation, route }) => {
   const { data, timeline } = route.params;
@@ -15,8 +16,10 @@ const PinjamDetailContainer = ({ navigation, route }) => {
 
   const [tanggalAwal, jamAwal] = dateAwal.split(" ");
   const [tanggalAkhir, jamAkhir] = dateAkhir.split(" ");
-
+  const [acara, setNamaAcara] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
+  const nama = useSelector((state) => state.user.nama);
+  const status = useSelector((state) => state.user.statu);
 
   const showAlertDialog = () => {
     setDialogVisible(true);
@@ -69,7 +72,19 @@ const PinjamDetailContainer = ({ navigation, route }) => {
               fillValue={jamAkhir}
             />
             <ButtonComponent
-              onPress={showAlertDialog}
+              onPress={() => {
+                showAlertDialog;
+                new Peminjaman( // POST API
+                  1,
+                  nama,
+                  acara,
+                  peminjamanData,
+                  "",
+                  tanggalAwal,
+                  tanggalAkhir,
+                  "Diajukan"
+                );
+              }}
               buttontext={"Ajukan"}
               buttonstyle={{
                 backgroundColor: colors.buttonLogin,

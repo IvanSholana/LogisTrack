@@ -4,6 +4,23 @@ import Middleware from "../../data/repositories/authRepository.js";
 // dotenv.config()
 
 class User extends React.Component {
+  constructor(
+    nama,
+    nimNidn,
+    password,
+    email,
+    status,
+    pertanyaanRahasia,
+    jawabanRahasia
+  ) {
+    this.nama = nama;
+    this.nimNidn = nimNidn;
+    this.password = password;
+    this.email = email;
+    this.status = status;
+    this.pertanyaanRahasia = pertanyaanRahasia;
+    this.jawabanRahasia = jawabanRahasia;
+  }
   Users;
   Token;
   req = new Middleware();

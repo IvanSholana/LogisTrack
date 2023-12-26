@@ -75,8 +75,22 @@ const FormPeminjaman = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
   const [checkout, setCheckout] = useState([]);
 
-  const [startDate, setStartDate] = useState(dayjs());
-  const [endDate, setEndDate] = useState(dayjs());
+  var currentDate = new Date();
+
+  // Mendapatkan tahun, bulan, dan tanggal
+  var year = currentDate.getFullYear();
+  var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+  var day = ("0" + currentDate.getDate()).slice(-2);
+
+  // Mendapatkan jam dan menit
+  var hours = ("0" + currentDate.getHours()).slice(-2);
+  var minutes = ("0" + currentDate.getMinutes()).slice(-2);
+
+  var formattedDateTime =
+    year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+
+  const [startDate, setStartDate] = useState(formattedDateTime);
+  const [endDate, setEndDate] = useState(formattedDateTime);
 
   const handleTabPress = (tab) => {
     setActiveTab(tab);
