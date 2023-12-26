@@ -1,5 +1,5 @@
 const users = [
-  new User(
+  new user(
     "John Doe",
     "123456",
     "password123",
@@ -8,7 +8,7 @@ const users = [
     "Siapa nama ibu kandung Anda?",
     "Jane Doe"
   ),
-  new User(
+  new user(
     "Jane Smith",
     "789012",
     "pass456",
@@ -17,7 +17,7 @@ const users = [
     "Apa nama hewan peliharaan Anda?",
     "Fluffy"
   ),
-  new User(
+  new user(
     "Bob Johnson",
     "567890",
     "pass789",
@@ -26,7 +26,7 @@ const users = [
     "Di kota manakah Anda lahir?",
     "New York"
   ),
-  new User(
+  new user(
     "Alice Brown",
     "234567",
     "pass321",
