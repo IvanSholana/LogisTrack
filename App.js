@@ -68,7 +68,7 @@ const MainTabsMenu = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="aProfile">
+      <Stack.Navigator initialRouteName="MainTabsMenu">
         <Stack.Screen
           name="Login"
           component={LoginScreen}

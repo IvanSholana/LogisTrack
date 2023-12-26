@@ -19,7 +19,7 @@ const AddPeralatanCardComponents = ({ navigation, data }) => {
       <Pressable
         onPress={() => navigation.navigate("detail", { detail: data })}
       >
-        <Text style={styles.itemName}>{data.nama}</Text>
+        <Text style={styles.itemName}>{data.name}</Text>
       </Pressable>
 
       <View style={styles.countItem}>

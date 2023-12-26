@@ -27,15 +27,16 @@ class Middleware extends React.Component {
     }
   }
 
-  async registerUser(token, Name, Password, nomorInduk, Status, Prodi) {
+  async registerUser(token, Name, Email, Password, nomorInduk, Status, Verif) {
     try {
       let valueCheck = await this.req.inputUserData(
         token,
         Name,
+        Email,
         Password,
         nomorInduk,
         Status,
-        Prodi
+        Verif
       );
       return valueCheck;
     } catch (error) {
@@ -113,13 +114,14 @@ class Middleware extends React.Component {
     }
   }
 
-  async addRoom(token, Name, Description, Capacity) {
+  async addRoom(token, Name, Description, Capacity, Image) {
     try {
       let valueCheck = await this.req.inputRoomData(
         token,
         Name,
         Description,
-        Capacity
+        Capacity,
+        Image
       );
       return valueCheck;
     } catch (error) {
@@ -127,14 +129,15 @@ class Middleware extends React.Component {
     }
   }
 
-  async updateRoom(token, Id, Name, Description, Capacity) {
+  async updateRoom(token, Id, Name, Description, Capacity, Image) {
     try {
       let valueCheck = await this.req.updateRoomData(
         token,
         Id,
         Name,
         Description,
-        Capacity
+        Capacity,
+        Image
       );
       return valueCheck;
     } catch (error) {
@@ -170,7 +173,6 @@ class Middleware extends React.Component {
     UserName,
     EventName,
     EquipmentName,
-    Quantity,
     Room,
     StartDate,
     EndDate,
@@ -183,7 +185,6 @@ class Middleware extends React.Component {
         UserName,
         EventName,
         EquipmentName,
-        Quantity,
         Room,
         StartDate,
         EndDate,

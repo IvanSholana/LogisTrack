@@ -9,7 +9,7 @@ const CheckBoxForm = ({ toggleCheckbox, data, press, navigation }) => {
         <Pressable
           onPress={() => navigation.navigate("detailruangan", { detail: data })}
         >
-          <Text style={styles.title}>{data.nama}</Text>
+          <Text style={styles.title}>{data.name}</Text>
         </Pressable>
         <BouncyCheckbox
           size={25}
