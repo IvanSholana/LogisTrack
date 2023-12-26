@@ -8,23 +8,23 @@ import {
   Alert,
   TextInput,
 } from "react-native";
-
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import * as ImagePicker from "expo-image-picker";
 import Peralatan from "../../domain/models/Peralatan";
 
 const AddItemContainers = ({ navigation }) => {
+  const [nama, setNama] = useState("");
   const [jumlah, setJumlah] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
-  const [nama, setNama] = useState("");
+  const [gambar, setGambar] = useState(null);
   const [selectedOption, setSelectedOption] = useState("");
   const [jumlahlabel, setJumlahLabel] = useState("Kuantitas");
   const currentDate = new Date();
   const formattedDate = currentDate
     .toISOString()
     .split("T")[0]
-    .replace(/-/g, ""); // Mendapatkan tanggal dalam format YYYYMMDD
+    .replace(/-/g, "");
   const id = `${nama}_${formattedDate}`;
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -48,10 +48,11 @@ const AddItemContainers = ({ navigation }) => {
       });
 
       if (!result.cancelled) {
-        console.log("Selected Image URI:", result.uri);
-        setSelectedImage(result.uri);
+        console.log("ImagePicker Result:", result);
+        setGambar(result.assets[0].uri); // Update the gambar state
+        console.log("Selected Image URI:", result.assets[0].uri); // Log the selected image URI
       } else {
-        console.log("Image selection cancelled.");
+        console.log("Image selection cancelled or no image selected.");
       }
     } catch (error) {
       console.error("Image selection error:", error);
@@ -59,13 +60,7 @@ const AddItemContainers = ({ navigation }) => {
   };
 
   const tambahPeralatan = () => {
-    const peralatanBaru = new Peralatan(
-      id,
-      nama,
-      jumlah,
-      deskripsi,
-      selectedImage
-    );
+    const peralatanBaru = new Peralatan(id, nama, jumlah, deskripsi, gambar);
 
     console.log("Peralatan Baru:", peralatanBaru);
     Alert.alert("Sukses", "Peralatan berhasil ditambahkan", [
@@ -125,9 +120,8 @@ const AddItemContainers = ({ navigation }) => {
       <TouchableOpacity style={styles.uploadButton} onPress={handleChooseImage}>
         <Text style={styles.uploadText}>Unggah Gambar</Text>
       </TouchableOpacity>
-
-      {selectedImage ? (
-        <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
+      {gambar ? (
+        <Image source={{ uri: gambar }} style={styles.gambar} />
       ) : (
         <Text>No Image Selected</Text>
       )}
