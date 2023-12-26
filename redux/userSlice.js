@@ -12,11 +12,12 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.nama = action.payload.nama;
       state.status = action.payload.status;
+      state.nimNidn = action.payload.nimNidn;
     },
     clearUser: (state) => {
       state.nama = "";
       state.status = "";
-      state.nim = "";
+      state.nimNidn = "";
     },
   },
 });

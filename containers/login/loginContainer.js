@@ -29,11 +29,7 @@ const LoginContainer = ({ navigation }) => {
     const fetchData = async () => {
       try {
         const data = await usersdata();
-        try{
-          console.log(data)
-        }catch(err){
-          console.log("fuck error")
-        }
+        console.log(JSON.stringify(data, undefined,2))
         setUsersData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -49,14 +45,14 @@ const LoginContainer = ({ navigation }) => {
       setLoading(true);
 
       const userData = usersData.find(
-        (e) => e.nimNidn == nimNidn && e.password == password
+        (e) => e.nomor_induk == nimNidn && e.password == password
       );
       console.log(userData);
       if (userData) {
-        const { nama, status, nimNidn } = userData;
-        console.log(`nama : ${nama} dan user ${status}`);
+        const { nama, status, nomor_induk } = userData;
+        console.log(`nama : ${nama} dan user ${status} dan NIM ${nomor_induk}`);
 
-        dispatch(setUser({ nama: nama, status: status, nim: nimNidn }));
+        dispatch(setUser({ nama: nama, status: status, nimNidn: nomor_induk }));
 
         console.log("Login Berhasil");
         return true;

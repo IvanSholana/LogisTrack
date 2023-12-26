@@ -11,7 +11,7 @@ class APIRequest extends React.Component {
     async getToken(){
         const response = await fetch("http://192.168.1.2:3000/token");
         const json = await response.json();
-        return json
+        return json['token']
     }
     
     async getUserData(authToken){

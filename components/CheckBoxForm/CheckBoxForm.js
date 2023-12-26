@@ -2,7 +2,7 @@ import { Pressable, View, Text, StyleSheet } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { colors } from "../../constants/colors";
 
-const CheckBoxForm = ({ toggleCheckbox, data, press, navigation }) => {
+const CheckBoxForm = ({ data, press, navigation }) => {
   return (
     <>
       <View style={styles.contaier}>
@@ -17,7 +17,7 @@ const CheckBoxForm = ({ toggleCheckbox, data, press, navigation }) => {
           unfillColor="#FFFFFF"
           iconStyle={{ borderColor: colors.buttonLogin }}
           innerIconStyle={{ borderWidth: 2 }}
-          onPress={toggleCheckbox}
+          onPress={() => press(data.nama)}
         />
       </View>
     </>

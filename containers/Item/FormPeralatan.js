@@ -3,8 +3,13 @@ import { View, StyleSheet, FlatList } from "react-native";
 import AddPeralatanCardComponents from "../../components/Card/AddPeralatanCard";
 import peralatanList from "../../data/local/PeralatanData";
 
-const FormAlatContainer = ({ navigation }) => {
+const FormAlatContainer = ({ navigation, setcheckout }) => {
   const [itemData, setItemData] = useState([]);
+  const [keranjang, setKeranjang] = useState(() =>
+    peralatanList.map((e) => new BarangDipinjam(e.id, 0))
+  );
+
+  
 
   useEffect(() => {
     const fetchData = async () => {
