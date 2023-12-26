@@ -8,6 +8,12 @@ import { colors } from "../../constants/colors";
 
 
 const RegisterContainer = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
   const [selected, setSelected] = useState("");
   const data = [
     { key: "1", value: "Mahasiswa" },
@@ -22,18 +28,31 @@ const RegisterContainer = ({ navigation }) => {
   return (
     <>
       <InputText
+        textinputname={"Nama"}
+        placeholder={"Masukkan Nama..."}
+        value={name}
+        onChangeText={setName}
+        
+      />
+      <InputText
         textinputname={"NIM/NIDN"}
         placeholder={"Masukkan NIM/NIDN..."}
+        value={username}
+        onChangeText={setUsername}
       />
       <InputText
         textinputname={"Password"}
         security={true}
         placeholder={"Masukkan Password..."}
+        value={password}
+        onChangeText={setPassword}
       />
       <InputText
         textinputname={"E-Mail Institut"}
         keyboardType="email-address"
         placeholder={"Masukkan Email..."}
+        value={email}
+        onChangeText={setEmail}
       />
       <SelectList
         setSelected={(val) => setSelected(val)}
@@ -51,10 +70,14 @@ const RegisterContainer = ({ navigation }) => {
       <InputText
         textinputname={"Pertanyaan Keamanan"}
         placeholder={"Masukkan Pertanyaan..."}
+        value={question}
+        onChangeText={setQuestion}
       />
       <InputText
         textinputname={"Jawaban Pertanyaan Keamanan"}
         placeholder={"Masukkan Jawaban..."}
+        value={answer}
+        onChangeText={setAnswer}
       />
       <View style={styles.buttonsection}>
         <ButtonComponent
