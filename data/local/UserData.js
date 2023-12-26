@@ -1,4 +1,4 @@
-import User from "../../domain/models/User";
+import User from "../../domain/models/user";
 
 const usersdata = [
   new User(
@@ -12,10 +12,10 @@ const usersdata = [
   ),
   new User(
     "Jane Smith",
-    "789012",
-    "pass456",
+    "1234",
+    "1234",
     "jane.smith@example.com",
-    "Mahasiswa",
+    "Admin",
     "Apa nama hewan peliharaan Anda?",
     "Fluffy"
   ),
@@ -24,7 +24,7 @@ const usersdata = [
     "567890",
     "pass789",
     "bob.johnson@example.com",
-    "Staff",
+    "Admin",
     "Di kota manakah Anda lahir?",
     "New York"
   ),

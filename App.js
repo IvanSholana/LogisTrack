@@ -15,6 +15,7 @@ import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import AddItemScreens from "./screens/AddItemScreens";
 
 
 const Stack = createStackNavigator();
@@ -72,7 +73,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="additem">
           <Stack.Screen
             name="Login"
             component={LoginScreen}
@@ -106,6 +107,11 @@ export default function App() {
           <Stack.Screen
             name="detailruangan"
             component={RoomDetailScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="additem"
+            component={AddItemScreens}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
