@@ -13,8 +13,9 @@ import ItemDetailScreen from "./screens/ItemDetailScreen";
 import PinjamDetailScreen from "./screens/PinjamDetailScreen";
 import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
-import AdminProfileScreen from "./screens/admin/aProfileScreen";
-import AddItemScreens from "./screens/AddItemScreens";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,55 +70,46 @@ const MainTabsMenu = () => {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="AddItem">
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={RegisterScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="MainTabsMenu"
-          component={MainTabsMenu}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="detail"
-          component={ItemDetailScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="peminjaman"
-          component={PinjamDetailScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="detailpinjam"
-          component={DetailHistoryScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="detailruangan"
-          component={RoomDetailScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="aProfile"
-          component={AdminProfileScreen}
-          options={{ headerShown: false }}
-        />
-         <Stack.Screen
-          name="AddItem"
-          component={AddItemScreens}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MainTabsMenu"
+            component={MainTabsMenu}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="detail"
+            component={ItemDetailScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="peminjaman"
+            component={PinjamDetailScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="detailpinjam"
+            component={DetailHistoryScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="detailruangan"
+            component={RoomDetailScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }

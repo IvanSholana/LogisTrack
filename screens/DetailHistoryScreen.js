@@ -4,9 +4,8 @@ import DetailHistoryContainers from "../containers/History/DetailHistoryContaine
 import AdminDetailHistoryContainers from "../containers/History/admDetailHistoryContainers";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
 import { useFonts } from "expo-font";
-import { colors } from "../constants/colors";
 
-const AdminDetailHistoryScreen = ({ navigation }) => {
+const AdminDetailHistoryScreen = ({ navigation, route }) => {
   return (
     <>
       <AppBarComponent
@@ -21,7 +20,7 @@ const AdminDetailHistoryScreen = ({ navigation }) => {
   );
 };
 
-const UserDetailHistoryScreen = ({ navigation }) => {
+const UserDetailHistoryScreen = ({ navigation, route }) => {
   return (
     <>
       <AppBarComponent
@@ -29,33 +28,38 @@ const UserDetailHistoryScreen = ({ navigation }) => {
       />
       <View style={styles.container}>
         <View style={styles.historySection}>
-          <DetailHistoryContainers navigation={navigation} />
+          <DetailHistoryContainers navigation={navigation} route={route} />
         </View>
       </View>
     </>
   );
 };
 
-const DetailHistoryScreen = ({ navigation, accountType }) => {
-  const renderDetailContainer = () => {
-    if (accountType === "admin") {
-      return <AdminDetailHistoryScreen navigation={navigation} />;
-    } else {
-      return <UserDetailHistoryScreen navigation={navigation} />;
-    }
-  };
+const DetailHistoryScreen = ({ navigation, accountType, route }) => {
+  const [fontsLoaded] = useFonts({
+    "Poppins-BoldItalic": require("../assets/fonts/Poppins/Poppins-BoldItalic.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <>
-      {renderDetailContainer()}
+      {accountType === "admin" ? (
+        <AdminDetailHistoryScreen navigation={navigation} route={route} />
+      ) : (
+        <UserDetailHistoryScreen navigation={navigation} route={route} />
+      )}
     </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "white",
-    padding: 20,
+
     flex: 1,
   },
   historySection: {

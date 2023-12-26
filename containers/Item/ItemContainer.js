@@ -7,16 +7,29 @@ import FloatingButton from "../../components/FloatingButton/FloatingButtonCompon
 import DatePickers from "../../components/DatePicker/DatePickerComponents";
 import FormRuanganContainer from "./FormRuangan";
 import FormAlatContainer from "./FormPeralatan";
+import dayjs from "dayjs";
 
-const DateContainer = () => {
+const DateContainer = ({ startDate, endDate, setStartDate, setEndDate }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
   const [calender, setcalender] = useState(0);
+
+  const handleStartDateChange = (newDate) => {
+    setStartDate(newDate);
+    console.log(`start : ${startDate}`);
+  };
+
+  const handleEndDateChange = (newDate) => {
+    setEndDate(newDate);
+    console.log(`end : ${endDate}`);
+  };
 
   return (
     <>
       <FloatingButton icon="calendar" onpress={() => setDialogVisible(true)} />
       {calender == 0 ? (
         <DatePickers
+          setValue={handleStartDateChange}
+          value={startDate}
           isVisible={dialogVisible}
           setVisible={setDialogVisible}
           title={"Tanggal Awal Peminjaman"}
@@ -35,6 +48,8 @@ const DateContainer = () => {
         />
       ) : (
         <DatePickers
+          setValue={handleEndDateChange}
+          value={endDate}
           isVisible={dialogVisible}
           setVisible={setDialogVisible}
           title={"Tanggal Akhir Peminjaman"}
@@ -56,31 +71,76 @@ const DateContainer = () => {
   );
 };
 
-const FormPeminjaman = ({ navigation }) => {
+const FormPeminjaman = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
+  const [checkout, setCheckout] = useState([]);
+
+  var currentDate = new Date();
+
+  var year = currentDate.getFullYear();
+  var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+  var day = ("0" + currentDate.getDate()).slice(-2);
+
+  // Mendapatkan jam dan menit
+  var hours = ("0" + currentDate.getHours()).slice(-2);
+  var minutes = ("0" + currentDate.getMinutes()).slice(-2);
+
+  var formattedDateTime =
+    year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+
+  const [startDate, setStartDate] = useState(formattedDateTime);
+  const [endDate, setEndDate] = useState(formattedDateTime);
 
   const handleTabPress = (tab) => {
     setActiveTab(tab);
   };
+
   return (
     <>
-      <View>
-        <AppBarContainer
-          activeTab={activeTab}
-          handleTabPress={handleTabPress}
+      <AppBarContainer
+        activeTab={activeTab}
+        handleTabPress={handleTabPress}
+        navigation={navigation}
+        keranjang={checkout}
+        dateAwal={startDate}
+        dateAkhir={endDate}
+      />
+      {activeTab === "Peralatan" ? (
+        <FormAlatContainer
           navigation={navigation}
+          checkout={checkout}
+          setcheckout={setCheckout}
         />
-        {activeTab === "Peralatan" ? (
-          <FormAlatContainer navigation={navigation} />
-        ) : (
-          <FormRuanganContainer navigation={navigation} />
-        )}
+      ) : (
+        <FormRuanganContainer navigation={navigation} />
+      )}
+      <View
+        style={{
+          alignItems: "flex-end",
+          paddingVertical: 20,
+          backgroundColor: "white",
+        }}
+      >
+        <DateContainer
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+        />
       </View>
     </>
   );
 };
 
-const AppBarContainer = ({ activeTab, handleTabPress, navigation }) => {
+const AppBarContainer = ({
+  activeTab,
+  handleTabPress,
+  navigation,
+  keranjang,
+  dateAwal,
+  dateAkhir,
+}) => {
+  console.log(keranjang);
   return (
     <>
       <View style={styles.container}>
@@ -92,7 +152,12 @@ const AppBarContainer = ({ activeTab, handleTabPress, navigation }) => {
           />
           <TouchableOpacity
             style={styles.checkout}
-            onPress={() => navigation.navigate("peminjaman")}
+            onPress={() =>
+              navigation.navigate("peminjaman", {
+                data: keranjang,
+                timeline: [dateAwal, dateAkhir],
+              })
+            }
           >
             <Icon name="shopping-cart" size={30} color="#333" />
           </TouchableOpacity>

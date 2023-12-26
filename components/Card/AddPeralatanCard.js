@@ -3,30 +3,49 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { colors } from "../../constants/colors";
 import { useState } from "react";
 
-const AddPeralatanCardComponents = ({ navigation }) => {
+const AddPeralatanCardComponents = ({
+  navigation,
+  data,
+  keranjang,
+  setKeranjang,
+}) => {
   const [count, setCount] = useState(0);
 
+  const updatedKeranjang = keranjang.map((item) => {
+    if (data.id === item.id) {
+      return { ...item, jumlah: count };
+    }
+
+    return item;
+  });
+
   const handleDecrement = () => {
-    setCount((e) => e - 1);
+    if (count > 0) {
+      setCount((prevCount) => prevCount - 1);
+    }
+    setKeranjang(updatedKeranjang);
   };
 
   const handleIncrement = () => {
-    setCount((e) => e + 1);
+    if (count < data.jumlah) {
+      setCount((prevCount) => prevCount + 1);
+    }
+    setKeranjang(updatedKeranjang);
   };
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.navigate("detail")}>
-        <Text style={styles.itemName}>Nama Barang</Text>
+      <Pressable
+        onPress={() => navigation.navigate("detail", { detail: data })}
+      >
+        <Text style={styles.itemName}>{data.nama}</Text>
       </Pressable>
 
       <View style={styles.countItem}>
-        {count == 0 ? null : (
-          <Pressable onPress={handleDecrement} style={styles.countButton}>
-            <Icon name="minus" size={15} color="black" />
-          </Pressable>
-        )}
-        <Text style={styles.itemCount}>{count == 0 ? "" : count}</Text>
+        <Pressable onPress={handleDecrement} style={styles.countButton}>
+          <Icon name="minus" size={15} color="black" />
+        </Pressable>
+        <Text style={styles.itemCount}>{count}</Text>
         <Pressable onPress={handleIncrement} style={styles.countButton}>
           <Icon name="plus" size={15} color="black" />
         </Pressable>

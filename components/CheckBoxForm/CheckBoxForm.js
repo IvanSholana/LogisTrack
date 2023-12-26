@@ -2,12 +2,14 @@ import { Pressable, View, Text, StyleSheet } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { colors } from "../../constants/colors";
 
-const CheckBoxForm = ({ toggleCheckbox, item, press }) => {
+const CheckBoxForm = ({ toggleCheckbox, data, press, navigation }) => {
   return (
     <>
       <View style={styles.contaier}>
-        <Pressable onPress={press}>
-          <Text style={styles.title}>Nama Ruangan</Text>
+        <Pressable
+          onPress={() => navigation.navigate("detailruangan", { detail: data })}
+        >
+          <Text style={styles.title}>{data.nama}</Text>
         </Pressable>
         <BouncyCheckbox
           size={25}

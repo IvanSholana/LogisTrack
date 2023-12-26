@@ -1,7 +1,10 @@
 import { useState } from "react";
 import CheckBoxForm from "../../components/CheckBoxForm/CheckBoxForm";
+import { View } from "react-native";
+import ruanganList from "../../data/local/RuanganData";
+import { FlatList } from "react-native-gesture-handler";
 
-const FormRuanganContainer = ({ navigation }) => {
+const FormRuanganContainer = ({ navigation, route }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleCheckbox = () => {
@@ -9,7 +12,14 @@ const FormRuanganContainer = ({ navigation }) => {
   };
   return (
     <>
-      <CheckBoxForm press={() => navigation.navigate("detailruangan")} />
+      <View style={{ flex: 1 }}>
+        <FlatList
+          data={ruanganList}
+          renderItem={({ item }) => (
+            <CheckBoxForm data={item} navigation={navigation} />
+          )}
+        />
+      </View>
     </>
   );
 };

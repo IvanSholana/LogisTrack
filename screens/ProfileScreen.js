@@ -4,14 +4,40 @@ import {
   ProfileContainer,
   ProfileContent,
 } from "../containers/Profile/ProfileContainer";
+import { useSelector } from "react-redux";
 
-const ProfileScreen = ({ navigation }) => {
+const UserProfileScreen = ({ navigation, nim, nidn, status }) => {
   return (
     <>
       <AppBarComponent content={<ProfileContainer navigation={navigation} />} />
       <View style={styles.content}>
         <ProfileContent />
       </View>
+    </>
+  );
+};
+
+const AdminProfileScreen = ({ navigation, nim, nidn, status }) => {
+  return (
+    <>
+      <AppBarComponent content={<ProfileContainer navigation={navigation} />} />
+      <View style={styles.content}>
+        <ProfileContent />
+      </View>
+    </>
+  );
+};
+
+const ProfileScreen = ({ navigation }) => {
+  const { nama, status } = useSelector((state) => state.user);
+
+  return (
+    <>
+      {status == "mahasiswa" || status == "dosen" ? (
+        <UserProfileScreen navigation={navigation} />
+      ) : (
+        <AdminProfileScreen navigation={navigation} />
+      )}
     </>
   );
 };

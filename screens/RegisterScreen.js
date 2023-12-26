@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, KeyboardAvoidingView } from "react-native";
 import RegisterContainer from "../containers/Register/RegisterContainer";
+import AppBarComponent from "../components/AppBar/AppBarComponent";
 import { useFonts } from "expo-font";
 import { colors } from "../constants/colors";
 
@@ -14,16 +15,18 @@ const RegisterScreen = ({ navigation }) => {
   }
 
   return (
-    <>
+    <KeyboardAvoidingView
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    style={{ flex: 1 }}
+    keyboardVerticalOffset={Platform.OS === "ios" ? 0 : -200} // Sesuaikan offset sesuai kebutuhan
+    >
       <AppBarComponent
         content={<Text style={styles.headerText}>Registrasi</Text>}
       />
       <View style={styles.container}>
-        <View style={styles.registerSection}>
           <RegisterContainer navigation={navigation} />
-        </View>
       </View>
-    </>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -43,10 +46,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingTop: 10,
     backgroundColor: colors.loginText,
-  },
-
-  registerSection: {
-    flex: 1,
   },
 });
 
