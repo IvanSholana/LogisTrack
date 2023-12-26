@@ -75,7 +75,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="additem">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
             name="Login"
             component={LoginScreen}
@@ -86,6 +86,7 @@ export default function App() {
             component={RegisterScreen}
             options={{ headerShown: false }}
           />
+
           <Stack.Screen
             name="MainTabsMenu"
             component={MainTabsMenu}
