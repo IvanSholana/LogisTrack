@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
-<<<<<<<<< Temporary merge branch 1
-import { StyleSheet, View, Alert,TextInput} from "react-native";
+
+import { StyleSheet, View, Alert, TextInput } from "react-native";
 
 import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
 import User from "../../domain/models/user";
-
 
 const RegisterContainer = ({ navigation }) => {
   const [name, setName] = useState("");
