@@ -19,6 +19,7 @@ import AdminEditDetailItemScreen from "./screens/admin/aEditDetailItemScreen";
 import AdminEditDetailRuanganScreen from "./screens/admin/aEditDetailRuanganScreen";
 import AddItemScreens from "./screens/AddItemScreens";
 
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const MainTabsMenu = () => {
@@ -74,7 +75,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="additem">
           <Stack.Screen
             name="Login"
             component={LoginScreen}

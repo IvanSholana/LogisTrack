@@ -19,7 +19,6 @@ const AddItemContainers = ({ navigation }) => {
   const [nama, setNama] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [jumlahlabel, setJumlahLabel] = useState("Kuantitas");
-  const [selectedImage, setSelectedImage] = useState(null);
   const currentDate = new Date();
   const formattedDate = currentDate
     .toISOString()
@@ -77,10 +76,10 @@ const AddItemContainers = ({ navigation }) => {
 
   return (
     <>
-      <InputText
+      <TextInput
         textinputname={"Nama Aset"}
         placeholder={"Masukkan Nama Aset..."}
-        Value={nama}
+        value={nama}
         onChangeText={setNama}
       />
       <Text>Tipe Aset</Text>
@@ -109,13 +108,13 @@ const AddItemContainers = ({ navigation }) => {
         ></TouchableOpacity>
       </View>
 
-      <InputText
+      <TextInput
         textinputname={"Deskripsi"}
         placeholder={"Masukkan Deskripsi..."}
         value={deskripsi}
         onChangeText={setDeskripsi}
       />
-      <InputText
+      <TextInput
         textinputname={jumlahlabel}
         placeholder={`Masukkan ${jumlahlabel}...`}
         value={jumlah}
@@ -208,7 +207,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-  selectedImage: {
+  gambar: {
     width: 200,
     height: 200,
     marginTop: 10,
