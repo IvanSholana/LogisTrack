@@ -1,38 +1,69 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, Image, Alert } from "react-native";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
-import { launchImageLibrary } from 'react-native-image-picker';
+import * as ImagePicker from 'expo-image-picker';
+import Peralatan from "../../domain/models/Peralatan"
+
 
 const AddItemContainers = ({ navigation }) => {
   const [jumlah, setJumlah] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
   const [nama, setNama] = useState("");
-  const [selectedOption, setSelectedOption] = useState(""); // State untuk pilihan radio
+  const [selectedOption, setSelectedOption] = useState(""); 
   const [jumlahlabel, setJumlahLabel] = useState("Kuantitas");
   const [selectedImage, setSelectedImage] = useState(null);
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().split('T')[0].replace(/-/g, ''); // Mendapatkan tanggal dalam format YYYYMMDD
+  const id = `${nama}_${formattedDate}`;
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
 
-  const handleChooseImage = () => {
-    const options = {
-      mediaType: 'image',
-      includeBase64: false,
-      maxHeight: 200,
-      maxWidth: 200,
-    };
+  const handleChooseImage = async () => {
+    try {
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
   
-    launchImageLibrary(options, (response) => {
-      if (response.didCancel) {
-        console.log('User cancelled image selection');
-      } else if (response.errorMessage) {
-        console.log('ImagePicker Error: ', response.errorMessage);
-      } else {
-        setSelectedImage(response);
+      if (status !== 'granted') {
+        alert('Permission to access camera roll is required!');
+        return;
       }
-    });
+  
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+  
+      if (!result.cancelled) {
+        console.log('Selected Image URI:', result.uri); 
+        setSelectedImage(result.uri);
+      } else {
+        console.log('Image selection cancelled.');
+      }
+    } catch (error) {
+      console.error('Image selection error:', error);
+    }
+  };
+  
+  const tambahPeralatan = () => {
+    const peralatanBaru = new Peralatan(
+        id,
+        nama,
+        jumlah,
+        deskripsi,
+        selectedImage 
+    );
+
+    console.log('Peralatan Baru:', peralatanBaru);
+    Alert.alert('Sukses', 'Peralatan berhasil ditambahkan', [
+        {
+          text: 'OK',
+
+        },
+      ]);
   };
   
   return (
@@ -40,9 +71,8 @@ const AddItemContainers = ({ navigation }) => {
       <InputText
         textinputname={"Nama Aset"}
         placeholder={"Masukkan Nama Aset..."}
-        value={nama}
+        Value={nama}
         onChangeText={setNama}
-        security={true}
       />
     <Text>Tipe Aset</Text>
       <View style={styles.radioContainer}>
@@ -77,45 +107,44 @@ const AddItemContainers = ({ navigation }) => {
         placeholder={"Masukkan Deskripsi..."}
         value={deskripsi}
         onChangeText={setDeskripsi}
-        security={true}
       />
       <InputText
         textinputname={jumlahlabel}
         placeholder={`Masukkan ${jumlahlabel}...`}
         value={jumlah}
         onChangeText={setJumlah}
-        security={true}
       />
-            {/* Tombol Unggah Gambar */}
+
       <TouchableOpacity
         style={styles.uploadButton}
         onPress={handleChooseImage}>
         <Text style={styles.uploadText}>Unggah Gambar</Text>
         </TouchableOpacity>
 
-      {/* Menampilkan gambar yang dipilih */}
-        {selectedImage && (
-        <Image
-            source={{ uri: selectedImage.uri }}
-            style={styles.selectedImage}/>
-            )}
+        {selectedImage ? (
+  <Image
+    source={{ uri: selectedImage }}
+    style={styles.selectedImage}
+  />
+) : (
+  <Text>No Image Selected</Text>
+)}
 
-      
       <View style={styles.buttonsection}>
         <ButtonComponent
-          buttontext={"Login"}
+          buttontext={"Tambah"}
           buttonstyle={styles.button}
-          textstyle={styles.logintext}
-          onPress={() => navigation.navigate("MainTabsMenu")}
+          textstyle={styles.addtext}
+          onPress={tambahPeralatan}
         />
         <ButtonComponent
-          buttontext={"Register"}
+          buttontext={"Keluar"}
           buttonstyle={[
             styles.button,
             { backgroundColor: colors.buttonRegister },
           ]}
-          textstyle={styles.registertext}
-          onPress={() => navigation.navigate("Register")}
+          textstyle={styles.backtext}
+          onPress={() => navigation.navigate("MainTabsMenu")}
         />
       </View>
     </>
@@ -154,20 +183,20 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
   },
-  register: {
+  back: {
     backgroundColor: colors.buttonRegister,
     padding: 15,
     marginVertical: 5,
     borderRadius: 10,
   },
-  logintext: {
+  addtext: {
     color: colors.loginText,
   },
-  registertext: {
+  backtext: {
     color: colors.registerText,
   },
   uploadButton: {
-    backgroundColor: colors.buttonLogin,
+    backgroundColor: '#6A994E',
     padding: 10,
     borderRadius: 5,
     alignItems: "center",
