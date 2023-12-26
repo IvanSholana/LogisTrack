@@ -1,7 +1,4 @@
 import React from "react";
-import Middleware from "../../data/repositories/authRepository.js";
-// import dotenv from 'dotenv';
-// dotenv.config()
 
 class User extends React.Component {
   constructor(
@@ -23,3 +20,6 @@ class User extends React.Component {
     this.jawabanRahasia = jawabanRahasia;
   }
 }
+
+
+export default User
