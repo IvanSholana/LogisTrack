@@ -4,7 +4,12 @@ import {
   ProfileContainer,
   ProfileContent,
 } from "../containers/Profile/ProfileContainer";
+
 import { useSelector } from "react-redux";
+import {
+  AdminProfileContainer,
+  AdminProfileContent,
+} from "../containers/Profile/admProfileContainers";
 
 const UserProfileScreen = ({ navigation }) => {
   return (
@@ -20,9 +25,11 @@ const UserProfileScreen = ({ navigation }) => {
 const AdminProfileScreen = ({ navigation }) => {
   return (
     <>
-      <AppBarComponent content={<ProfileContainer navigation={navigation} />} />
+      <AppBarComponent
+        content={<AdminProfileContainer navigation={navigation} />}
+      />
       <View style={styles.content}>
-        <ProfileContent />
+        <AdminProfileContent />
       </View>
     </>
   );
@@ -33,7 +40,7 @@ const ProfileScreen = ({ navigation }) => {
 
   return (
     <>
-      {status == "mahasiswa" || status == "dosen" ? (
+      {status == "Mahasiswa" || status == "Dosen" ? (
         <UserProfileScreen navigation={navigation} />
       ) : (
         <AdminProfileScreen navigation={navigation} />

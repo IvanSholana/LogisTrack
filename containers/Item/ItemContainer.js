@@ -7,7 +7,6 @@ import FloatingButton from "../../components/FloatingButton/FloatingButtonCompon
 import DatePickers from "../../components/DatePicker/DatePickerComponents";
 import FormRuanganContainer from "./FormRuangan";
 import FormAlatContainer from "./FormPeralatan";
-import dayjs from "dayjs";
 
 const DateContainer = ({ startDate, endDate, setStartDate, setEndDate }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -147,7 +146,6 @@ const AppBarContainer = ({
   dateAkhir,
   keranjangRuangan,
 }) => {
-  console.log(keranjang);
   return (
     <>
       <View style={styles.container}>
