@@ -1,21 +1,30 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image, Alert } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+  Alert,
+} from "react-native";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
-import * as ImagePicker from 'expo-image-picker';
-import Peralatan from "../../domain/models/Peralatan"
-
+import * as ImagePicker from "expo-image-picker";
+import Peralatan from "../../domain/models/Peralatan";
 
 const AddItemContainers = ({ navigation }) => {
   const [jumlah, setJumlah] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
   const [nama, setNama] = useState("");
-  const [selectedOption, setSelectedOption] = useState(""); 
+  const [selectedOption, setSelectedOption] = useState("");
   const [jumlahlabel, setJumlahLabel] = useState("Kuantitas");
   const [selectedImage, setSelectedImage] = useState(null);
   const currentDate = new Date();
-  const formattedDate = currentDate.toISOString().split('T')[0].replace(/-/g, ''); // Mendapatkan tanggal dalam format YYYYMMDD
+  const formattedDate = currentDate
+    .toISOString()
+    .split("T")[0]
+    .replace(/-/g, ""); // Mendapatkan tanggal dalam format YYYYMMDD
   const id = `${nama}_${formattedDate}`;
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -23,49 +32,49 @@ const AddItemContainers = ({ navigation }) => {
 
   const handleChooseImage = async () => {
     try {
-      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-  
-      if (status !== 'granted') {
-        alert('Permission to access camera roll is required!');
+      const { status } =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+      if (status !== "granted") {
+        alert("Permission to access camera roll is required!");
         return;
       }
-  
+
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
       });
-  
+
       if (!result.cancelled) {
-        console.log('Selected Image URI:', result.uri); 
+        console.log("Selected Image URI:", result.uri);
         setSelectedImage(result.uri);
       } else {
-        console.log('Image selection cancelled.');
+        console.log("Image selection cancelled.");
       }
     } catch (error) {
-      console.error('Image selection error:', error);
+      console.error("Image selection error:", error);
     }
   };
-  
+
   const tambahPeralatan = () => {
     const peralatanBaru = new Peralatan(
-        id,
-        nama,
-        jumlah,
-        deskripsi,
-        selectedImage 
+      id,
+      nama,
+      jumlah,
+      deskripsi,
+      selectedImage
     );
 
-    console.log('Peralatan Baru:', peralatanBaru);
-    Alert.alert('Sukses', 'Peralatan berhasil ditambahkan', [
-        {
-          text: 'OK',
-
-        },
-      ]);
+    console.log("Peralatan Baru:", peralatanBaru);
+    Alert.alert("Sukses", "Peralatan berhasil ditambahkan", [
+      {
+        text: "OK",
+      },
+    ]);
   };
-  
+
   return (
     <>
       <InputText
@@ -74,9 +83,9 @@ const AddItemContainers = ({ navigation }) => {
         Value={nama}
         onChangeText={setNama}
       />
-    <Text>Tipe Aset</Text>
+      <Text>Tipe Aset</Text>
       <View style={styles.radioContainer}>
-      <Text style={styles.radioText}>Peralatan</Text>
+        <Text style={styles.radioText}>Peralatan</Text>
         <TouchableOpacity
           style={[
             styles.radioButton,
@@ -86,8 +95,7 @@ const AddItemContainers = ({ navigation }) => {
             handleOptionSelect("peralatan");
             setJumlahLabel("Kuantitas");
           }}
-        >
-        </TouchableOpacity>
+        ></TouchableOpacity>
         <Text style={styles.radioText}>Ruangan</Text>
         <TouchableOpacity
           style={[
@@ -98,8 +106,7 @@ const AddItemContainers = ({ navigation }) => {
             handleOptionSelect("ruangan");
             setJumlahLabel("Kapasitas");
           }}
-        >
-        </TouchableOpacity>
+        ></TouchableOpacity>
       </View>
 
       <InputText
@@ -115,20 +122,15 @@ const AddItemContainers = ({ navigation }) => {
         onChangeText={setJumlah}
       />
 
-      <TouchableOpacity
-        style={styles.uploadButton}
-        onPress={handleChooseImage}>
+      <TouchableOpacity style={styles.uploadButton} onPress={handleChooseImage}>
         <Text style={styles.uploadText}>Unggah Gambar</Text>
-        </TouchableOpacity>
+      </TouchableOpacity>
 
-        {selectedImage ? (
-  <Image
-    source={{ uri: selectedImage }}
-    style={styles.selectedImage}
-  />
-) : (
-  <Text>No Image Selected</Text>
-)}
+      {selectedImage ? (
+        <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
+      ) : (
+        <Text>No Image Selected</Text>
+      )}
 
       <View style={styles.buttonsection}>
         <ButtonComponent
@@ -153,7 +155,7 @@ const AddItemContainers = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   radioContainer: {
-    marginTop:10,
+    marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 20,
@@ -168,7 +170,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   selectedRadioButton: {
-    backgroundColor: "grey", 
+    backgroundColor: "grey",
   },
   radioText: {
     color: "black",
@@ -196,7 +198,7 @@ const styles = StyleSheet.create({
     color: colors.registerText,
   },
   uploadButton: {
-    backgroundColor: '#6A994E',
+    backgroundColor: "#6A994E",
     padding: 10,
     borderRadius: 5,
     alignItems: "center",
