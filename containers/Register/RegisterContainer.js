@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
-import { StyleSheet, View, Alert} from "react-native";
+import { StyleSheet, View, Alert } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
 import User from "../../domain/models/user";
-
 
 const RegisterContainer = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -23,24 +22,22 @@ const RegisterContainer = ({ navigation }) => {
 
   const registUser = () => {
     const newUser = new User(
-        name,
-        username,
-        password,
-        email,
-        question,
-        answer,
-        selected, 
+      name,
+      username,
+      password,
+      email,
+      question,
+      answer,
+      selected
     );
 
-    console.log('User Baru:', newUser);
-    Alert.alert('Sukses', 'Registrasi berhasil', [
-        {
-          text: 'OK',
-
-        },
-      ]);
+    console.log("User Baru:", newUser);
+    Alert.alert("Sukses", "Registrasi berhasil", [
+      {
+        text: "OK",
+      },
+    ]);
   };
-
 
   return (
     <>
@@ -49,7 +46,6 @@ const RegisterContainer = ({ navigation }) => {
         placeholder={"Masukkan Nama..."}
         Value={name}
         onChangeText={setName}
-        
       />
       <InputText
         textinputname={"NIM/NIDN"}
@@ -101,7 +97,10 @@ const RegisterContainer = ({ navigation }) => {
           buttontext={"Register"}
           buttonstyle={styles.button}
           textstyle={styles.logintext}
-          onPress={() => {registUser(); navigation.navigate("Login");}}
+          onPress={() => {
+            registUser();
+            navigation.navigate("Login");
+          }}
         />
         <ButtonComponent
           buttontext={"Back"}
