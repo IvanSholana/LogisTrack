@@ -5,7 +5,6 @@ import { colors } from "../../constants/colors";
 import * as ImagePicker from 'expo-image-picker';
 import Peralatan from "../../domain/models/Peralatan"
 
-
 const AddItemContainers = ({ navigation }) => {
   const [nama, setNama] = useState('');
   const [jumlah, setJumlah] = useState('');
