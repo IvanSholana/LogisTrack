@@ -45,27 +45,27 @@ const RegisterContainer = ({ navigation }) => {
         textinputname={"Nama"}
         placeholder={"Masukkan Nama..."}
         Value={name}
-        onChangeText={setName}
+        setValue={setName}
       />
       <InputText
         textinputname={"NIM/NIDN"}
         placeholder={"Masukkan NIM/NIDN..."}
         Value={username}
-        onChangeText={setUsername}
+        setValue={setUsername}
       />
       <InputText
         textinputname={"Password"}
         security={true}
         placeholder={"Masukkan Password..."}
         Value={password}
-        onChangeText={setPassword}
+        setValue={setPassword}
       />
       <InputText
         textinputname={"E-Mail Institut"}
         keyboardType="email-address"
         placeholder={"Masukkan Email..."}
         Value={email}
-        onChangeText={setEmail}
+        setValue={setEmail}
       />
       <SelectList
         setSelected={(val) => setSelected(val)}
@@ -84,7 +84,7 @@ const RegisterContainer = ({ navigation }) => {
         textinputname={"Pertanyaan Keamanan"}
         placeholder={"Masukkan Pertanyaan..."}
         Value={question}
-        onChangeText={setQuestion}
+        setValue={setQuestion}
       />
       <InputText
         textinputname={"Jawaban Pertanyaan Keamanan"}
