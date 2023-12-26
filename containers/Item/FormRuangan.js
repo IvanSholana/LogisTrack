@@ -14,6 +14,22 @@ const FormRuanganContainer = ({
     ruanganList.map((e) => new RuanganDipinjam(e.id, e.nama, false))
   );
 
+  const [roomData, setRoomData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await ruanganList();
+        console.log(JSON.stringify(data, undefined, 2));
+        setRoomData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const toggleCheckbox = (nama) => {
     setKeranjangRuangan((prevKeranjang) =>
       prevKeranjang.map((item) => {
@@ -35,7 +51,7 @@ const FormRuanganContainer = ({
     <>
       <View style={{ flex: 1 }}>
         <FlatList
-          data={ruanganList}
+          data={roomData}
           renderItem={({ item }) => (
             <CheckBoxForm
               data={item}

@@ -10,8 +10,11 @@ import {
 } from "react-native";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
-import * as ImagePicker from "expo-image-picker";
-import Peralatan from "../../domain/models/Peralatan";
+
+import * as ImagePicker from 'expo-image-picker';
+import Peralatan from "../../domain/models/Peralatan"
+
+
 
 const AddItemContainers = ({ navigation }) => {
   const [nama, setNama] = useState("");

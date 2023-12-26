@@ -38,10 +38,10 @@ const DetailHistoryContainers = ({ navigation, route }) => {
               }
             />
           }
-          startDateTime={data.tanggalAwal}
-          endDateTime={data.tanggalAkhir}
-          acara={data.namaAcara}
-          alasan={data.alasan}
+          startDateTime={data.start_date}
+          endDateTime={data.end_date}
+          acara={data.event_name}
+          alasan={data.reason}
         />
         <ButtonComponent
           buttontext={"Kembali"}
