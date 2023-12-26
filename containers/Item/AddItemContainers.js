@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
   Image,
   Alert,
+  TextInput,
 } from "react-native";
-import InputText from "../../components/InputText/InputText";
+
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import * as ImagePicker from "expo-image-picker";
