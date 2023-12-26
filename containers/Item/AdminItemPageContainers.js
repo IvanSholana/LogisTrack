@@ -26,6 +26,7 @@ const AdminItemPageContainer = ({ navigation, route }) => {
         <ButtonComponent
           buttontext={"Tambah Peralatan"}
           buttonstyle={styles.buttonadd}
+          onPress={() => navigation.navigate("additem")}
         />
       ) : (
         <ButtonComponent

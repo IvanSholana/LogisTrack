@@ -17,7 +17,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import AdminEditDetailItemScreen from "./screens/admin/aEditDetailItemScreen";
 import AdminEditDetailRuanganScreen from "./screens/admin/aEditDetailRuanganScreen";
-
+import AddItemScreens from "./screens/AddItemScreens";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -118,6 +118,11 @@ export default function App() {
           <Stack.Screen
             name="admineditruangan"
             component={AdminEditDetailRuanganScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="additem"
+            component={AddItemScreens}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
