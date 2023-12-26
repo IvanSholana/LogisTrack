@@ -1,6 +1,8 @@
 class RuanganDipinjam {
-  constructor(id) {
+  constructor(id, nama, status) {
     this.id = id;
+    this.nama = nama;
+    this.status = status;
   }
 }
 

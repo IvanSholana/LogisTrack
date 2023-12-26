@@ -7,7 +7,6 @@ import FloatingButton from "../../components/FloatingButton/FloatingButtonCompon
 import DatePickers from "../../components/DatePicker/DatePickerComponents";
 import FormRuanganContainer from "./FormRuangan";
 import FormAlatContainer from "./FormPeralatan";
-import dayjs from "dayjs";
 
 const DateContainer = ({ startDate, endDate, setStartDate, setEndDate }) => {
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -74,10 +73,10 @@ const DateContainer = ({ startDate, endDate, setStartDate, setEndDate }) => {
 const FormPeminjaman = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
   const [checkout, setCheckout] = useState([]);
+  const [keranjangRuangan, setKeranjangRuangan] = useState([]);
 
   var currentDate = new Date();
 
-  // Mendapatkan tahun, bulan, dan tanggal
   var year = currentDate.getFullYear();
   var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
   var day = ("0" + currentDate.getDate()).slice(-2);
@@ -105,6 +104,7 @@ const FormPeminjaman = ({ navigation, route }) => {
         keranjang={checkout}
         dateAwal={startDate}
         dateAkhir={endDate}
+        keranjangRuangan={keranjangRuangan}
       />
       {activeTab === "Peralatan" ? (
         <FormAlatContainer
@@ -113,7 +113,11 @@ const FormPeminjaman = ({ navigation, route }) => {
           setcheckout={setCheckout}
         />
       ) : (
-        <FormRuanganContainer navigation={navigation} />
+        <FormRuanganContainer
+          navigation={navigation}
+          ruangandipinjam={keranjangRuangan}
+          setRuanganDipinjam={setKeranjangRuangan}
+        />
       )}
       <View
         style={{
@@ -140,8 +144,8 @@ const AppBarContainer = ({
   keranjang,
   dateAwal,
   dateAkhir,
+  keranjangRuangan,
 }) => {
-  console.log(keranjang);
   return (
     <>
       <View style={styles.container}>
@@ -157,6 +161,7 @@ const AppBarContainer = ({
               navigation.navigate("peminjaman", {
                 data: keranjang,
                 timeline: [dateAwal, dateAkhir],
+                dataRuangan: keranjangRuangan,
               })
             }
           >

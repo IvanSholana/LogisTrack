@@ -4,15 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { colors } from "../../constants/colors";
 import { useNavigation } from "@react-navigation/native";
 
-const ItemPage = ({ isEditMode, setEditMode }) => {
-  const navigation = useNavigation();
-  const [count, setCount] = useState(0);
-
-  const handleEdit = () => {
-    // Add logic for the edit button press
-    navigation.navigate("aDetailEditRuangan");
-  };
-
+const ItemPage = ({ item, navigation, tab }) => {
   const handleDelete = () => {
     // Add logic for the delete button press
     console.log("Delete button pressed");
@@ -20,20 +12,23 @@ const ItemPage = ({ isEditMode, setEditMode }) => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.navigate("detail")}>
-        <Text style={styles.itemName}>Nama Ruangan</Text>
-      </Pressable>
-
-      {isEditMode ? (
-        <>
-          <Pressable onPress={handleEdit} style={styles.editButton}>
-            <Icon name="edit" size={20} color="black" />
-          </Pressable>
-          <Pressable onPress={handleDelete} style={styles.deleteButton}>
-            <Icon name="trash" size={20} color="black" />
-          </Pressable>
-        </>
-      ) : null}
+      <Text style={styles.itemName}>{item.nama}</Text>
+      <View style={styles.buttonContainer}>
+        <Pressable
+          style={styles.editButton}
+          onPress={() =>
+            navigation.navigate(
+              tab == "Peralatan" ? "admineditalat" : "admineditruangan",
+              { data: item }
+            )
+          }
+        >
+          <Icon name="edit" size={20} color="black" />
+        </Pressable>
+        <Pressable style={styles.deleteButton}>
+          <Icon name="trash" size={20} color="red" />
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -72,8 +67,11 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     padding: 10,
-    backgroundColor: "red",
     borderRadius: 5,
+  },
+
+  buttonContainer: {
+    flexDirection: "row",
   },
 });
 

@@ -49,7 +49,7 @@ const EditDetailRuanganCard = ({
               styles.leftAlign,
               styles.inputText,
             ]}
-            value={inputMax}
+            value={availability}
             onChangeText={handleMaxChange}
             placeholder="Kapasitas"
           />

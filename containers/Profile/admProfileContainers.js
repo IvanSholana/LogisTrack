@@ -6,9 +6,9 @@ import { useState } from "react";
 import { useFonts } from "expo-font";
 import TableComponent from "../../components/Table/TableComponent";
 
-const ProfileContainer = ({ navigation }) => {
+const AdminProfileContainer = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
-    "Poppins-BoldItalic": require("../../assets/fonts/Poppins/Poppins-BoldItalic.ttf"), 
+    "Poppins-BoldItalic": require("../../assets/fonts/Poppins/Poppins-BoldItalic.ttf"),
   });
   const [dialogVisible, setDialogVisible] = useState(false);
 
@@ -33,15 +33,15 @@ const ProfileContainer = ({ navigation }) => {
   );
 };
 
-const ProfileContent = () => {
-    const myTableHead = ['Status Peminjaman', 'Jumlah'];
-    const dashboardData = [
-        { namaPeminjaman: "Diproses", qty: 34 },
-        { namaPeminjaman: "Dipesan", qty: 12 },
-        { namaPeminjaman: "Dipinjam", qty: 9 },
-        { namaPeminjaman: "Ditolak", qty: 23 },
-        { namaPeminjaman: "Selesai", qty: 6 },
-      ];
+const AdminProfileContent = () => {
+  const myTableHead = ["Status Peminjaman", "Jumlah"];
+  const dashboardData = [
+    { namaPeminjaman: "Diproses", qty: 34 },
+    { namaPeminjaman: "Dipesan", qty: 12 },
+    { namaPeminjaman: "Dipinjam", qty: 9 },
+    { namaPeminjaman: "Ditolak", qty: 23 },
+    { namaPeminjaman: "Selesai", qty: 6 },
+  ];
   return (
     <>
       <Text style={styles.profileTitle}>Dashboard</Text>
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
   profileTitle: {
     fontSize: 32,
     fontWeight: "500",
-    textAlign:'left',
-    paddingBottom:10,
+    textAlign: "left",
+    paddingBottom: 10,
   },
   logo: {
     marginTop: 20,
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
 
-    fontFamily: "Poppins-BoldItalic", 
+    fontFamily: "Poppins-BoldItalic",
 
     color: "#6A994E",
     textAlignVertical: "center",
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
 });
-export { ProfileContainer, ProfileContent };
+export { AdminProfileContainer, AdminProfileContent };

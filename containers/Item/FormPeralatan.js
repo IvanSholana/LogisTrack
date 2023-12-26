@@ -4,14 +4,14 @@ import AddPeralatanCardComponents from "../../components/Card/AddPeralatanCard";
 import peralatanList from "../../data/local/PeralatanData"; // GET API
 import BarangDipinjam from "../../domain/models/BarangDipinjam";
 
-const FormAlatContainer = ({ navigation, checkout, setcheckout }) => {
+const FormAlatContainer = ({ navigation, setcheckout }) => {
   const [keranjang, setKeranjang] = useState(() =>
     peralatanList.map((e) => new BarangDipinjam(e.id, 0))
   );
 
   useEffect(() => {
-    setcheckout(keranjang.filter((e) => e.jumlah > 1));
-  }, [keranjang]);
+    setcheckout(keranjang.filter((e) => e.jumlah != 0));
+  }, [keranjang, setKeranjang]);
 
   return (
     <View style={styles.container}>

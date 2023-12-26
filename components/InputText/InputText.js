@@ -8,6 +8,7 @@ const InputText = ({
   security,
   isEdit,
   fillValue,
+  setValue,
 }) => {
   return (
     <View style={styles.container}>
@@ -19,6 +20,7 @@ const InputText = ({
         placeholder={placeholder}
         placeholderTextColor={colors.registerText}
         secureTextEntry={security}
+        onChangeText={(text) => setValue(text)}
       />
     </View>
   );

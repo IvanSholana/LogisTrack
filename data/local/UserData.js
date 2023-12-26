@@ -1,32 +1,34 @@
-const users = [
-  new user(
+import User from "../../domain/models/User";
+
+const usersdata = [
+  new User(
     "John Doe",
-    "123456",
-    "password123",
+    "123",
+    "123",
     "john.doe@example.com",
     "Dosen",
     "Siapa nama ibu kandung Anda?",
     "Jane Doe"
   ),
-  new user(
+  new User(
     "Jane Smith",
-    "789012",
-    "pass456",
+    "1234",
+    "1234",
     "jane.smith@example.com",
-    "Mahasiswa",
+    "Admin",
     "Apa nama hewan peliharaan Anda?",
     "Fluffy"
   ),
-  new user(
+  new User(
     "Bob Johnson",
     "567890",
     "pass789",
     "bob.johnson@example.com",
-    "Staff",
+    "Admin",
     "Di kota manakah Anda lahir?",
     "New York"
   ),
-  new user(
+  new User(
     "Alice Brown",
     "234567",
     "pass321",
@@ -36,3 +38,5 @@ const users = [
     "Blue"
   ),
 ];
+
+export default usersdata;

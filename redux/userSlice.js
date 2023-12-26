@@ -5,17 +5,19 @@ const initialState = {
   status: "",
 };
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: "user",
-  initialState,
+  initialState: initialState,
   reducers: {
     setUser: (state, action) => {
       state.nama = action.payload.nama;
       state.status = action.payload.status;
+      state.nimNidn = action.payload.nimNidn;
     },
     clearUser: (state) => {
       state.nama = "";
       state.status = "";
+      state.nimNidn = "";
     },
   },
 });

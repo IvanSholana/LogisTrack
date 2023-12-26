@@ -9,3 +9,4 @@ class Peralatan {
 }
 
 export default Peralatan;
+

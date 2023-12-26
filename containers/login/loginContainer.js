@@ -5,20 +5,45 @@ import { StyleSheet, View } from "react-native";
 import { colors } from "../../constants/colors";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/userSlice";
+import usersdata from "../../data/local/UserData";
+
 const LoginContainer = ({ navigation }) => {
-  const [username, setUsername] = useState("");
+  const [nimNidn, setnimNidn] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [nama, setNama] = useState("");
-  const [status, setStatus] = useState("");
-  const handleLogin = async () => {
+  const dispatch = useDispatch();
+
+  const ninChangeHandle = (NIMandNIDN) => {
+    setnimNidn(NIMandNIDN);
+  };
+
+  const passwordChangeHandle = (psswd) => {
+    setPassword(psswd);
+  };
+
+  const handleLogin = () => {
     try {
       setLoading(true);
-      const user = await loginUser(username, password);
 
-      console.log("Login successful. User:", user);
+      const userData = usersdata.find(
+        (e) => e.nimNidn == nimNidn && e.password == password
+      );
+      console.log(userData);
+      if (userData) {
+        const { nama, status, nimNidn } = userData;
+        console.log(`nama : ${nama} dan user ${status} dan NIM ${nimNidn}`);
+
+        dispatch(setUser({ nama: nama, status: status, nimNidn: nimNidn }));
+
+        console.log("Login Berhasil");
+        return true;
+      } else {
+        console.log("Login gagal");
+        return false;
+      }
     } catch (error) {
       console.error("Login failed:", error.message);
+      return false;
     } finally {
       setLoading(false);
     }
@@ -29,14 +54,12 @@ const LoginContainer = ({ navigation }) => {
       <InputText
         textinputname={"NIM/NIDN"}
         placeholder={"Masukkan NIM/NIDN..."}
-        value={username}
-        onChangeText={setUsername}
+        setValue={ninChangeHandle}
       />
       <InputText
         textinputname={"Password"}
         placeholder={"Masukkan Password..."}
-        value={password}
-        onChangeText={setPassword}
+        setValue={passwordChangeHandle}
         security={true}
       />
       <View style={styles.buttonsection}>
@@ -44,8 +67,13 @@ const LoginContainer = ({ navigation }) => {
           buttontext={"Login"}
           buttonstyle={styles.button}
           textstyle={styles.logintext}
-          onPress={() => navigation.navigate("MainTabsMenu")}
+          onPress={() => {
+            if (handleLogin()) {
+              navigation.navigate("MainTabsMenu");
+            }
+          }}
         />
+
         <ButtonComponent
           buttontext={"Register"}
           buttonstyle={[
