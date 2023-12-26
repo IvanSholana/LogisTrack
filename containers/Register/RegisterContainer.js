@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
-import { StyleSheet, View} from "react-native";
+import { StyleSheet, View, Alert} from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
-// import User from "../../domain/models/user";
+
+import User from "../../domain/models/user";
 
 
 const RegisterContainer = ({ navigation }) => {
@@ -21,37 +22,54 @@ const RegisterContainer = ({ navigation }) => {
     { key: "3", value: "Staff" },
   ];
 
-  // const testings = new User();
+  const registUser = () => {
+    const newUser = new User(
+        name,
+        username,
+        password,
+        email,
+        question,
+        answer,
+        selected, 
+    );
 
-  // console.log(testings.generateToken())  
+    console.log('User Baru:', newUser);
+    Alert.alert('Sukses', 'Registrasi berhasil', [
+        {
+          text: 'OK',
+
+        },
+      ]);
+  };
+
 
   return (
     <>
       <InputText
         textinputname={"Nama"}
         placeholder={"Masukkan Nama..."}
-        value={name}
+        Value={name}
         onChangeText={setName}
         
       />
       <InputText
         textinputname={"NIM/NIDN"}
         placeholder={"Masukkan NIM/NIDN..."}
-        value={username}
+        Value={username}
         onChangeText={setUsername}
       />
       <InputText
         textinputname={"Password"}
         security={true}
         placeholder={"Masukkan Password..."}
-        value={password}
+        Value={password}
         onChangeText={setPassword}
       />
       <InputText
         textinputname={"E-Mail Institut"}
         keyboardType="email-address"
         placeholder={"Masukkan Email..."}
-        value={email}
+        Value={email}
         onChangeText={setEmail}
       />
       <SelectList
@@ -70,13 +88,13 @@ const RegisterContainer = ({ navigation }) => {
       <InputText
         textinputname={"Pertanyaan Keamanan"}
         placeholder={"Masukkan Pertanyaan..."}
-        value={question}
+        Value={question}
         onChangeText={setQuestion}
       />
       <InputText
         textinputname={"Jawaban Pertanyaan Keamanan"}
         placeholder={"Masukkan Jawaban..."}
-        value={answer}
+        Value={answer}
         onChangeText={setAnswer}
       />
       <View style={styles.buttonsection}>
@@ -84,7 +102,7 @@ const RegisterContainer = ({ navigation }) => {
           buttontext={"Register"}
           buttonstyle={styles.button}
           textstyle={styles.logintext}
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => {registUser(); navigation.navigate("Login");}}
         />
         <ButtonComponent
           buttontext={"Back"}
