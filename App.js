@@ -15,6 +15,8 @@ import DetailHistoryScreen from "./screens/DetailHistoryScreen";
 import RoomDetailScreen from "./screens/RoomDetailScreen";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import AdminEditDetailItemScreen from "./screens/admin/aEditDetailItemScreen";
+import AdminEditDetailRuanganScreen from "./screens/admin/aEditDetailRuanganScreen";
 import AddItemScreens from "./screens/AddItemScreens";
 
 
@@ -107,6 +109,16 @@ export default function App() {
           <Stack.Screen
             name="detailruangan"
             component={RoomDetailScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="admineditalat"
+            component={AdminEditDetailItemScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="admineditruangan"
+            component={AdminEditDetailRuanganScreen}
             options={{ headerShown: false }}
           />
           <Stack.Screen

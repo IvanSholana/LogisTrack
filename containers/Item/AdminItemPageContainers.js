@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
-import FloatingButton from "../../components/FloatingButton/FloatingButtonComponent";
-import DatePickers from "../../components/DatePicker/DatePickerComponents";
-import FormRuanganContainer from "./FormRuangan";
-import FormAlatContainer from "./FormPeralatan";
 import ItemPage from "../../components/Card/ItemPageCard";
+import { FlatList } from "react-native-gesture-handler";
+import peralatanList from "../../data/local/PeralatanData";
+import ruanganList from "../../data/local/RuanganData";
 
-const AdminItemPageContainer = ({ navigation }) => {
-  const [isEditMode, setEditMode] = useState(true);
+const AdminItemPageContainer = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
 
   const handleTabPress = (tab) => {
@@ -18,18 +15,42 @@ const AdminItemPageContainer = ({ navigation }) => {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <AppBarContainer
         activeTab={activeTab}
         handleTabPress={handleTabPress}
         navigation={navigation}
       />
+
       {activeTab === "Peralatan" ? (
-        <FormAlatContainer navigation={navigation} />
+        <ButtonComponent
+          buttontext={"Tambah Peralatan"}
+          buttonstyle={styles.buttonadd}
+          onPress={() => navigation.navigate("additem")}
+        />
       ) : (
-        <FormRuanganContainer navigation={navigation} />
+        <ButtonComponent
+          buttontext={"Tambah Ruangan"}
+          buttonstyle={styles.buttonadd}
+        />
       )}
-      <ItemPage isEditMode={isEditMode} setEditMode={setEditMode} />
+      {activeTab === "Peralatan" ? (
+        <FlatList
+          data={peralatanList}
+          renderItem={({ item }) => (
+            <ItemPage item={item} navigation={navigation} tab={activeTab} />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      ) : (
+        <FlatList
+          data={ruanganList}
+          renderItem={({ item }) => (
+            <ItemPage item={item} navigation={navigation} tab={activeTab} />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      )}
     </View>
   );
 };
@@ -38,6 +59,13 @@ const AppBarContainer = ({ activeTab, handleTabPress, navigation }) => {
   return (
     <>
       <View style={styles.container}>
+        <View style={{ marginStart: 10, marginTop: 10 }}>
+          <Image
+            source={require("../../assets/images/LogisTrack.png")}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+        </View>
         <View style={styles.navigationTab}>
           <ButtonComponent
             buttontext={"Peralatan"}
@@ -120,6 +148,13 @@ const styles = StyleSheet.create({
   },
   tabDeactiveButtonText: {
     color: colors.registerText,
+  },
+  buttonadd: {
+    backgroundColor: colors.buttonLogin,
+    padding: 15,
+    marginHorizontal: 10,
+    marginTop: 20,
+    borderRadius: 10,
   },
 });
 

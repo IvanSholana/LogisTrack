@@ -9,17 +9,25 @@ import { colors } from "../../constants/colors";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import Peminjaman from "../../domain/models/Peminjaman";
 import { useSelector } from "react-redux";
+import peralatanList from "../../data/local/PeralatanData";
+import peminjamanList from "../../data/local/PeminjamanData";
 
 const PinjamDetailContainer = ({ navigation, route }) => {
-  const { data, timeline } = route.params;
+  const { data, timeline, dataRuangan } = route.params;
   const [dateAwal, dateAkhir] = timeline;
 
   const [tanggalAwal, jamAwal] = dateAwal.split(" ");
   const [tanggalAkhir, jamAkhir] = dateAkhir.split(" ");
   const [acara, setNamaAcara] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
-  const nama = useSelector((state) => state.user.nama);
-  const status = useSelector((state) => state.user.statu);
+
+  // Pemetaan Peminjaman Ruangan
+  const peminjamanRuangan = dataRuangan.map((e) => {
+    return {
+      namaPeminjaman: e.nama,
+      qty: 1,
+    };
+  });
 
   const showAlertDialog = () => {
     setDialogVisible(true);
@@ -31,16 +39,21 @@ const PinjamDetailContainer = ({ navigation, route }) => {
 
   const myTableHead = ["List", "Qty"];
 
-  const peminjamanData = data.map((e) => {
-    const peralatan = peralatanList.find((y) => y.id === e.id);
+  // Struktur peminjamanData
+  const peminjamanData = [
+    ...data.map((e) => {
+      const peralatan = peralatanList.find((y) => y.id === e.id);
 
-    if (peralatan) {
-      return {
-        namaPeminjaman: peralatan.nama,
-        qty: e.jumlah,
-      };
-    }
-  });
+      if (peralatan) {
+        return {
+          namaPeminjaman: peralatan.nama,
+          qty: e.jumlah,
+        };
+      }
+      return null; // Tambahkan ini jika diperlukan, agar tidak ada elemen null dalam array.
+    }),
+    ...peminjamanRuangan,
+  ];
 
   return (
     <>

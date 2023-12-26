@@ -31,9 +31,9 @@ const LoginContainer = ({ navigation }) => {
       console.log(userData);
       if (userData) {
         const { nama, status, nimNidn } = userData;
-        console.log(`nama : ${nama} dan user ${status}`);
+        console.log(`nama : ${nama} dan user ${status} dan NIM ${nimNidn}`);
 
-        dispatch(setUser({ nama: nama, status: status, nim: nimNidn }));
+        dispatch(setUser({ nama: nama, status: status, nimNidn: nimNidn }));
 
         console.log("Login Berhasil");
         return true;

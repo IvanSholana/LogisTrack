@@ -2,7 +2,7 @@ import { StyleSheet, View, Text } from "react-native";
 import AdminEditDetailItemContainers from "../../containers/Item/admEditDetailItemContainers";
 import AppBarComponent from "../../components/AppBar/AppBarComponent";
 
-const AdminEditDetailItemScreen = ({ navigation }) => {
+const AdminEditDetailItemScreen = ({ navigation, route }) => {
   return (
     <>
       <AppBarComponent
@@ -11,7 +11,10 @@ const AdminEditDetailItemScreen = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.appBar}></View>
         <View style={styles.historySection}>
-          <AdminEditDetailItemContainers navigation={navigation} />
+          <AdminEditDetailItemContainers
+            navigation={navigation}
+            route={route}
+          />
         </View>
       </View>
     </>

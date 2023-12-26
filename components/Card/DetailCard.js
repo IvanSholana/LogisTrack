@@ -11,7 +11,7 @@ const DetailCard = ({
   return (
     <View style={styles.container}>
       <Image source={{ uri: imageSource }} style={styles.image} />
-      <View style={styles.infoContainer}>
+      <View>
         <View style={styles.textContainer}>
           <Text style={[styles.title, styles.leftAlign]}>Deskripsi</Text>
           <Text style={[styles.descriptionText, styles.leftAlign]}>
@@ -19,9 +19,9 @@ const DetailCard = ({
           </Text>
         </View>
         <View style={styles.textContainer}>
-          <Text style={[styles.title, styles.leftAlign]}>Kapasitas</Text>
+          <Text style={[styles.title, styles.leftAlign]}>Kapasitas/Kuantitas</Text>
           <Text style={[styles.availabilityText, styles.leftAlign]}>
-            {availability ? `${availability} pcs` : "Tidak Tersedia"}
+            {availability ? `${availability}` : "Tidak Tersedia"}
           </Text>
         </View>
       </View>
