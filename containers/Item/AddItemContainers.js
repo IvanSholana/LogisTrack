@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image, Alert } from "react-native";
-import InputText from "../../components/InputText/InputText";
+import { View, StyleSheet, Text, TouchableOpacity, Image, Alert,TextInput } from "react-native";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import * as ImagePicker from 'expo-image-picker';
@@ -8,18 +7,19 @@ import Peralatan from "../../domain/models/Peralatan"
 
 
 const AddItemContainers = ({ navigation }) => {
-  const [jumlah, setJumlah] = useState("");
-  const [deskripsi, setDeskripsi] = useState("");
-  const [nama, setNama] = useState("");
-  const [selectedOption, setSelectedOption] = useState(""); 
+  const [nama, setNama] = useState('');
+  const [jumlah, setJumlah] = useState('');
+  const [deskripsi, setDeskripsi] = useState('');
+  const [gambar, setGambar] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(''); 
   const [jumlahlabel, setJumlahLabel] = useState("Kuantitas");
-  const [selectedImage, setSelectedImage] = useState(null);
   const currentDate = new Date();
-  const formattedDate = currentDate.toISOString().split('T')[0].replace(/-/g, ''); // Mendapatkan tanggal dalam format YYYYMMDD
+  const formattedDate = currentDate.toISOString().split('T')[0].replace(/-/g, ''); 
   const id = `${nama}_${formattedDate}`;
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
+
 
   const handleChooseImage = async () => {
     try {
@@ -38,15 +38,18 @@ const AddItemContainers = ({ navigation }) => {
       });
   
       if (!result.cancelled) {
-        console.log('Selected Image URI:', result.uri); 
-        setSelectedImage(result.uri);
+        console.log('ImagePicker Result:', result);
+        setGambar(result.assets[0].uri); // Update the gambar state
+        console.log('Selected Image URI:', result.assets[0].uri); // Log the selected image URI
       } else {
-        console.log('Image selection cancelled.');
+        console.log('Image selection cancelled or no image selected.');
       }
     } catch (error) {
       console.error('Image selection error:', error);
     }
   };
+  
+  
   
   const tambahPeralatan = () => {
     const peralatanBaru = new Peralatan(
@@ -54,7 +57,7 @@ const AddItemContainers = ({ navigation }) => {
         nama,
         jumlah,
         deskripsi,
-        selectedImage 
+        gambar 
     );
 
     console.log('Peralatan Baru:', peralatanBaru);
@@ -68,10 +71,10 @@ const AddItemContainers = ({ navigation }) => {
   
   return (
     <>
-      <InputText
+      <TextInput
         textinputname={"Nama Aset"}
         placeholder={"Masukkan Nama Aset..."}
-        Value={nama}
+        value={nama}
         onChangeText={setNama}
       />
     <Text>Tipe Aset</Text>
@@ -102,13 +105,13 @@ const AddItemContainers = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <InputText
+      <TextInput
         textinputname={"Deskripsi"}
         placeholder={"Masukkan Deskripsi..."}
         value={deskripsi}
         onChangeText={setDeskripsi}
       />
-      <InputText
+      <TextInput
         textinputname={jumlahlabel}
         placeholder={`Masukkan ${jumlahlabel}...`}
         value={jumlah}
@@ -120,11 +123,10 @@ const AddItemContainers = ({ navigation }) => {
         onPress={handleChooseImage}>
         <Text style={styles.uploadText}>Unggah Gambar</Text>
         </TouchableOpacity>
-
-        {selectedImage ? (
+        {gambar ? (
   <Image
-    source={{ uri: selectedImage }}
-    style={styles.selectedImage}
+    source={{ uri: gambar }}
+    style={styles.gambar}
   />
 ) : (
   <Text>No Image Selected</Text>
@@ -206,7 +208,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-  selectedImage: {
+  gambar: {
     width: 200,
     height: 200,
     marginTop: 10,
