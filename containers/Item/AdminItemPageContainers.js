@@ -6,12 +6,19 @@ import ItemPage from "../../components/Card/ItemPageCard";
 import { FlatList } from "react-native-gesture-handler";
 import peralatanList from "../../data/local/PeralatanData";
 import ruanganList from "../../data/local/RuanganData";
+import { useDispatch } from "react-redux";
+import { deleteItem } from "../../redux/alatSlice"; 
 
 const AdminItemPageContainer = ({ navigation, route }) => {
   const [activeTab, setActiveTab] = useState("Peralatan");
 
   const handleTabPress = (tab) => {
     setActiveTab(tab);
+  };
+
+  const dispatch = useDispatch();
+  const handleDelete = (itemId) => {
+    dispatch(deleteItem({ listType: activeTab.toLowerCase(), itemId }));
   };
 
   return (
@@ -34,23 +41,14 @@ const AdminItemPageContainer = ({ navigation, route }) => {
           buttonstyle={styles.buttonadd}
         />
       )}
-      {activeTab === "Peralatan" ? (
-        <FlatList
-          data={peralatanList}
-          renderItem={({ item }) => (
-            <ItemPage item={item} navigation={navigation} tab={activeTab} />
-          )}
-          keyExtractor={(item) => item.id}
-        />
-      ) : (
-        <FlatList
-          data={ruanganList}
-          renderItem={({ item }) => (
-            <ItemPage item={item} navigation={navigation} tab={activeTab} />
-          )}
-          keyExtractor={(item) => item.id}
-        />
-      )}
+      <FlatList
+        data={activeTab === "Peralatan" ? peralatanList : ruanganList}
+        renderItem={({ item }) => (
+          <ItemPage item={item} navigation={navigation} tab={activeTab} onDelete={handleDelete} />
+        )}
+        keyExtractor={(item) => item.id}
+      />
+
     </View>
   );
 };

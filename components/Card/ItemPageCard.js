@@ -4,12 +4,11 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { colors } from "../../constants/colors";
 import { useNavigation } from "@react-navigation/native";
 
-const ItemPage = ({ item, navigation, tab }) => {
+const ItemPage = ({ item, navigation, tab, onDelete }) => {
   const handleDelete = () => {
-    // Add logic for the delete button press
-    console.log("Delete button pressed");
+    onDelete(item.id);
+    console.log("Button Delete");
   };
-
   return (
     <View style={styles.container}>
       <Text style={styles.itemName}>{item.nama}</Text>
@@ -25,7 +24,8 @@ const ItemPage = ({ item, navigation, tab }) => {
         >
           <Icon name="edit" size={20} color="black" />
         </Pressable>
-        <Pressable style={styles.deleteButton}>
+        <Pressable style={styles.deleteButton} onPress={handleDelete}>
+          
           <Icon name="trash" size={20} color="red" />
         </Pressable>
       </View>

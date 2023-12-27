@@ -1,12 +1,20 @@
 import { StyleSheet, View, Text } from "react-native";
 import AdminEditDetailItemContainers from "../../containers/Item/admEditDetailItemContainers";
 import AppBarComponent from "../../components/AppBar/AppBarComponent";
+import { useFonts } from "expo-font";
 
 const AdminEditDetailItemScreen = ({ navigation, route }) => {
+  const [fontsLoaded] = useFonts({
+    "Poppins-BoldItalic": require("../../assets/fonts/Poppins/Poppins-BoldItalic.ttf"),
+  });
+  const { data } = route.params;
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <>
       <AppBarComponent
-        content={<Text style={styles.headerText}>Edit Detail Item</Text>}
+        content={<Text style={styles.headerText}>Edit Detail {data.nama}</Text>}
       />
       <View style={styles.container}>
         <View style={styles.appBar}></View>
@@ -35,7 +43,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontFamily: "Poppins_700Bold_Italic",
+    fontFamily: "Poppins-BoldItalic",
     color: "#6A994E",
     textAlignVertical: "center",
     marginLeft: 20,
