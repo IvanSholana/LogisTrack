@@ -4,11 +4,14 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import ItemPage from "../../components/Card/ItemPageCard";
 import { FlatList } from "react-native-gesture-handler";
-import peralatanList from "../../data/local/PeralatanData";
 import ruanganList from "../../data/local/RuanganData";
+import { useSelector } from "react-redux";
 
 const AdminItemPageContainer = ({ navigation, route }) => {
+  const peralatan = useSelector((state) => state.peralatan);
   const [activeTab, setActiveTab] = useState("Peralatan");
+
+  console.log(peralatan.peralatan);
 
   const handleTabPress = (tab) => {
     setActiveTab(tab);
@@ -36,7 +39,7 @@ const AdminItemPageContainer = ({ navigation, route }) => {
       )}
       {activeTab === "Peralatan" ? (
         <FlatList
-          data={peralatanList}
+          data={peralatan.peralatan}
           renderItem={({ item }) => (
             <ItemPage item={item} navigation={navigation} tab={activeTab} />
           )}
@@ -44,7 +47,7 @@ const AdminItemPageContainer = ({ navigation, route }) => {
         />
       ) : (
         <FlatList
-          data={ruanganList}
+          data={peralatan.peralatan}
           renderItem={({ item }) => (
             <ItemPage item={item} navigation={navigation} tab={activeTab} />
           )}

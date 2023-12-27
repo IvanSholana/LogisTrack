@@ -6,7 +6,9 @@ class Peminjaman {
     peralatanDipinjam,
     ruanganDipinjam,
     tanggalAwal,
+    waktuAwal,
     tanggalAkhir,
+    waktuAkhir,
     status
   ) {
     this.id = id;
@@ -15,7 +17,9 @@ class Peminjaman {
     this.peralatanDipinjam = peralatanDipinjam;
     this.ruanganDipinjam = ruanganDipinjam;
     this.tanggalAwal = tanggalAwal;
+    this.waktuAwal = waktuAwal; // tambahkan properti waktuAwal
     this.tanggalAkhir = tanggalAkhir;
+    this.waktuAkhir = waktuAkhir; // tambahkan properti waktuAkhir
     this.status = status;
   }
 }

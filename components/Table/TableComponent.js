@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Table, Row } from 'react-native-table-component';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { Table, Row } from "react-native-table-component";
 
 const TableComponent = ({ data, tableHead }) => {
   const determineFlexArr = (headLength) => {
@@ -49,21 +49,16 @@ const TableComponent = ({ data, tableHead }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, 
-    paddingBottom: 120 
+  container: { flex: 1 },
+  head: { height: 40, backgroundColor: "#A7C957", borderLeftWidth: 1 },
+  headText: { textAlign: "center", fontWeight: "bold" },
+  text: { textAlign: "center" },
+  row: {
+    height: 30,
+    borderWidth: 1,
+    borderColor: "#A6A6A6",
+    borderLeftWidth: 1,
   },
-  head: { height: 40, 
-    backgroundColor: '#A7C957', 
-    borderLeftWidth: 1 
-  },
-  headText: { textAlign: 'center', 
-  fontWeight: 'bold' 
-},
-  text: { textAlign: 'center' },
-  row: { height: 30, 
-    borderWidth: 1, 
-    borderColor: '#A6A6A6', 
-    borderLeftWidth: 1 }, 
 });
 
 export default TableComponent;

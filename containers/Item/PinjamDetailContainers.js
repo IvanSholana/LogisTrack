@@ -9,16 +9,21 @@ import { colors } from "../../constants/colors";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import Peminjaman from "../../domain/models/Peminjaman";
 import peralatanList from "../../data/local/PeralatanData";
+import { useDispatch, useSelector } from "react-redux";
+import { setPeminjaman } from "../../redux/peminjamanSlice";
 
 const PinjamDetailContainer = ({ navigation, route }) => {
   const { data, timeline, dataRuangan } = route.params;
   const [dateAwal, dateAkhir] = timeline;
-
   const [tanggalAwal, jamAwal] = dateAwal.split(" ");
   const [tanggalAkhir, jamAkhir] = dateAkhir.split(" ");
   const [acara, setNamaAcara] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
+  const dispatch = useDispatch();
+  const { dataPeminjaman } = useSelector((state) => state.peminjaman);
+  const { nama, status, username } = useSelector((state) => state.user);
 
+  console.log(dataPeminjaman);
   // Pemetaan Peminjaman Ruangan
   const peminjamanRuangan = dataRuangan.map((e) => {
     return {
@@ -53,6 +58,11 @@ const PinjamDetailContainer = ({ navigation, route }) => {
     ...peminjamanRuangan,
   ];
 
+  const ruangan = dataRuangan.map((e) => {
+    const matchingRuangan = dataRuangan.find((y) => e.nama === y.nama);
+    return matchingRuangan ? matchingRuangan.id : null;
+  });
+
   return (
     <>
       <View style={{ flex: 1 }}>
@@ -61,7 +71,11 @@ const PinjamDetailContainer = ({ navigation, route }) => {
             <TableComponent data={peminjamanData} tableHead={myTableHead} />
           </View>
           <View style={styles.InputText}>
-            <InputText textinputname={"Nama Event"} />
+            <InputText
+              textinputname={"Nama Event"}
+              placeholder={"Masukkan Nama Event"}
+              setValue={setNamaAcara}
+            />
             <InputText
               textinputname={"Tanggal Mulai"}
               isEdit={false}
@@ -84,17 +98,22 @@ const PinjamDetailContainer = ({ navigation, route }) => {
             />
             <ButtonComponent
               onPress={() => {
-                showAlertDialog;
-                new Peminjaman( // POST API
-                  1,
+                showAlertDialog(); // Pastikan Anda memanggil fungsi dengan tanda kurung
+                const newPeminjamanData = new Peminjaman(
+                  `${new Date().toLocaleString().toLowerCase()}`, // Menggunakan toLocaleString dan toLowerCase
                   nama,
                   acara,
-                  peminjamanData,
-                  "",
+                  data,
+                  ruangan,
                   tanggalAwal,
+                  jamAwal,
                   tanggalAkhir,
+                  jamAkhir,
                   "Diajukan"
                 );
+
+                let newData = [...dataPeminjaman, newPeminjamanData];
+                dispatch(setPeminjaman({ peminjaman: newData }));
               }}
               buttontext={"Ajukan"}
               buttonstyle={{
@@ -105,6 +124,7 @@ const PinjamDetailContainer = ({ navigation, route }) => {
               }}
               textstyle={{ color: "white" }}
             />
+
             <ButtonComponent
               buttontext={"Kembali"}
               buttonstyle={{

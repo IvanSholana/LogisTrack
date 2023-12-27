@@ -75,6 +75,8 @@ const FormPeminjaman = ({ navigation, route }) => {
   const [checkout, setCheckout] = useState([]);
   const [keranjangRuangan, setKeranjangRuangan] = useState([]);
 
+  console.log(checkout);
+
   var currentDate = new Date();
 
   var year = currentDate.getFullYear();

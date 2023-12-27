@@ -27,12 +27,16 @@ const RenderItem = ({ item }, { navigation }) => {
 
 const HistoryContainers = ({ navigation, route }) => {
   const { nama, status, username } = useSelector((state) => state.user);
+  const dataPeminjaman = useSelector(
+    (state) => state.peminjaman.dataPeminjaman
+  );
+
   let showHistory = null;
 
   if (status === "Admin") {
-    showHistory = peminjamanList;
+    showHistory = dataPeminjaman;
   } else {
-    showHistory = peminjamanList.filter((e) => e.namaPeminjam === nama);
+    showHistory = dataPeminjaman.filter((e) => e.namaPeminjam === nama);
   }
 
   return (

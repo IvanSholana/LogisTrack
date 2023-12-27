@@ -2,6 +2,7 @@ import BarangDipinjam from "../../domain/models/BarangDipinjam";
 import Peminjaman from "../../domain/models/Peminjaman";
 
 const peminjamanList = [
+  // Data yang telah Anda sediakan
   new Peminjaman(
     "001",
     "John Doe",
@@ -9,9 +10,10 @@ const peminjamanList = [
     [new BarangDipinjam("001", 5), new BarangDipinjam("002", 2)],
     ["1", "2"],
     "2023-01-01",
+    "00:00",
     "2023-01-02",
-    "Ditolak",
-    "Peminjaman untuk seminar teknologi"
+    "23:59",
+    "Diajukan"
   ),
   new Peminjaman(
     "002",
@@ -20,9 +22,10 @@ const peminjamanList = [
     [new BarangDipinjam("003", 10), new BarangDipinjam("004", 1)],
     ["3"],
     "2023-02-01",
+    "00:00",
     "2023-02-03",
-    "Diajukan",
-    "Peminjaman untuk workshop seni"
+    "23:59",
+    "Diajukan"
   ),
   new Peminjaman(
     "003",
@@ -31,10 +34,13 @@ const peminjamanList = [
     [new BarangDipinjam("005", 3), new BarangDipinjam("006", 1)],
     ["4"],
     "2023-03-01",
+    "00:00",
     "2023-03-02",
-    "Ditolak",
-    "Peminjaman untuk rapat koordinasi"
+    "23:59",
+    "Ditolak"
   ),
+
+  // Data tambahan
   new Peminjaman(
     "004",
     "Alice Brown",
@@ -42,9 +48,10 @@ const peminjamanList = [
     [new BarangDipinjam("007", 8), new BarangDipinjam("008", 2)],
     ["5"],
     "2023-04-01",
+    "00:00",
     "2023-04-02",
-    "Diajukan",
-    "Peminjaman untuk acara musik"
+    "23:59",
+    "Diajukan"
   ),
   new Peminjaman(
     "005",
@@ -53,9 +60,10 @@ const peminjamanList = [
     [new BarangDipinjam("009", 15), new BarangDipinjam("010", 5)],
     ["6"],
     "2023-05-01",
+    "00:00",
     "2023-05-02",
-    "Disetujui",
-    "Peminjaman untuk diskusi komunitas"
+    "23:59",
+    "Disetujui"
   ),
   new Peminjaman(
     "006",
@@ -64,31 +72,34 @@ const peminjamanList = [
     [new BarangDipinjam("011", 2), new BarangDipinjam("012", 10)],
     ["7"],
     "2023-06-01",
+    "00:00",
     "2023-06-02",
-    "Selesai",
-    "Peminjaman untuk pertandingan olahraga"
+    "23:59",
+    "Selesai"
   ),
   new Peminjaman(
     "007",
-    "Jane Smith",
+    "Alice Brown",
     "Sosialisasi Kesehatan",
     [new BarangDipinjam("001", 50), new BarangDipinjam("002", 1)],
     ["8"],
     "2023-07-01",
+    "00:00",
     "2023-07-02",
-    "Ditolak",
-    "Peminjaman untuk sosialisasi kesehatan"
+    "23:59",
+    "Ditolak"
   ),
   new Peminjaman(
     "008",
-    "Henry Clark",
+    "Alice Brown",
     "Ujian Online",
     [new BarangDipinjam("006", 30), new BarangDipinjam("002", 3)],
     ["9"],
     "2023-08-01",
+    "00:00",
     "2023-08-02",
-    "Diajukan",
-    "Peminjaman untuk ujian online"
+    "23:59",
+    "Diajukan"
   ),
   new Peminjaman(
     "009",
@@ -97,9 +108,10 @@ const peminjamanList = [
     [new BarangDipinjam("005", 1), new BarangDipinjam("002", 5)],
     ["1"],
     "2023-09-01",
+    "00:00",
     "2023-09-02",
-    "Disetujui",
-    "Peminjaman untuk seminar keuangan"
+    "23:59",
+    "Disetujui"
   ),
   new Peminjaman(
     "010",
@@ -108,10 +120,9 @@ const peminjamanList = [
     [new BarangDipinjam("003", 1), new BarangDipinjam("004", 15)],
     ["9"],
     "2023-10-01",
+    "00:00",
     "2023-10-02",
-    "Selesai",
-    "Peminjaman untuk pertunjukan teater"
+    "23:59",
+    "Selesai"
   ),
 ];
-
-export default peminjamanList;
