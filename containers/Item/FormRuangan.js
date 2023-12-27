@@ -14,6 +14,8 @@ const FormRuanganContainer = ({
     ruanganList.map((e) => new RuanganDipinjam(e.id, e.nama, false))
   );
 
+  const [roomData, setRoomData] = useState([]);
+
   const toggleCheckbox = (nama) => {
     setKeranjangRuangan((prevKeranjang) =>
       prevKeranjang.map((item) => {
@@ -30,7 +32,6 @@ const FormRuanganContainer = ({
     setRuanganDipinjam(keranjangRuangan.filter((e) => e.status == true));
   }, [keranjangRuangan, setKeranjangRuangan]);
 
-  console.log(keranjangRuangan);
   return (
     <>
       <View style={{ flex: 1 }}>

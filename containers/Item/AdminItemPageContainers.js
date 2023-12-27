@@ -32,6 +32,7 @@ const AdminItemPageContainer = ({ navigation, route }) => {
         <ButtonComponent
           buttontext={"Tambah Ruangan"}
           buttonstyle={styles.buttonadd}
+          onPress={() => navigation.navigate("additem")}
         />
       )}
       {activeTab === "Peralatan" ? (

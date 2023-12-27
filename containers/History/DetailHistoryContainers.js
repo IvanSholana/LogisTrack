@@ -5,17 +5,36 @@ import { colors } from "../../constants/colors";
 import TableComponent from "../../components/Table/TableComponent";
 import StatusComponent from "../../components/Status/StatusComponent";
 import ButtonComponent from "../../components/Button/ButtonComponent";
+import peralatanList from "../../data/local/PeralatanData";
+import ruanganList from "../../data/local/RuanganData";
 
 const DetailHistoryContainers = ({ navigation, route }) => {
   const { data } = route.params;
-  console.log(data);
+
+  ruanganPinjam = data.ruanganDipinjam.barangPinjam =
+    data.peralatanDipinjam.flatMap((e) =>
+      ruanganList
+        .filter((y) => e.id == y.id)
+        .map((filteredItem) => ({
+          namaPeminjaman: filteredItem.nama,
+          qty: 1,
+        }))
+    );
+  barangPinjam = data.peralatanDipinjam.flatMap((e) =>
+    peralatanList
+      .filter((y) => e.id === y.id)
+      .map((filteredItem) => ({
+        namaPeminjaman: filteredItem.nama,
+        qty: filteredItem.jumlah,
+      }))
+  );
+
+  console.log(ruanganPinjam);
+
   // Data contoh peminjaman
-  const myTableHead = ['No', 'List', 'Qty'];
-  const peminjamanData = [
-    { namaPeminjaman: "Buku", qty: 5 },
-    { namaPeminjaman: "Pensil", qty: 10 },
-    { namaPeminjaman: "Kertas", qty: 8 },
-  ];
+  const myTableHead = ["List", "Qty"];
+  const peminjamanData = [...barangPinjam, ...ruanganPinjam];
+  console.log(peminjamanData);
 
   return (
     <View style={styles.container}>
@@ -41,13 +60,12 @@ const DetailHistoryContainers = ({ navigation, route }) => {
           startDateTime={data.tanggalAwal}
           endDateTime={data.tanggalAkhir}
           acara={data.namaAcara}
-          alasan={data.alasan}
+          alasan={data.reason}
         />
         <ButtonComponent
           buttontext={"Kembali"}
           buttonstyle={{
             backgroundColor: colors.buttonLogin,
-            marginTop: 40,
             padding: 10,
             borderRadius: 10,
           }}
@@ -59,13 +77,13 @@ const DetailHistoryContainers = ({ navigation, route }) => {
 };
 
 const styles = StyleSheet.create({
+  tablesection: {
+    flex: 0.5,
+  },
+
   container: {
-    justifyContent: "center",
     flex: 1,
     margin: 20,
-  },
-  contentsection: {
-    flex: 1, // Tambahkan flex: 1 untuk mengisi ruang secara merata
   },
 });
 

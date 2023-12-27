@@ -4,7 +4,6 @@ import {
   ProfileContainer,
   ProfileContent,
 } from "../containers/Profile/ProfileContainer";
-
 import { useSelector } from "react-redux";
 import {
   AdminProfileContainer,
@@ -36,8 +35,9 @@ const AdminProfileScreen = ({ navigation }) => {
 };
 
 const ProfileScreen = ({ navigation }) => {
-  const { status } = useSelector((state) => state.user);
+  const { nama, status, username } = useSelector((state) => state.user);
 
+  console.log(`login : ${status}`);
   return (
     <>
       {status == "Mahasiswa" || status == "Dosen" ? (

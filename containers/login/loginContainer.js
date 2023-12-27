@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet, View } from "react-native";
@@ -8,13 +8,14 @@ import { setUser } from "../../redux/userSlice";
 import usersdata from "../../data/local/UserData";
 
 const LoginContainer = ({ navigation }) => {
-  const [nimNidn, setnimNidn] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   const ninChangeHandle = (NIMandNIDN) => {
-    setnimNidn(NIMandNIDN);
+    setUsername(NIMandNIDN);
   };
 
   const passwordChangeHandle = (psswd) => {
@@ -26,15 +27,12 @@ const LoginContainer = ({ navigation }) => {
       setLoading(true);
 
       const userData = usersdata.find(
-        (e) => e.nimNidn == nimNidn && e.password == password
+        (e) => e.username == username && e.password == password
       );
-      console.log(userData);
+
       if (userData) {
-        const { nama, status, nimNidn } = userData;
-        console.log(`nama : ${nama} dan user ${status} dan NIM ${nimNidn}`);
-
-        dispatch(setUser({ nama: nama, status: status, nimNidn: nimNidn }));
-
+        const { name, status, username } = userData;
+        dispatch(setUser({ nama: name, status: status, username: username }));
         console.log("Login Berhasil");
         return true;
       } else {
@@ -42,7 +40,6 @@ const LoginContainer = ({ navigation }) => {
         return false;
       }
     } catch (error) {
-      console.error("Login failed:", error.message);
       return false;
     } finally {
       setLoading(false);

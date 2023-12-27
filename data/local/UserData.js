@@ -16,7 +16,7 @@ const usersdata = [
     "1234",
     "jane.smith@example.com",
     "Admin",
-    "Apa nama hewan peliharaan Anda?",  
+    "Apa nama hewan peliharaan Anda?",
     "Fluffy"
   ),
   new User(

@@ -9,6 +9,7 @@ const AddPeralatanCardComponents = ({
   keranjang,
   setKeranjang,
 }) => {
+  console.log(data.nama);
   const [count, setCount] = useState(0);
 
   const updatedKeranjang = keranjang.map((item) => {

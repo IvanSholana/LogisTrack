@@ -86,6 +86,7 @@ export default function App() {
             component={RegisterScreen}
             options={{ headerShown: false }}
           />
+
           <Stack.Screen
             name="MainTabsMenu"
             component={MainTabsMenu}
