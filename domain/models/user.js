@@ -1,5 +1,5 @@
 import React from "react";
-import Middleware from "../../data/repositories/authRepository.js";
+//import Middleware from "../../data/repositories/authRepository.js";
 
 
 class User extends React.Component {

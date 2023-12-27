@@ -27,18 +27,6 @@ const RenderItem = ({ item }, { navigation }) => (
 const HistoryContainers = ({ navigation, route }) => {
   const [peminjamanData, setPeminjamanData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await peminjamanList();
-        setPeminjamanData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
   return (
     <>
       <FlatList

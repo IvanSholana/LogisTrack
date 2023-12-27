@@ -16,20 +16,6 @@ const FormRuanganContainer = ({
 
   const [roomData, setRoomData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await ruanganList();
-        console.log(JSON.stringify(data, undefined, 2));
-        setRoomData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   const toggleCheckbox = (nama) => {
     setKeranjangRuangan((prevKeranjang) =>
       prevKeranjang.map((item) => {

@@ -11,7 +11,6 @@ const LoginContainer = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [usersData, setUsersData] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -22,23 +21,6 @@ const LoginContainer = ({ navigation }) => {
   const passwordChangeHandle = (psswd) => {
     setPassword(psswd);
   };
-
-  
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await usersdata();
-        console.log(JSON.stringify(data, undefined,2))
-        setUsersData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
 
   const handleLogin = () => {
     try {
