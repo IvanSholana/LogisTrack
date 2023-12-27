@@ -4,7 +4,9 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet, View, Alert,TextInput} from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
-import User from "../../domain/models/User";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/userSlice";
+import usersdata from "../../data/local/UserData";
 
 
 const RegisterContainer = ({ navigation }) => {
@@ -14,25 +16,28 @@ const RegisterContainer = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
-  const [selected, setSelected] = useState('');
+  const [status, setStatus] = useState('');
+  const dispatch = useDispatch();
   const data = [
-    { key: "1", value: "Mahasiswa" },
-    { key: "2", value: "Dosen" },
-    { key: "3", value: "Staff" },
+    { key: "Mahasiswa", value: "Mahasiswa" },
+    { key: "Dosen", value: "Dosen" },
+    { key: "Staff", value: "Staff" },
   ];
 
   const registUser = () => {
-    const newUser = new User(
+    const newUser = {
         name,
         username,
         password,
         email,
+        status, 
         question,
         answer,
-        selected, 
-    );
+    };
 
     console.log('User Baru:', newUser);
+    usersdata.push(newUser);
+    dispatch(setUser(newUser)); 
     Alert.alert('Sukses', 'Registrasi berhasil', [
         {
           text: 'OK',
@@ -72,9 +77,12 @@ const RegisterContainer = ({ navigation }) => {
         setValue={setEmail}
       />
       <SelectList
-        setSelected={(val) => setSelected(val)}
+        setSelected={(val) => {
+          console.log('Selected value:', val);
+          setStatus(val);
+        }}        
         data={data}
-        save={selected}
+        save={status}
         placeholder="Status/Jabatan"
         boxStyles={{
           borderColor: "#ccc",

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  nama: "",
-  status: "",
+  name: null, // Change to an object or null to represent the current user
+  status: null,
 };
 
 export const userSlice = createSlice({
@@ -10,14 +10,12 @@ export const userSlice = createSlice({
   initialState: initialState,
   reducers: {
     setUser: (state, action) => {
-      state.nama = action.payload.nama;
-      state.status = action.payload.status;
-      state.nimNidn = action.payload.nimNidn;
+      state.user = action.payload; // Save the user object
+      state.status = action.payload;
     },
     clearUser: (state) => {
-      state.nama = "";
-      state.status = "";
-      state.nimNidn = "";
+      state.user = null; // Clear the user when needed
+      state.status = null;
     },
   },
 });
