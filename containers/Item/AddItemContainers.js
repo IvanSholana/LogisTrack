@@ -1,25 +1,22 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Image,
-  Alert,
-  TextInput,
-} from "react-native";
-
+import { View, StyleSheet, Text, TouchableOpacity, Image, Alert} from "react-native";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import * as ImagePicker from 'expo-image-picker';
-import Peralatan from "../../domain/models/Peralatan"
+import InputText from "../../components/InputText/InputText";
+import peralatanList from "../../data/local/PeralatanData";
+import { useDispatch } from "react-redux";
+import { setAlat } from "../../redux/alatSlice";
+import ruanganList from "../../data/local/RuanganData";
+import { setRuangan } from "../../redux/ruanganSlice";
 
 
 const AddItemContainers = ({ navigation }) => {
+  const [nama, setNama] = useState("");
   const [jumlah, setJumlah] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
-  const [nama, setNama] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [gambar, setGambar] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(""); 
   const [jumlahlabel, setJumlahLabel] = useState("Kuantitas");
   const currentDate = new Date();
   const formattedDate = currentDate
@@ -27,6 +24,8 @@ const AddItemContainers = ({ navigation }) => {
     .split("T")[0]
     .replace(/-/g, ""); // Mendapatkan tanggal dalam format YYYYMMDD
   const id = `${nama}_${formattedDate}`;
+  const dispatch = useDispatch();
+
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
@@ -50,7 +49,7 @@ const AddItemContainers = ({ navigation }) => {
 
       if (!result.cancelled) {
         console.log("Selected Image URI:", result.uri);
-        setSelectedImage(result.uri);
+        setGambar(result.uri);
       } else {
         console.log("Image selection cancelled.");
       }
@@ -58,31 +57,54 @@ const AddItemContainers = ({ navigation }) => {
       console.error("Image selection error:", error);
     }
   };
-
+  
   const tambahPeralatan = () => {
-    const peralatanBaru = new Peralatan(
-      id,
-      nama,
-      jumlah,
-      deskripsi,
-      selectedImage
-    );
-
-    console.log("Peralatan Baru:", peralatanBaru);
-    Alert.alert("Sukses", "Peralatan berhasil ditambahkan", [
-      {
-        text: "OK",
-      },
-    ]);
+    const peralatanBaru = {
+        id,
+        nama,
+        jumlah,
+        deskripsi,
+        gambar, 
   };
 
+    console.log('Peralatan Baru:', peralatanBaru);
+    peralatanList.push(peralatanBaru)
+    dispatch(setAlat(peralatanBaru))
+    Alert.alert('Sukses', 'Peralatan berhasil ditambahkan', [
+        {
+          text: 'OK',
+
+        },
+      ]);
+  };
+
+  const tambahRuangan = () => {
+    const ruanganBaru = {
+        id,
+        nama,
+        jumlah,
+        deskripsi,
+        gambar, 
+  };
+
+    console.log('Ruangan Baru:', ruanganBaru);
+    ruanganList.push(ruanganBaru)
+    dispatch(setRuangan(ruanganBaru))
+    Alert.alert('Sukses', 'Ruangan berhasil ditambahkan', [
+        {
+          text: 'OK',
+
+        },
+      ]);
+  };
+  
   return (
     <>
-      <TextInput
+      <InputText
         textinputname={"Nama Aset"}
         placeholder={"Masukkan Nama Aset..."}
         value={nama}
-        onChangeText={setNama}
+        setValue={setNama}
       />
       <Text>Tipe Aset</Text>
       <View style={styles.radioContainer}>
@@ -110,17 +132,17 @@ const AddItemContainers = ({ navigation }) => {
         ></TouchableOpacity>
       </View>
 
-      <TextInput
+      <InputText
         textinputname={"Deskripsi"}
         placeholder={"Masukkan Deskripsi..."}
         value={deskripsi}
-        onChangeText={setDeskripsi}
+        setValue={setDeskripsi}
       />
-      <TextInput
+      <InputText
         textinputname={jumlahlabel}
         placeholder={`Masukkan ${jumlahlabel}...`}
         value={jumlah}
-        onChangeText={setJumlah}
+        setValue={setJumlah}
       />
 
       <TouchableOpacity style={styles.uploadButton} onPress={handleChooseImage}>
@@ -138,7 +160,7 @@ const AddItemContainers = ({ navigation }) => {
           buttontext={"Tambah"}
           buttonstyle={styles.button}
           textstyle={styles.addtext}
-          onPress={tambahPeralatan}
+          onPress={selectedOption === "ruangan" ? tambahRuangan : tambahPeralatan}
         />
         <ButtonComponent
           buttontext={"Keluar"}

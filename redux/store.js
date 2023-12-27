@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
-import itemReducer from "./alatSlice";
+import alatReducer from "./alatSlice";
+import ruanganReducer from "./ruanganSlice"
 
 const store = configureStore({
   reducer: {
     user: userReducer,
-    item: itemReducer,
+    alat: alatReducer,
+    ruangan: ruanganReducer,
   },
 });
 

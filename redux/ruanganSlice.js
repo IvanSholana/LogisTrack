@@ -7,17 +7,17 @@ const initialState = {
   gambar: "",
 };
 
-export const alatSlice = createSlice({
+export const ruanganSlice = createSlice({
   name: "Peralatan",
   initialState: initialState,
   reducers: {
-    setAlat: (state, action) => {
+    setRuangan: (state, action) => {
       state.nama = action.payload.nama;
       state.jumlah = action.payload.jumlah;
       state.deskripsi = action.payload.deskripsi;
       state.gambar = action.payload.gambar;
     },
-    clearAlat: (state) => {
+    clearRuangan: (state) => {
       state.nama = "";
       state.jumlah = "";
       state.deskripsi = "";
@@ -26,6 +26,6 @@ export const alatSlice = createSlice({
   },
 });
 
-export const { setAlat, clearAlat } = alatSlice.actions;
+export const { setRuangan, clearRuangan } = ruanganSlice.actions;
 
-export default alatSlice.reducer;
+export default ruanganSlice.reducer;
