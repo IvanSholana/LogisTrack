@@ -4,35 +4,40 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet, View, Alert} from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
-import User from "../../domain/models/user";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/userSlice";
+import usersdata from "../../data/local/UserData";
 
 
 const RegisterContainer = ({ navigation }) => {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [selected, setSelected] = useState("");
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
+  const [status, setStatus] = useState('');
+  const dispatch = useDispatch();
   const data = [
-    { key: "1", value: "Mahasiswa" },
-    { key: "2", value: "Dosen" },
-    { key: "3", value: "Staff" },
+    { key: "Mahasiswa", value: "Mahasiswa" },
+    { key: "Dosen", value: "Dosen" },
+    { key: "Staff", value: "Staff" },
   ];
 
   const registUser = () => {
-    const newUser = new User(
+    const newUser = {
         name,
         username,
         password,
         email,
+        status, 
         question,
         answer,
-        selected, 
-    );
+    };
 
     console.log('User Baru:', newUser);
+    usersdata.push(newUser);
+    dispatch(setUser(newUser)); 
     Alert.alert('Sukses', 'Registrasi berhasil', [
         {
           text: 'OK',
@@ -41,40 +46,42 @@ const RegisterContainer = ({ navigation }) => {
       ]);
   };
 
-
   return (
     <>
       <InputText
         textinputname={"Nama"}
         placeholder={"Masukkan Nama..."}
-        Value={name}
-        onChangeText={setName}
+        value={name}
+        setValue={setName}
         
       />
       <InputText
         textinputname={"NIM/NIDN"}
         placeholder={"Masukkan NIM/NIDN..."}
-        Value={username}
-        onChangeText={setUsername}
+        value={username}
+        setValue={setUsername}
       />
       <InputText
         textinputname={"Password"}
         security={true}
         placeholder={"Masukkan Password..."}
-        Value={password}
-        onChangeText={setPassword}
+        value={password}
+        setValue={setPassword}
       />
       <InputText
         textinputname={"E-Mail Institut"}
         keyboardType="email-address"
         placeholder={"Masukkan Email..."}
-        Value={email}
-        onChangeText={setEmail}
+        value={email}
+        setValue={setEmail}
       />
       <SelectList
-        setSelected={(val) => setSelected(val)}
+        setSelected={(val) => {
+          console.log('Selected value:', val);
+          setStatus(val);
+        }}        
         data={data}
-        save={selected}
+        save={status}
         placeholder="Status/Jabatan"
         boxStyles={{
           borderColor: "#ccc",
@@ -87,21 +94,24 @@ const RegisterContainer = ({ navigation }) => {
       <InputText
         textinputname={"Pertanyaan Keamanan"}
         placeholder={"Masukkan Pertanyaan..."}
-        Value={question}
-        onChangeText={setQuestion}
+        value={question}
+        setValue={setQuestion}
       />
       <InputText
         textinputname={"Jawaban Pertanyaan Keamanan"}
         placeholder={"Masukkan Jawaban..."}
-        Value={answer}
-        onChangeText={setAnswer}
+        value={answer}
+        setValue={setAnswer}
       />
       <View style={styles.buttonsection}>
         <ButtonComponent
           buttontext={"Register"}
           buttonstyle={styles.button}
           textstyle={styles.logintext}
-          onPress={() => {registUser(); navigation.navigate("Login");}}
+          onPress={() => {
+            registUser();
+            navigation.navigate("Login");
+          }}
         />
         <ButtonComponent
           buttontext={"Back"}

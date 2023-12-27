@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image, Alert,TextInput } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, Image, Alert} from "react-native";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import * as ImagePicker from 'expo-image-picker';
 import Peralatan from "../../domain/models/Peralatan"
+import InputText from "../../components/InputText/InputText";
 
 const AddItemContainers = ({ navigation }) => {
   const [nama, setNama] = useState('');
@@ -70,11 +71,11 @@ const AddItemContainers = ({ navigation }) => {
   
   return (
     <>
-      <TextInput
+      <InputText
         textinputname={"Nama Aset"}
         placeholder={"Masukkan Nama Aset..."}
         value={nama}
-        onChangeText={setNama}
+        setValue={setNama}
       />
     <Text>Tipe Aset</Text>
       <View style={styles.radioContainer}>
@@ -104,17 +105,17 @@ const AddItemContainers = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <TextInput
+      <InputText
         textinputname={"Deskripsi"}
         placeholder={"Masukkan Deskripsi..."}
         value={deskripsi}
-        onChangeText={setDeskripsi}
+        setValue={setDeskripsi}
       />
-      <TextInput
+      <InputText
         textinputname={jumlahlabel}
         placeholder={`Masukkan ${jumlahlabel}...`}
         value={jumlah}
-        onChangeText={setJumlah}
+        setValue={setJumlah}
       />
 
       <TouchableOpacity
