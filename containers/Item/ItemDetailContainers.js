@@ -8,9 +8,9 @@ const ItemDetailContainers = ({ route }) => {
   return (
     <View style={{ flex: 1 }}>
       <DetailCard
-        imageSource={detail.gambar}
-        description={detail.deskripsi}
-        availability={detail.jumlah}
+        imageSource={detail.image}
+        description={detail.description}
+        availability={detail.quantity}
       />
     </View>
   );

@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import AddPeralatanCardComponents from "../../components/Card/AddPeralatanCard";
-import peralatanList from "../../data/local/PeralatanData"; // GET API
-import BarangDipinjam from "../../domain/models/BarangDipinjam";
+import peralatanList from "../../data/local/PeralatanData";
 
 const FormAlatContainer = ({ navigation, setcheckout }) => {
+  const [itemData, setItemData] = useState([]);
   const [keranjang, setKeranjang] = useState(() =>
     peralatanList.map((e) => new BarangDipinjam(e.id, 0))
   );
 
+  
+
   useEffect(() => {
-    setcheckout(keranjang.filter((e) => e.jumlah != 0));
-  }, [keranjang, setKeranjang]);
+    const fetchData = async () => {
+      try {
+        const data = await peralatanList();
+        setItemData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={peralatanList}
+        data={itemData}
         renderItem={({ item }) => (
           <AddPeralatanCardComponents
             navigation={navigation}

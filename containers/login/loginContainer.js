@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet, View } from "react-native";
@@ -11,6 +11,8 @@ const LoginContainer = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [usersData, setUsersData] = useState([]);
+
   const dispatch = useDispatch();
 
   const ninChangeHandle = (NIMandNIDN) => {
@@ -20,6 +22,23 @@ const LoginContainer = ({ navigation }) => {
   const passwordChangeHandle = (psswd) => {
     setPassword(psswd);
   };
+
+  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await usersdata();
+        console.log(JSON.stringify(data, undefined,2))
+        setUsersData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   const handleLogin = () => {
     try {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
-import { StyleSheet, View, Alert,TextInput} from "react-native";
+import { StyleSheet, View, Alert} from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { colors } from "../../constants/colors";
 import { useDispatch } from "react-redux";
@@ -45,7 +45,6 @@ const RegisterContainer = ({ navigation }) => {
         },
       ]);
   };
-
 
   return (
     <>
@@ -109,7 +108,10 @@ const RegisterContainer = ({ navigation }) => {
           buttontext={"Register"}
           buttonstyle={styles.button}
           textstyle={styles.logintext}
-          onPress={() => {registUser(); navigation.navigate("Login");}}
+          onPress={() => {
+            registUser();
+            navigation.navigate("Login");
+          }}
         />
         <ButtonComponent
           buttontext={"Back"}

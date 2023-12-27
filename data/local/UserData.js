@@ -1,4 +1,4 @@
-import User from "../../domain/models/User";
+import User from "../../domain/models/user";
 
 const usersdata = [
   new User(
@@ -39,4 +39,4 @@ const usersdata = [
   ),
 ];
 
-export default usersdata;
+export default ruanganList;
