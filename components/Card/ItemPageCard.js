@@ -3,10 +3,18 @@ import { Pressable, View, StyleSheet, Text } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { colors } from "../../constants/colors";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { setPeralatan } from "../../redux/alatSlice";
 
 const ItemPage = ({ item, navigation, tab }) => {
-  const handleDelete = () => {
-    // Add logic for the delete button press
+  const dispatch = useDispatch();
+  const peralatan = useSelector((state) => state.peralatan);
+
+  const handleDelete = (nama) => {
+    const newPeralatanValue = peralatan.peralatan.filter(
+      (e) => e.nama !== nama
+    );
+    dispatch(setPeralatan(newPeralatanValue));
     console.log("Delete button pressed");
   };
 
@@ -25,7 +33,12 @@ const ItemPage = ({ item, navigation, tab }) => {
         >
           <Icon name="edit" size={20} color="black" />
         </Pressable>
-        <Pressable style={styles.deleteButton}>
+        <Pressable
+          style={styles.deleteButton}
+          onPress={() => {
+            handleDelete(item.nama);
+          }}
+        >
           <Icon name="trash" size={20} color="red" />
         </Pressable>
       </View>

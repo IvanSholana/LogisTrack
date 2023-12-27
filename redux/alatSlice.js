@@ -23,6 +23,9 @@ export const alatSlice = createSlice({
       state.deskripsi = "";
       state.gambar = "";
     },
+    setPeralatan: (state, action) => {
+      state.peralatan = action.payload;
+    },
   },
 });
 
