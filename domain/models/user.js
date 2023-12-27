@@ -1,7 +1,6 @@
 import React from "react";
 //import Middleware from "../../data/repositories/authRepository.js";
 
-
 class User extends React.Component {
   constructor(name, username, password, email, status, question, answer) {
     super();
@@ -15,5 +14,4 @@ class User extends React.Component {
   }
 }
 
-
-export default User
+export default User;

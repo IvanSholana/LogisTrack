@@ -2,6 +2,7 @@ import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 
 const EventStatusCardComponents = (props) => {
+  console.log(props);
   const { eventName, eventDate, eventStatusColor, status, navigation } = props;
 
   return (

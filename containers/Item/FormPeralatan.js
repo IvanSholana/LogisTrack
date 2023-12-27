@@ -13,7 +13,7 @@ const FormAlatContainer = ({ navigation, setcheckout }) => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={itemData}
+        data={peralatanList}
         renderItem={({ item }) => (
           <AddPeralatanCardComponents
             navigation={navigation}

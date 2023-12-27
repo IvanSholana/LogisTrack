@@ -9,6 +9,7 @@ const AddPeralatanCardComponents = ({
   keranjang,
   setKeranjang,
 }) => {
+  console.log(data.nama);
   const [count, setCount] = useState(0);
 
   const updatedKeranjang = keranjang.map((item) => {
@@ -38,7 +39,7 @@ const AddPeralatanCardComponents = ({
       <Pressable
         onPress={() => navigation.navigate("detail", { detail: data })}
       >
-        <Text style={styles.itemName}>{data.name}</Text>
+        <Text style={styles.itemName}>{data.nama}</Text>
       </Pressable>
 
       <View style={styles.countItem}>

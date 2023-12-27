@@ -39,13 +39,14 @@ const ProfileContainer = ({ navigation }) => {
 };
 
 const ProfileContent = () => {
-  const { nama, status, nimNidn } = useSelector((state) => state.user);
+  const { nama, status, username } = useSelector((state) => state.user);
+  console.log(nama, status, username);
   return (
     <>
       <Text style={styles.profileTitle}>Nama</Text>
       <Text style={styles.profiledata}>{nama}</Text>
       <Text style={styles.profileTitle}>NIM/NIDM</Text>
-      <Text style={styles.profiledata}>{nimNidn}</Text>
+      <Text style={styles.profiledata}>{username}</Text>
     </>
   );
 };

@@ -25,17 +25,14 @@ const LoginContainer = ({ navigation }) => {
   const handleLogin = () => {
     try {
       setLoading(true);
-      console.log('Cek userData:', usersdata); // Tambahkan log ini
+
       const userData = usersdata.find(
         (e) => e.username == username && e.password == password
       );
-      console.log('Cek hasil pencarian:', userData); // Tambahkan log ini
+
       if (userData) {
         const { name, status, username } = userData;
-        console.log(`nama : ${name} dan user ${status} dan NIM ${username}`);
-
-        dispatch(setUser({ name: name, status: status, username: username }));
-
+        dispatch(setUser({ nama: name, status: status, username: username }));
         console.log("Login Berhasil");
         return true;
       } else {

@@ -32,12 +32,11 @@ const FormRuanganContainer = ({
     setRuanganDipinjam(keranjangRuangan.filter((e) => e.status == true));
   }, [keranjangRuangan, setKeranjangRuangan]);
 
-  console.log(keranjangRuangan);
   return (
     <>
       <View style={{ flex: 1 }}>
         <FlatList
-          data={roomData}
+          data={ruanganList}
           renderItem={({ item }) => (
             <CheckBoxForm
               data={item}

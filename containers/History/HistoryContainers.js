@@ -3,34 +3,42 @@ import EventStatusCardComponents from "../../components/Card/EventStatusCard";
 import { colors } from "../../constants/colors";
 import { FlatList } from "react-native-gesture-handler";
 import peminjamanList from "../../data/local/PeminjamanData";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-
-const RenderItem = ({ item }, { navigation }) => (
-  <EventStatusCardComponents
-    eventName={item.user_name}
-    eventDate={item.start_date}
-    eventStatusColor={
-      item.status == "Ditolak"
-        ? colors.eventRejected
-        : item.status == "Diajukan"
-        ? colors.eventInProgress
-        : item.status == "Disetujui"
-        ? colors.eventProcessing
-        : colors.buttonLogin
-    }
-    status={item.status}
-    navigation={() => navigation.navigate("detailpinjam", { data: item })}
-  />
-);
+const RenderItem = ({ item }, { navigation }) => {
+  return (
+    <EventStatusCardComponents
+      eventName={item.namaAcara}
+      eventDate={item.tanggalAwal}
+      eventStatusColor={
+        item.status == "Ditolak"
+          ? colors.eventRejected
+          : item.status == "Diajukan"
+          ? colors.eventInProgress
+          : item.status == "Disetujui"
+          ? colors.eventProcessing
+          : colors.buttonLogin
+      }
+      status={item.status}
+      navigation={() => navigation.navigate("detailpinjam", { data: item })}
+    />
+  );
+};
 
 const HistoryContainers = ({ navigation, route }) => {
-  const [peminjamanData, setPeminjamanData] = useState([]);
+  const { nama, status, username } = useSelector((state) => state.user);
+  let showHistory = null;
+
+  if (status === "Admin") {
+    showHistory = peminjamanList;
+  } else {
+    showHistory = peminjamanList.filter((e) => e.namaPeminjam === nama);
+  }
 
   return (
     <>
       <FlatList
-        data={peminjamanData}
+        data={showHistory}
         renderItem={({ item }) =>
           RenderItem({ item }, { navigation }, { route })
         }

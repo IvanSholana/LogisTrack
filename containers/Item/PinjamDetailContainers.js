@@ -8,9 +8,7 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { colors } from "../../constants/colors";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import Peminjaman from "../../domain/models/Peminjaman";
-import { useSelector } from "react-redux";
 import peralatanList from "../../data/local/PeralatanData";
-import peminjamanList from "../../data/local/PeminjamanData";
 
 const PinjamDetailContainer = ({ navigation, route }) => {
   const { data, timeline, dataRuangan } = route.params;
