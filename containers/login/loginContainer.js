@@ -42,7 +42,6 @@ const LoginContainer = ({ navigation }) => {
         return false;
       }
     } catch (error) {
-      console.error("Login failed:", error.message);
       return false;
     } finally {
       setLoading(false);
