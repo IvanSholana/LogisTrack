@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import AddPeralatanCardComponents from "../../components/Card/AddPeralatanCard";
-import peralatanList from "../../data/local/PeralatanData"; // GET API
+import peralatanList from "../../data/local/PeralatanData";
 import BarangDipinjam from "../../domain/models/BarangDipinjam";
 
 const FormAlatContainer = ({ navigation, setcheckout }) => {
+  const [itemData, setItemData] = useState([]);
   const [keranjang, setKeranjang] = useState(() =>
     peralatanList.map((e) => new BarangDipinjam(e.id, 0))
   );
 
-  useEffect(() => {
-    setcheckout(keranjang.filter((e) => e.jumlah != 0));
-  }, [keranjang, setKeranjang]);
-
   return (
     <View style={styles.container}>
       <FlatList
-        data={peralatanList}
+        data={itemData}
         renderItem={({ item }) => (
           <AddPeralatanCardComponents
             navigation={navigation}

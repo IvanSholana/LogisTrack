@@ -9,34 +9,34 @@ class APIRequest extends React.Component {
 */
 
     async getToken(){
-        const response = await fetch("http://localhost:3000/token");
+        const response = await fetch("http://192.168.1.2:3000/token");
         const json = await response.json();
-        return json
+        return json['token']
     }
     
     async getUserData(authToken){
-        const response = await fetch("http://localhost:3000/posts", {
+        const response = await fetch("http://192.168.1.2:3000/user", {
             headers: {
-                Authorization: `Bearer ${authToken}`,
-                // Add any other headers as needed
+                Authorization: `Bearer ${authToken}`
             },
         });
         const json = await response.json();
         return json
     }
     
-    async inputUserData(authToken, Name, Password, nomorInduk, Status, Prodi){
-        const response = await fetch("http://localhost:3000/createUser", {
+    async inputUserData(authToken, Name, Email, Password, nomorInduk, Status, Verif){
+        const response = await fetch("http://192.168.1.2:3000/user/createUser", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${authToken}`,
                 // Add any other headers as needed
                 name: Name,
+                email: Email,
                 password: Password,
                 nomor_induk: nomorInduk,
                 status: Status,
-                prodi: Prodi,
+                verif: Verif,
             },
             // body: JSON.stringify(postData),
         });
@@ -51,7 +51,7 @@ class APIRequest extends React.Component {
 */
 
     async getEquipData(authToken){
-        const response = await fetch("http://localhost:3000/equipment", {
+        const response = await fetch("http://192.168.1.2:3000/equipment", {
             headers: {
                 Authorization: `Bearer ${authToken}`,
                 // Add any other headers as needed
@@ -62,7 +62,7 @@ class APIRequest extends React.Component {
     }
 
     async inputEquipData(authToken, Name, Description, Quantity, Image){
-        const response = await fetch("http://localhost:3000/equipment/add", {
+        const response = await fetch("http://192.168.1.2:3000/equipment/add", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ class APIRequest extends React.Component {
     }
 
     async updateEquipData(authToken, Id, Name, Description, Quantity, Image){
-        const response = await fetch("http://localhost:3000/equipment/update", {
+        const response = await fetch("http://192.168.1.2:3000/equipment/update", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ class APIRequest extends React.Component {
     }
 
     async deleteEquipData(authToken, Id){
-        const response = await fetch("http://localhost:3000/equipment/delete", {
+        const response = await fetch("http://192.168.1.2:3000/equipment/delete", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ class APIRequest extends React.Component {
 */
 
     async getRoomData(authToken){
-        const response = await fetch("http://localhost:3000/room", {
+        const response = await fetch("http://192.168.1.2:3000/room", {
             headers: {
                 Authorization: `Bearer ${authToken}`,
                 // Add any other headers as needed
@@ -130,8 +130,8 @@ class APIRequest extends React.Component {
         return json
     }
 
-    async inputRoomData(authToken, Name, Description, Capacity){
-        const response = await fetch("http://localhost:3000/room/add", {
+    async inputRoomData(authToken, Name, Description, Capacity, Image){
+        const response = await fetch("http://192.168.1.2:3000/room/add", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -139,7 +139,8 @@ class APIRequest extends React.Component {
                 // Add any other headers as needed
                 name: Name,
                 description: Description,
-                capacity: Capacity
+                capacity: Capacity,
+                image:Image
             },
             // body: JSON.stringify(postData),
         });
@@ -147,8 +148,8 @@ class APIRequest extends React.Component {
         return json
     }
 
-    async updateRoomData(authToken, Id, Name, Description, Capacity){
-        const response = await fetch("http://localhost:3000/room/update", {
+    async updateRoomData(authToken, Id, Name, Description, Capacity, Image){
+        const response = await fetch("http://192.168.1.2:3000/room/update", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -157,7 +158,8 @@ class APIRequest extends React.Component {
                 id: Id,
                 name: Name,
                 description: Description,
-                capacity: Capacity
+                capacity: Capacity,
+                image:Image
             },
             // body: JSON.stringify(postData),
         });
@@ -166,7 +168,7 @@ class APIRequest extends React.Component {
     }
 
     async deleteRoomData(authToken, Id){
-        const response = await fetch("http://localhost:3000/room/delete", {
+        const response = await fetch("http://192.168.1.2:3000/room/delete", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -186,7 +188,7 @@ class APIRequest extends React.Component {
 */
 
     async getLoanReqData(authToken){
-        const response = await fetch("http://localhost:3000/loanReq", {
+        const response = await fetch("http://192.168.1.2:3000/loanReq", {
             headers: {
                 Authorization: `Bearer ${authToken}`,
                 // Add any other headers as needed
@@ -196,8 +198,8 @@ class APIRequest extends React.Component {
         return json
     }
 
-    async inputLoanReqData(authToken, UserName, EventName, EquipmentName, Quantity, Room, StartDate, EndDate, Status, Reason){
-        const response = await fetch("http://localhost:3000/loanReq/add", {
+    async inputLoanReqData(authToken, UserName, EventName, EquipmentName, Room, StartDate, EndDate, Status, Reason){
+        const response = await fetch("http://192.168.1.2:3000/loanReq/add", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -206,7 +208,6 @@ class APIRequest extends React.Component {
                 username: UserName,
                 eventname: EventName,
                 equipmentname: EquipmentName,
-                quantity: Quantity,
                 room: Room,
                 startdate: StartDate,
                 enddate: EndDate,
@@ -220,7 +221,7 @@ class APIRequest extends React.Component {
     }
 
     async updateLoanReqData(authToken, Id, Status){
-        const response = await fetch("http://localhost:3000/loanReq/update", {
+        const response = await fetch("http://192.168.1.2:3000/loanReq/update", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -236,7 +237,7 @@ class APIRequest extends React.Component {
     }
 
     async deleteLoanReqData(authToken, Id){
-        const response = await fetch("http://localhost:3000/loanReq/delete", {
+        const response = await fetch("http://192.168.1.2:3000/loanReq/delete", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -250,15 +251,6 @@ class APIRequest extends React.Component {
         return json
     }
 }
-
-// let objek = new APIRequest()
-// let token = await objek.getToken()
-// token = token['token']
-// console.log(token)
-// console.log(await objek.getUserData(token))
-// console.log(await objek.getEquipData(token))
-// console.log(await objek.getRoomData(token))
-// console.log(await objek.getLoanReqData(token))
 
 
 export default APIRequest;

@@ -3,11 +3,13 @@ import EventStatusCardComponents from "../../components/Card/EventStatusCard";
 import { colors } from "../../constants/colors";
 import { FlatList } from "react-native-gesture-handler";
 import peminjamanList from "../../data/local/PeminjamanData";
+import { useEffect, useState } from "react";
+
 
 const RenderItem = ({ item }, { navigation }) => (
   <EventStatusCardComponents
-    eventName={item.namaAcara}
-    eventDate={item.tanggalAwal}
+    eventName={item.user_name}
+    eventDate={item.start_date}
     eventStatusColor={
       item.status == "Ditolak"
         ? colors.eventRejected
@@ -23,10 +25,12 @@ const RenderItem = ({ item }, { navigation }) => (
 );
 
 const HistoryContainers = ({ navigation, route }) => {
+  const [peminjamanData, setPeminjamanData] = useState([]);
+
   return (
     <>
       <FlatList
-        data={peminjamanList}
+        data={peminjamanData}
         renderItem={({ item }) =>
           RenderItem({ item }, { navigation }, { route })
         }

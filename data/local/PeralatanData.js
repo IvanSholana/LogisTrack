@@ -34,7 +34,7 @@ const peralatanList = [
     "LCD Projector",
     2,
     "LCD Projector untuk presentasi besar",
-    "https://2.bp.blogspot.com/-rZiWFuH-56g/Vd-_3Cr_-XI/AAAAAAAAATE/7aM6Hpkh4I0/s1600/paket%2Blcd%2Bcopy.jpg"
+    "https://2.bp.blogspot.com/-rZiWFuH-56g/Vd-3Cr-XI/AAAAAAAAATE/7aM6Hpkh4I0/s1600/paket%2Blcd%2Bcopy.jpg"
   ),
   new Peralatan(
     "006",

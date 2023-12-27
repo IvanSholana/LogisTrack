@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputText from "../../components/InputText/InputText";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { StyleSheet, View } from "react-native";
@@ -8,13 +8,14 @@ import { setUser } from "../../redux/userSlice";
 import usersdata from "../../data/local/UserData";
 
 const LoginContainer = ({ navigation }) => {
-  const [nimNidn, setnimNidn] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   const ninChangeHandle = (NIMandNIDN) => {
-    setnimNidn(NIMandNIDN);
+    setUsername(NIMandNIDN);
   };
 
   const passwordChangeHandle = (psswd) => {
@@ -24,16 +25,16 @@ const LoginContainer = ({ navigation }) => {
   const handleLogin = () => {
     try {
       setLoading(true);
-
+      console.log('Cek userData:', usersdata); // Tambahkan log ini
       const userData = usersdata.find(
-        (e) => e.nimNidn == nimNidn && e.password == password
+        (e) => e.username == username && e.password == password
       );
-      console.log(userData);
+      console.log('Cek hasil pencarian:', userData); // Tambahkan log ini
       if (userData) {
-        const { nama, status, nimNidn } = userData;
-        console.log(`nama : ${nama} dan user ${status} dan NIM ${nimNidn}`);
+        const { name, status, username } = userData;
+        console.log(`nama : ${name} dan user ${status} dan NIM ${username}`);
 
-        dispatch(setUser({ nama: nama, status: status, nimNidn: nimNidn }));
+        dispatch(setUser({ name: name, status: status, username: username }));
 
         console.log("Login Berhasil");
         return true;
